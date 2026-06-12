@@ -1,0 +1,413 @@
+/* ============================================================
+   Dr. Marina Capella — Homepage Concept v4.3
+   Peaceful Media · Brand-to-Web Strategy Workshop
+   v4 palette — 5-color system (client-approved swatch),
+   tuned for WCAG 2.1 AA in v4.2 (same hues, deeper steps
+   where text sits on them — see ACCESSIBILITY-NOTES.txt):
+     Deep Forest      #1C2F22  text / anchor
+     Sage Green       #667B57  large display accents + decorative
+       └ deep step    #526547  panels + small green text on cream
+     Warm Ochre       #C2A385  layout accent (lines, borders, marks)
+     Soft Cream       #EADCC9  global background
+     Muted Terracotta #A36B51  approved swatch — large display only
+       └ deep step    #8A5238  CTA buttons & text links (AA-safe)
+   Rules:
+   - Cream backdrop everywhere; no stark white
+   - Forest for all headings, body copy, nav links
+   - Sage panels (cream text) break up the scroll
+   - Terracotta reserved for clickable calls to action
+   ============================================================ */
+:root{
+  --forest:     #1C2F22;
+  --forest-soft:rgba(28,47,34,.74);
+  --sage:       #667B57;            /* large display text (≥24px) + decorative only — 3.43:1 on cream */
+  --sage-deep:  #526547;            /* panel bg + small green text on cream — 4.70:1 AA */
+  --ochre:      #C2A385;
+  --ochre-soft: rgba(194,163,133,.45);
+  --cream:      #EADCC9;
+  --cream-card: #F2E8D6;            /* card surface — cream tint, not white */
+  --on-dark:    #F2E8D6;            /* text over sage / forest panels */
+  --on-dark-soft:rgba(242,232,214,.82);
+  --terracotta-display:#A36B51;     /* approved swatch — large/display use only (AA-large 3.26:1) */
+  --cta:        #8A5238;            /* deep terracotta — buttons & links: 5.17:1 label, 4.66:1 as link on cream */
+  --cta-hover:  #74452F;            /* 6.56:1 label */
+  --line:       rgba(194,163,133,.55);
+  --max: 1360px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Figtree',system-ui,sans-serif;
+  color:var(--forest);
+  background:var(--cream);
+  line-height:1.65;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--cta)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(24px,3.5vw,56px)}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;line-height:1.12;color:var(--forest);text-wrap:balance}
+h2{font-size:clamp(2rem,3.4vw,2.9rem);letter-spacing:-0.01em}
+h2 em{display:block;margin-top:.25rem}
+h3{font-size:1.32rem;font-weight:500}
+em.soul{font-style:italic;color:var(--sage)}
+.eyebrow{
+  font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--sage-deep);font-weight:600;margin-bottom:1.1rem;
+}
+.lede{font-size:1.12rem;color:var(--forest-soft);max-width:60ch}
+section{padding:6rem 0}
+/* Soft top-light wash on the big cream sections — a breath of warmth
+   at the top of each, settling back to base cream by mid-section.
+   The wash only ever goes LIGHTER than cream, so every audited
+   contrast ratio holds or improves. */
+#avenues,#story,.book,.healers,.quotes{
+  background:radial-gradient(120% 78% at 50% 0%, #F3EADA 0%, var(--cream) 58%);
+}
+.btn{
+  display:inline-block;font-weight:600;font-size:.95rem;
+  padding:.85rem 1.8rem;border-radius:999px;text-decoration:none;
+  border:none;cursor:pointer;font-family:inherit;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+}
+/* Terracotta = clickable. Primary CTAs only. */
+.btn-primary{background:var(--cta);color:var(--on-dark)}
+.btn-primary:hover{background:var(--cta-hover);color:var(--on-dark);transform:translateY(-2px);box-shadow:0 8px 22px rgba(138,82,56,.35)}
+.btn-ghost{border:1.5px solid var(--cta);color:var(--cta);background:transparent}
+.btn-ghost:hover{background:var(--cta);color:var(--on-dark);transform:translateY(-2px)}
+.btn-light-ghost{border:1.5px solid rgba(242,232,214,.75);color:var(--on-dark);background:transparent}
+.btn-light-ghost:hover{background:rgba(242,232,214,.16);transform:translateY(-2px)}
+/* Focus rings — contextual for ≥3:1 against each surface:
+   forest on cream (10.53:1); cream on dark panels/hero/footer (≥4.70:1) */
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--forest);outline-offset:3px;
+}
+:is(.hero,.video,.speaking,.contact,footer) :is(.btn,a,input,select,textarea,button):focus-visible{
+  outline-color:var(--on-dark);
+}
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--forest);color:var(--on-dark);
+  padding:.7rem 1.2rem;border-radius:0 0 10px 0;text-decoration:none;font-weight:600;
+}
+.skip-link:focus{left:0}
+
+/* ---------- elegant divider (ochre layout accent) ---------- */
+.divider{
+  max-width:var(--max);margin:0 auto;padding:0 clamp(24px,3.5vw,56px);
+  display:flex;align-items:center;gap:1rem;
+}
+.divider::before,.divider::after{
+  content:"";flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,var(--ochre) 30%,var(--ochre) 70%,transparent);
+}
+.divider span{
+  width:7px;height:7px;background:var(--sage);transform:rotate(45deg);flex:none;
+}
+
+/* ---------- nav ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(234,220,201,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:flex-start;gap:2.5rem;height:74px}
+.nav > nav{display:flex;flex:1}
+.logo{font-family:'Fraunces',serif;font-size:1.25rem;text-decoration:none;color:var(--forest);white-space:nowrap}
+.logo em{font-style:italic;color:var(--sage-deep)}
+nav ul{display:flex;gap:2rem;list-style:none;align-items:center;justify-content:flex-end;flex:1}
+nav a{font-size:.92rem;font-weight:500;text-decoration:none;color:var(--forest);white-space:nowrap}
+nav a:not(.btn):hover{color:var(--cta)}
+nav .btn{padding:.55rem 1.3rem}
+.nav-toggle{display:none;background:none;border:none;font-size:1.6rem;color:var(--forest);cursor:pointer;margin-left:auto}
+
+/* ---------- hero: full-bleed background, subject right ---------- */
+/* v4.2 layout: photo mirrored so Dr. Capella faces IN from the RIGHT;
+   headline left-aligned with the logo. Photo lives on ::before (flipped),
+   scrim on ::after (NOT flipped) so the gradient always darkens the
+   text zone on the left regardless of the image. */
+.hero{
+  position:relative;
+  min-height:min(86vh,820px);
+  display:flex;align-items:center;
+  padding:7rem 0 8rem;
+  color:var(--on-dark);
+  background:var(--forest);          /* fallback while photo loads / offline */
+  overflow:hidden;
+  --hero-focus-x:35%;                /* subject sits right of center; raise toward 50% to ease her back left */
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  /* Interim photo from healingartspediatrics.com — final brand shoot will replace it.
+     LOCAL SWAP (build phase): run assets/get-photos.sh, then use the assets/ line. */
+  background-image:url('../assets/img/capella-with-infant.webp');
+  background-size:cover;
+  background-position:var(--hero-focus-x,50%) center;
+  transform:scaleX(-1);              /* mirror: subject moves to the right, facing in */
+  /* NOTE — mirror math: because the layer is flipped, a focal point painted
+     at X% appears at (100 − X)%. To pull the subject further RIGHT on screen,
+     LOWER --hero-focus-x (e.g. 35%); to pull it left, raise it. */
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  /* Scrim holds ≥.74 forest across the whole text column (640px copy +
+     side padding) = 5.83:1 worst-case for cream text even over a
+     pure-white photo region (AA), then falls away so the photo reads
+     clean on the right. max() pins a px floor so narrower desktop
+     viewports (1000–1280px) stay covered; on wide screens the % wins
+     and the photo gets more room. */
+  background:linear-gradient(97deg,
+    rgba(20,33,24,.90) 0%,
+    rgba(20,33,24,.74) 68%,
+    rgba(28,47,34,.08) 92%,
+    rgba(28,47,34,0) 100%);  /* fallback if max() unsupported in stops */
+  background:linear-gradient(97deg,
+    rgba(20,33,24,.90) 0%,
+    rgba(20,33,24,.74) max(54%, 760px),
+    rgba(28,47,34,.40) max(68%, 880px),
+    rgba(28,47,34,.08) max(84%, 980px),
+    rgba(28,47,34,0) 100%);
+}
+.hero .wrap{position:relative;z-index:2;width:100%}  /* width:100% = align with logo (flex child otherwise shrink-wraps & centers) */
+.hero-inner{max-width:640px;text-shadow:0 1px 24px rgba(20,33,24,.45)}
+.hero .identity{
+  display:flex;gap:1rem;flex-wrap:wrap;align-items:center;
+  font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--on-dark-soft);font-weight:600;margin-bottom:1.6rem;
+}
+.hero .identity .dot{width:5px;height:5px;border-radius:50%;background:var(--ochre);display:inline-block;flex:none}
+.hero h1{
+  font-size:clamp(2.9rem,5.8vw,4.6rem);font-weight:380;color:var(--on-dark);
+  margin-bottom:1.6rem;line-height:1.08;
+}
+.hero h1 .ital{font-style:italic;font-weight:340;color:var(--ochre)}
+.hero p.lede{color:var(--on-dark);margin-bottom:2.4rem;font-size:1.15rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.hero .photo-note{
+  position:absolute;right:clamp(24px,3.5vw,56px);bottom:1.4rem;z-index:2;
+  font-size:.74rem;letter-spacing:.05em;color:rgba(242,232,214,.85);
+  text-shadow:0 1px 8px rgba(20,33,24,.7);
+}
+
+/* ---------- social proof strip ---------- */
+.proof{background:var(--cream);border-bottom:1px solid var(--line);border-top:1px solid var(--line)}
+.proof-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
+  padding-top:2.2rem;padding-bottom:2.2rem;text-align:center;
+}
+.stat strong{
+  display:block;font-family:'Fraunces',serif;font-weight:500;font-size:1.7rem;
+  color:var(--sage);line-height:1.15;
+}
+.stat span{font-size:.85rem;color:var(--forest-soft);letter-spacing:.02em}
+.stat{position:relative}
+.stat + .stat::before{
+  content:"";position:absolute;left:-0.75rem;top:15%;bottom:15%;width:1px;
+  background:linear-gradient(180deg,transparent,var(--ochre),transparent);
+}
+
+/* ---------- avenues ---------- */
+.avenues-head{max-width:680px;margin-bottom:3.2rem}
+.avenue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.avenue{
+  background:var(--cream-card);border:1px solid var(--line);border-top:3px solid var(--sage);
+  border-radius:14px;padding:2.5rem 2.2rem;display:flex;flex-direction:column;gap:.9rem;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.avenue:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(28,47,34,.14)}
+.avenue .for{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--sage-deep)}
+.avenue h3{font-size:1.45rem}
+.avenue p{font-size:.97rem;color:var(--forest-soft);flex:1}
+.avenue a.link{font-weight:600;font-size:.92rem;text-decoration:none;color:var(--cta)}
+.avenue a.link::after{content:" →";transition:margin .2s}
+.avenue a.link:hover::after{margin-left:4px}
+
+/* ---------- about / story ---------- */
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(3rem,5vw,5.5rem);align-items:start}
+.about-photo .frame{
+  aspect-ratio:3/4;border-radius:14px;
+  background:linear-gradient(200deg,var(--cream-card),var(--ochre));
+  display:flex;align-items:flex-end;justify-content:center;color:var(--forest-soft);
+  border:1px solid var(--line);overflow:hidden;
+  box-shadow:0 26px 52px rgba(28,47,34,.22);
+}
+.about-photo .frame img,.speaking .frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.about p{margin-bottom:1.2rem;max-width:62ch}
+.pull{
+  font-family:'Fraunces',serif;font-style:italic;font-size:1.35rem;line-height:1.45;
+  color:var(--sage-deep);border-left:3px solid var(--ochre);padding-left:1.4rem;margin:2rem 0;
+}
+.cred-strip{
+  margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem 2.5rem;
+}
+.cred{display:flex;gap:.8rem;align-items:flex-start;font-size:.92rem;color:var(--forest-soft)}
+.cred .mark{flex:none;width:7px;height:7px;background:var(--sage);transform:rotate(45deg);margin-top:.5rem}
+.cred strong{color:var(--forest);font-weight:600;display:block}
+
+/* ---------- video (deep sage contrast panel) ---------- */
+.video{background:var(--sage-deep);color:var(--on-dark);text-align:center}
+.video .eyebrow{color:var(--on-dark)}
+.video h2{color:var(--on-dark);max-width:680px;margin:0 auto 2.5rem}
+.video h2 em{font-style:italic;color:var(--cream)}
+.video-frame{
+  max-width:920px;margin:0 auto;aspect-ratio:16/9;border-radius:14px;
+  overflow:hidden;background:var(--forest);
+  border:1px solid rgba(242,232,214,.35);
+  box-shadow:0 26px 52px rgba(28,47,34,.28);
+}
+.video-frame iframe{width:100%;height:100%;border:0;display:block}
+.video-note{font-size:.8rem;letter-spacing:.04em;margin-top:1.2rem}
+
+/* ---------- book ---------- */
+.book{background:var(--cream)}
+.book-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(3rem,5vw,5.5rem);align-items:center}
+.book-cover{
+  aspect-ratio:2/3;max-width:320px;border-radius:6px 14px 14px 6px;margin:0 auto;
+  background:linear-gradient(165deg,var(--forest) 0%,#2E4434 50%,var(--sage) 100%);
+  color:var(--on-dark);display:flex;flex-direction:column;justify-content:center;text-align:center;
+  padding:2.2rem 1.6rem;box-shadow:0 30px 56px rgba(28,47,34,.32);
+  position:relative;
+}
+.book-cover::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:1px;background:rgba(194,163,133,.55)}
+.book-cover .bk-title{font-family:'Fraunces',serif;font-size:1.75rem;line-height:1.25;font-style:italic;color:var(--cream)}
+.book-cover .bk-author{margin-top:1.6rem;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase}
+.book-cover .bk-note{margin-top:.8rem;font-size:.68rem;opacity:.7}
+.signup{margin-top:2rem;display:flex;gap:.8rem;flex-wrap:wrap;max-width:560px}
+.signup input{
+  flex:1;min-width:240px;padding:.9rem 1.2rem;border-radius:999px;
+  border:1.5px solid var(--sage);background:var(--cream-card);font:inherit;font-size:.95rem;color:var(--forest);
+}
+.book .fine{font-size:.82rem;color:var(--forest-soft);margin-top:.9rem}
+
+/* ---------- physicians ---------- */
+.healers .head{max-width:1120px;margin-bottom:3rem}  /* wide enough that the italic line holds on one row down to ~1000px */
+.healer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.healer-card{border-top:2px solid var(--ochre);padding-top:1.4rem}
+.healer-card h3{margin-bottom:.5rem}
+.healer-card p{font-size:.95rem;color:var(--forest-soft)}
+.podcast-callout{
+  margin-top:3.5rem;background:var(--cream-card);border:1px solid var(--line);border-radius:14px;
+  padding:2.2rem 2.4rem;display:flex;gap:2rem;align-items:center;flex-wrap:wrap;
+}
+.podcast-callout .mic{
+  flex:none;width:64px;height:64px;border-radius:50%;background:var(--sage);
+  display:flex;align-items:center;justify-content:center;
+}
+.podcast-callout p{flex:1;min-width:280px;font-size:.97rem;color:var(--forest-soft)}
+.podcast-callout p strong{color:var(--forest)}
+
+/* ---------- speaking (deep sage contrast panel) ---------- */
+.speaking{background:var(--sage-deep);color:var(--on-dark)}
+.speaking .eyebrow{color:var(--on-dark)}
+.speaking h2{color:var(--on-dark)}
+.speaking h2 em.soul{color:var(--cream)}
+.speaking .lede{color:var(--on-dark)}
+.speaking-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(3rem,5vw,5rem);align-items:center}
+.topic-list{list-style:none;margin-top:1.6rem;counter-reset:topic}
+.topic-list li{
+  counter-increment:topic;
+  padding:1.05rem 0;border-bottom:1px solid rgba(242,232,214,.25);
+  display:flex;gap:1.15rem;align-items:baseline;font-size:1.02rem;color:var(--on-dark);
+}
+.topic-list li:first-child{border-top:1px solid rgba(242,232,214,.25)}
+.topic-list li::before{
+  /* Editorial index numerals — Fraunces italic, leading zero.
+     Cream on the deep-sage panel: 4.70:1 (AA). */
+  content:counter(topic,decimal-leading-zero);
+  font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+  font-size:1.3rem;line-height:1;color:var(--cream);
+  flex:none;min-width:2.2rem;
+}
+.speaking .frame{
+  aspect-ratio:4/3;border-radius:14px;border:1px solid rgba(242,232,214,.35);
+  overflow:hidden;background:var(--cream-card);
+  box-shadow:0 26px 52px rgba(28,47,34,.28);
+}
+
+/* ---------- testimonials ---------- */
+.quotes{text-align:center}
+.quotes .head{max-width:600px;margin:0 auto 3rem}
+.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;text-align:left}
+.quote{
+  background:var(--cream-card);border-radius:14px;padding:2.2rem 2rem;
+  display:flex;flex-direction:column;gap:1.2rem;
+  border:1px solid var(--line);border-bottom:3px solid var(--sage);
+}
+.quote blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:1.08rem;line-height:1.55;color:var(--forest)}
+.quote cite{font-style:normal;font-size:.85rem;color:var(--forest-soft);font-weight:600}
+.quotes .fine{font-size:.8rem;color:var(--forest-soft);margin-top:2rem;font-style:italic}
+
+/* ---------- contact (deep sage contrast panel) ---------- */
+.contact{background:var(--sage-deep);color:var(--on-dark)}
+.contact .eyebrow{color:var(--on-dark)}
+.contact h2{color:var(--on-dark)}
+.contact h2 em{font-style:italic;color:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(3rem,5vw,5rem);align-items:start}
+.contact p{color:var(--on-dark);max-width:46ch;margin-top:1rem}
+form.gatekeeper{display:grid;gap:1rem}
+form.gatekeeper label{font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cream);display:block;margin-bottom:.35rem}
+form.gatekeeper input,form.gatekeeper select,form.gatekeeper textarea{
+  /* Light fields on the deep-sage panel: forest text 11.69:1, placeholder
+     4.64:1, field-vs-panel 5.22:1 (the v4.1 translucent fields failed all three) */
+  width:100%;padding:.9rem 1.1rem;border-radius:12px;border:1px solid var(--sage);
+  background:var(--cream-card);color:var(--forest);font:inherit;font-size:.95rem;
+}
+form.gatekeeper option{color:var(--forest)}
+form.gatekeeper textarea{min-height:120px;resize:vertical}
+form.gatekeeper ::placeholder{color:rgba(28,47,34,.68)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.route-note{
+  display:none;font-size:.88rem;background:var(--cream-card);color:var(--forest);
+  border-left:3px solid var(--ochre);padding:.8rem 1rem;border-radius:0 10px 10px 0;
+}
+.route-note a{color:var(--cta);font-weight:600}
+
+/* ---------- footer (deep forest anchor) ---------- */
+footer{padding:4rem 0 3rem;background:var(--forest);color:var(--on-dark-soft);font-size:.9rem}
+.foot-grid{display:flex;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;align-items:flex-start}
+footer .logo{color:var(--on-dark);font-size:1.1rem}
+footer .logo em{color:var(--ochre)}
+footer ul{list-style:none;display:flex;gap:1.8rem;flex-wrap:wrap}
+footer a{color:var(--on-dark-soft);text-decoration:none}
+footer a:hover{color:var(--on-dark)}
+.foot-fine{margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid rgba(242,232,214,.18);font-size:.78rem;opacity:.82}
+
+/* ---------- reveal animation ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn,.avenue,.video-frame{transition:none}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1000px){
+  .about-grid,.book-grid,.speaking-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
+  .avenue-grid,.healer-grid,.quote-grid{grid-template-columns:1fr}
+  .about-photo{max-width:440px}
+  .form-row{grid-template-columns:1fr}
+  nav ul{
+    display:none;position:absolute;top:74px;left:0;right:0;
+    background:var(--cream);flex-direction:column;padding:1.5rem clamp(24px,3.5vw,56px);gap:1.2rem;
+    border-bottom:1px solid var(--line);align-items:flex-start;
+  }
+  nav ul.open{display:flex}
+  .nav-toggle{display:block}
+  .cred-strip{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:repeat(2,1fr)}
+  .stat + .stat::before{display:none}
+  section{padding:4.5rem 0}
+  .hero{min-height:auto;padding:5.5rem 0 6.5rem}
+  /* Text spans full width on small screens — switch to a vertical scrim
+     that never drops below .72 forest (≥5:1 for cream text, worst case). */
+  .hero::after{
+    background:linear-gradient(180deg,
+      rgba(20,33,24,.90) 0%,
+      rgba(20,33,24,.78) 60%,
+      rgba(20,33,24,.72) 100%);
+  }
+  .hero-inner{max-width:none}
+}

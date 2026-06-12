@@ -1,0 +1,52 @@
+/* ============================================================
+   Marina Capella — Color tokens
+   A 5-color, client-approved, warm-and-earthy palette.
+   Hues are fixed; deeper "step" shades exist only where small
+   text sits directly on a color (WCAG 2.1 AA tuned in v4.2).
+   Rule of thumb:
+     · Cream backdrop everywhere — never stark white
+     · Forest for all headings, body copy, nav links
+     · Sage-deep panels (cream text) break up the scroll
+     · Terracotta is reserved for clickable calls to action
+   ============================================================ */
+:root {
+  /* ---- Base palette (the approved 5 swatches + AA steps) ---- */
+  --mc-forest:            #1C2F22;  /* Deep Forest — text / anchor          */
+  --mc-forest-2:          #2E4434;  /* mid forest — book-cover gradient mid  */
+  --mc-sage:              #667B57;  /* Sage — large display + decorative     */
+  --mc-sage-deep:         #526547;  /* deep step — panels + small green text */
+  --mc-ochre:             #C2A385;  /* Warm Ochre — lines, borders, marks    */
+  --mc-cream:             #EADCC9;  /* Soft Cream — global background         */
+  --mc-cream-card:        #F2E8D6;  /* card surface — cream tint, not white   */
+  --mc-cream-wash:        #F3EADA;  /* top-light wash on large cream sections */
+  --mc-terracotta:        #A36B51;  /* Muted Terracotta — large display only  */
+  --mc-terracotta-deep:   #8A5238;  /* deep step — CTA buttons & text links   */
+  --mc-terracotta-darker: #74452F;  /* CTA hover                              */
+
+  /* ---- Alpha variants (composited over cream / dark) ---- */
+  --mc-forest-soft:       rgba(28, 47, 34, .74);    /* body copy on cream      */
+  --mc-on-dark:           #F2E8D6;                  /* text over sage / forest */
+  --mc-on-dark-soft:      rgba(242, 232, 214, .82); /* muted text on dark      */
+  --mc-ochre-soft:        rgba(194, 163, 133, .45); /* faint ochre fills       */
+  --mc-line:              rgba(194, 163, 133, .55); /* hairline rules, borders */
+  --mc-line-on-dark:      rgba(242, 232, 214, .25); /* hairlines on dark panels*/
+
+  /* ---- Semantic aliases (use these in product code) ---- */
+  --text:                 var(--mc-forest);
+  --text-soft:            var(--mc-forest-soft);
+  --text-on-dark:         var(--mc-on-dark);
+  --text-on-dark-soft:    var(--mc-on-dark-soft);
+  --heading:              var(--mc-forest);
+  --accent-soul:          var(--mc-sage);          /* italic "soul" phrases   */
+  --link:                 var(--mc-terracotta-deep);
+  --link-hover:           var(--mc-terracotta-darker);
+
+  --surface:              var(--mc-cream);          /* page background         */
+  --surface-card:         var(--mc-cream-card);     /* cards, fields           */
+  --surface-panel:        var(--mc-sage-deep);      /* contrast bands          */
+  --surface-anchor:       var(--mc-forest);         /* footer / hero fallback  */
+
+  --border:               var(--mc-line);
+  --border-on-dark:       var(--mc-line-on-dark);
+  --rule:                 var(--mc-ochre);          /* dividers, marks         */
+}

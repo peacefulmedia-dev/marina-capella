@@ -1,0 +1,106 @@
+/* ============================================================
+   Marina Capella — Base element styles & brand primitives
+   Sets the calm, earthy baseline: cream page, forest text,
+   Figtree body, Fraunces headings. Pull in via styles.css.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--mc-font-sans);
+  font-size: var(--mc-text-body);
+  line-height: var(--mc-leading-body);
+  color: var(--text);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ---- Headings: Fraunces, light, balanced ---- */
+h1, h2, h3, h4 {
+  font-family: var(--mc-font-serif);
+  font-weight: var(--mc-weight-regular);
+  line-height: var(--mc-leading-tight);
+  color: var(--heading);
+  text-wrap: balance;
+  margin: 0;
+}
+h1 { font-size: var(--mc-text-h1); font-weight: var(--mc-weight-display); line-height: 1.08; }
+h2 { font-size: var(--mc-text-h2); letter-spacing: var(--mc-tracking-tight); }
+h3 { font-size: var(--mc-text-h3); font-weight: var(--mc-weight-medium); }
+
+p { margin: 0; }
+
+/* The signature "soul" accent — an italic sage phrase inside a heading */
+.mc-soul, em.soul {
+  font-style: italic;
+  color: var(--accent-soul);
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); }
+
+/* ---- Eyebrow: tiny uppercase label above a heading ---- */
+.mc-eyebrow {
+  font-family: var(--mc-font-sans);
+  font-size: var(--mc-text-eyebrow);
+  letter-spacing: var(--mc-tracking-eyebrow);
+  text-transform: uppercase;
+  font-weight: var(--mc-weight-semibold);
+  color: var(--mc-sage-deep);
+}
+
+/* ---- Lede: oversized intro paragraph ---- */
+.mc-lede {
+  font-size: var(--mc-text-lede);
+  color: var(--text-soft);
+  max-width: 60ch;
+}
+
+/* ---- Layout container ---- */
+.mc-wrap {
+  max-width: var(--mc-maxw);
+  margin-inline: auto;
+  padding-inline: var(--mc-gutter);
+}
+
+/* ---- Elegant ochre divider with a sage diamond ---- */
+.mc-divider {
+  max-width: var(--mc-maxw);
+  margin-inline: auto;
+  padding-inline: var(--mc-gutter);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.mc-divider::before, .mc-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--mc-ochre) 30%, var(--mc-ochre) 70%, transparent);
+}
+.mc-divider > span {
+  width: 7px; height: 7px;
+  background: var(--mc-sage);
+  transform: rotate(45deg);
+  flex: none;
+}
+
+/* ---- The top-light wash used on large cream sections ---- */
+.mc-wash {
+  background: radial-gradient(120% 78% at 50% 0%, var(--mc-cream-wash) 0%, var(--mc-cream) 58%);
+}
+
+/* ---- Focus rings: context-aware, always ≥3:1 ---- */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--mc-forest);
+  outline-offset: 3px;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}

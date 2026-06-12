@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awakening My Healer's Soul — Cover Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1C2F22; --forest-soft:rgba(28,47,34,.66);
+    --sage:#667B57; --sage-deep:#526547;
+    --ochre:#C2A385; --cream:#EADCC9; --cream-card:#F8F1E2;
+    --cta:#8A5238; --cta-soft:#A8693F; --gold:#C8A24E; --gold-soft:#E2C078;
+    --slate-deep:#2C454F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    background:
+      radial-gradient(120% 80% at 50% 0%, #EBE0CC 0%, #DDD0B8 60%, #D2C3A8 100%);
+    color:var(--forest); min-height:100vh;
+    padding:64px clamp(20px,5vw,80px) 90px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page-head{ text-align:center; max-width:760px; margin:0 auto 56px; }
+  .page-head .eyebrow{ font-size:.72rem; letter-spacing:.26em; text-transform:uppercase; font-weight:700; color:var(--sage-deep); }
+  .page-head h1{ font-family:'Spectral',serif; font-weight:400; font-size:clamp(1.8rem,3.4vw,2.6rem); margin-top:.7rem; line-height:1.14; }
+  .page-head h1 em{ font-style:italic; color:var(--sage); }
+  .page-head p{ margin-top:1rem; color:var(--forest-soft); font-size:1.02rem; line-height:1.6; }
+
+  .options{ display:flex; gap:clamp(40px,7vw,110px); justify-content:center; align-items:flex-start; flex-wrap:wrap; }
+  .option{ display:flex; flex-direction:column; align-items:center; width:380px; max-width:88vw; }
+  .opt-cap{ margin-top:30px; text-align:center; }
+  .opt-cap .n{ font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--cta); }
+  .opt-cap .name{ font-family:'Spectral',serif; font-size:1.5rem; margin-top:.35rem; }
+  .opt-cap .desc{ color:var(--forest-soft); font-size:.92rem; margin-top:.5rem; line-height:1.55; max-width:34ch; }
+
+  /* ---------- shared book object ---------- */
+  .cover{
+    width:380px; max-width:88vw; aspect-ratio:2/3;
+    border-radius:3px 9px 9px 3px;
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column; align-items:center;
+    padding:54px 44px 46px;
+    box-shadow:
+      0 2px 1px rgba(0,0,0,.18),
+      0 34px 58px -18px rgba(28,47,34,.55),
+      inset 0 0 0 1px rgba(0,0,0,.04);
+    isolation:isolate;
+  }
+  /* spine shading on the left edge */
+  .cover::after{
+    content:""; position:absolute; inset:0; z-index:5; pointer-events:none;
+    background:linear-gradient(90deg, rgba(0,0,0,.22) 0, rgba(0,0,0,.05) 10px, rgba(0,0,0,0) 26px, rgba(0,0,0,0) 94%, rgba(255,255,255,.05) 100%);
+  }
+  .cover .kicker{ font-size:.66rem; letter-spacing:.34em; text-transform:uppercase; font-weight:700; }
+  .cover .title{ font-family:'Spectral',serif; font-weight:400; line-height:1.04; text-align:center; }
+  .cover .sub{ text-align:center; font-size:.74rem; letter-spacing:.04em; line-height:1.5; }
+  .cover .author{ font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; font-weight:600; text-align:center; }
+  .cover .grow{ flex:1; }
+  .cover .rule{ width:34px; height:1px; }
+
+  /* ================= OPTION 1 — DAWN (warm, light) ================= */
+  .cover-dawn{
+    background:
+      radial-gradient(140% 80% at 50% 30%, #FBF5E9 0%, #F1E6CF 55%, #E7D8BB 100%);
+    color:var(--forest);
+  }
+  .cover-dawn .frame{ position:absolute; inset:18px; border:1px solid rgba(138,82,56,.32); border-radius:2px; z-index:4; pointer-events:none; }
+  .cover-dawn .kicker{ color:var(--cta); position:relative; z-index:3; }
+  /* sun + rays motif */
+  .dawn-motif{ position:absolute; top:118px; left:50%; transform:translateX(-50%); width:250px; height:250px; z-index:1; }
+  .dawn-motif .rays{
+    position:absolute; inset:0; border-radius:50%;
+    background:repeating-conic-gradient(from 0deg, rgba(168,105,63,0) 0deg 8deg, rgba(168,105,63,.30) 8deg 9deg);
+    -webkit-mask:radial-gradient(circle, transparent 78px, #000 80px, #000 116px, transparent 119px);
+            mask:radial-gradient(circle, transparent 78px, #000 80px, #000 116px, transparent 119px);
+  }
+  .dawn-motif .disc{
+    position:absolute; top:50%; left:50%; width:130px; height:130px; transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle at 50% 42%, #F0C98A 0%, #E0A75F 46%, #C2773F 100%);
+    box-shadow:0 0 38px rgba(216,162,78,.45);
+  }
+  .cover-dawn .title{ color:var(--forest); font-size:2.55rem; position:relative; z-index:3; margin-top:172px; }
+  .cover-dawn .title em{ font-style:italic; color:var(--cta); }
+  .cover-dawn .sub{ color:var(--forest-soft); position:relative; z-index:3; margin-top:18px; max-width:24ch; }
+  .cover-dawn .rule{ background:var(--cta); position:relative; z-index:3; margin-bottom:16px; }
+  .cover-dawn .author{ color:var(--cta); position:relative; z-index:3; }
+
+  /* ================= OPTION 2 — THRESHOLD (dark, editorial) ================= */
+  .cover-night{
+    background:linear-gradient(168deg, #16261C 0%, #20342A 52%, #1A2C22 100%);
+    color:var(--cream);
+  }
+  .cover-night .frame{ position:absolute; inset:16px; border:1px solid rgba(200,162,78,.42); border-radius:2px; z-index:4; pointer-events:none; }
+  .cover-night .frame::before{ content:""; position:absolute; inset:4px; border:1px solid rgba(200,162,78,.16); }
+  .cover-night .kicker{ color:var(--gold-soft); position:relative; z-index:3; }
+  .cover-night .title{
+    font-size:2.5rem; position:relative; z-index:3; margin-top:30px;
+    background:linear-gradient(180deg, #EBD6A2 0%, #C8A24E 70%, #B58B38 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .cover-night .title em{ font-style:italic; }
+  .cover-night .sub{ color:rgba(234,220,201,.82); position:relative; z-index:3; margin-top:18px; max-width:26ch; }
+  /* rising-sun line motif */
+  .night-motif{ position:relative; z-index:2; width:128px; height:74px; margin-top:30px; overflow:hidden; }
+  .night-motif .ring{
+    position:absolute; left:50%; bottom:0; width:108px; height:108px; transform:translateX(-50%);
+    border-radius:50%; border:1.5px solid var(--gold); 
+    background:radial-gradient(circle at 50% 60%, rgba(200,162,78,.28), rgba(200,162,78,0) 70%);
+  }
+  .night-motif .horizon{ position:absolute; left:0; right:0; bottom:0; height:1.5px; background:linear-gradient(90deg, transparent, var(--gold) 22%, var(--gold) 78%, transparent); }
+  .night-motif .ray{ position:absolute; left:50%; bottom:6px; width:1px; height:24px; background:linear-gradient(180deg, var(--gold), transparent); transform-origin:bottom center; opacity:.65; }
+  .cover-night .grow{ flex:1; }
+  .cover-night .rule{ background:var(--gold); position:relative; z-index:3; margin-bottom:16px; opacity:.8; }
+  .cover-night .author{ color:var(--gold-soft); position:relative; z-index:3; }
+</style>
+</head>
+<body>
+
+  <div class="page-head">
+    <div class="eyebrow">Coming soon · cover concepts</div>
+    <h1>Two directions for <em>Awakening My Healer's Soul</em></h1>
+    <p>Same title, two feelings. One leans warm and hopeful; the other, quiet and literary. Pick a direction (or mix elements) and I'll drop the winner into the home page.</p>
+  </div>
+
+  <div class="options">
+
+    <!-- OPTION 1 -->
+    <div class="option">
+      <div class="cover cover-dawn">
+        <div class="frame"></div>
+        <div class="kicker">A memoir</div>
+        <div class="dawn-motif">
+          <div class="rays"></div>
+          <div class="disc"></div>
+        </div>
+        <h1 class="title">Awakening<br>My Healer's <em>Soul</em></h1>
+        <p class="sub">A physician's journey from burnout back to wholeness</p>
+        <div class="grow"></div>
+        <div class="rule"></div>
+        <div class="author">Marina Capella, MD</div>
+      </div>
+      <div class="opt-cap">
+        <div class="n">Option 1</div>
+        <div class="name">Dawn</div>
+        <div class="desc">Warm and hopeful — a rising sun on cream, terracotta &amp; gold. Reads like an uplifting memoir.</div>
+      </div>
+    </div>
+
+    <!-- OPTION 2 -->
+    <div class="option">
+      <div class="cover cover-night">
+        <div class="frame"></div>
+        <div class="kicker">A memoir</div>
+        <h1 class="title">Awakening<br>My Healer's <em>Soul</em></h1>
+        <p class="sub">A physician's journey from burnout back to wholeness</p>
+        <div class="night-motif" id="nightMotif">
+          <div class="ring"></div>
+          <div class="horizon"></div>
+        </div>
+        <div class="grow"></div>
+        <div class="rule"></div>
+        <div class="author">Marina Capella, MD</div>
+      </div>
+      <div class="opt-cap">
+        <div class="n">Option 2</div>
+        <div class="name">Threshold</div>
+        <div class="desc">Quiet and literary — gold foil on deep forest, a sun cresting the horizon. Feels premium and serious.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // fan out a few delicate rays over the rising sun on Option 2
+    (function(){
+      var m = document.getElementById('nightMotif');
+      if(!m) return;
+      var angles = [-32,-16,0,16,32];
+      angles.forEach(function(a){
+        var r = document.createElement('div');
+        r.className = 'ray';
+        r.style.transform = 'translateX(-50%) rotate(' + a + 'deg)';
+        m.appendChild(r);
+      });
+    })();
+  </script>
+</body>
+</html>
