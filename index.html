@@ -42,7 +42,26 @@
   .hero{ --hero-focus-x:50%; }
   .hero::before{
     background-image:url('assets/img/marina-hero.webp');
-    background-position:var(--hero-focus-x,50%) 30%;
+    /* Zoom out: size by height so more of Marina + the baby show (less top/bottom crop).
+       Anchor the photo to the subject side; the small uncovered strip falls on the dark left under the scrim. */
+    background-size:auto 122%;
+    background-repeat:no-repeat;
+    background-position:0% 36%;
+    /* Fade the photo's left edge into the forest fill so the seam isn't a hard line.
+       The layer is mirrored (scaleX(-1)), so a fade on the element's right becomes the visual left. */
+    -webkit-mask-image:linear-gradient(to right,#000 58%,transparent 100%);
+    mask-image:linear-gradient(to right,#000 58%,transparent 100%);
+  }
+  /* Darken the left scrim to solid forest over the seam zone so the photo's
+     faded edge is fully hidden, then fall away to clear over Marina on the right. */
+  .hero::after{
+    background:linear-gradient(97deg,
+      rgba(28,47,34,1) 0%,
+      rgba(28,47,34,1) max(32%,400px),
+      rgba(20,33,24,.72) max(56%,780px),
+      rgba(28,47,34,.40) max(68%,900px),
+      rgba(28,47,34,.08) max(84%,1000px),
+      rgba(28,47,34,0) 100%);
   }
 </style>
 </head>
