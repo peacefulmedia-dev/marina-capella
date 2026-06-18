@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage Walkthrough — Internal Agenda · Dr. Marina Capella</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1C2F22;
+    --forest-soft:rgba(28,47,34,.74);
+    --sage:#667B57;
+    --sage-deep:#526547;
+    --ochre:#C2A385;
+    --cream:#EADCC9;
+    --cream-card:#F2E8D6;
+    --on-dark:#F2E8D6;
+    --cta:#8A5238;
+    --line:rgba(194,163,133,.55);
+    --paper:#F6EFE2;
+    --max:920px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Figtree',system-ui,sans-serif;
+    color:var(--forest);
+    background:var(--paper);
+    line-height:1.62;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{max-width:var(--max);margin:0 auto;padding:0 clamp(22px,5vw,40px)}
+
+  /* ---------- masthead — sage, to read as INTERNAL, distinct from client doc ---------- */
+  .masthead{
+    background:var(--sage-deep);color:var(--on-dark);
+    padding:clamp(2.6rem,6vw,4rem) 0 clamp(2.2rem,5vw,3.2rem);
+  }
+  .internal-flag{
+    display:inline-flex;align-items:center;gap:.6rem;
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+    color:var(--forest);background:var(--ochre);
+    padding:.4rem .85rem;border-radius:999px;margin-bottom:1.4rem;
+  }
+  .masthead h1{
+    font-family:'Fraunces',serif;font-weight:380;line-height:1.1;
+    font-size:clamp(2rem,4.4vw,3rem);color:var(--on-dark);letter-spacing:-0.01em;
+    margin-bottom:1rem;text-wrap:balance;
+  }
+  .masthead h1 em{font-style:italic;color:var(--ochre)}
+  .masthead .standfirst{font-size:1.04rem;color:rgba(242,232,214,.88);max-width:62ch}
+  .masthead .meta{
+    margin-top:1.9rem;padding-top:1.4rem;
+    border-top:1px solid rgba(242,232,214,.22);
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.7rem 2rem;
+    font-size:.88rem;color:rgba(242,232,214,.8);
+  }
+  .masthead .meta b{color:var(--on-dark);font-weight:600;display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.15rem;color:var(--ochre)}
+
+  main{padding:clamp(2.4rem,5vw,3.6rem) 0 4rem}
+
+  h2{
+    font-family:'Fraunces',serif;font-weight:440;line-height:1.16;
+    font-size:clamp(1.35rem,2.6vw,1.7rem);letter-spacing:-0.01em;
+    margin:0 0 1rem;text-wrap:balance;
+  }
+  h2 em{font-style:italic;color:var(--sage)}
+
+  .block{margin-bottom:2.6rem}
+
+  /* two-up panels: expecting / prep */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-bottom:2.6rem}
+  @media (max-width:720px){.cols{grid-template-columns:1fr}}
+  .panel{
+    background:var(--cream-card);border:1px solid var(--line);border-radius:14px;
+    padding:1.2rem 1.4rem;
+  }
+  .panel.expect{border-top:3px solid var(--sage)}
+  .panel.prep{border-top:3px solid var(--ochre)}
+  .panel h3{
+    font-family:'Figtree',sans-serif;font-weight:700;font-size:.78rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:.7rem;
+  }
+  .panel ul{list-style:none}
+  .panel li{position:relative;padding-left:1.3rem;margin-bottom:.5rem;font-size:.93rem;color:var(--forest-soft)}
+  .panel li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;background:var(--sage);transform:rotate(45deg)}
+  .panel li b{color:var(--forest);font-weight:600}
+
+  /* run of show */
+  .run-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap}
+  .run-head .tot{font-size:.85rem;color:var(--forest-soft);font-variant-numeric:tabular-nums}
+  .run{display:flex;flex-direction:column;gap:.9rem}
+  .item{
+    display:grid;grid-template-columns:88px 1fr;gap:1.1rem;
+    background:var(--cream-card);border:1px solid var(--line);border-radius:14px;
+    padding:1.1rem 1.3rem;
+  }
+  @media (max-width:560px){.item{grid-template-columns:1fr;gap:.5rem}}
+  .item .when{
+    font-family:'Fraunces',serif;font-style:italic;color:var(--sage-deep);
+    font-size:1rem;line-height:1.3;padding-top:.1rem;
+  }
+  .item .when .dur{display:block;font-family:'Figtree',sans-serif;font-style:normal;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--forest-soft);margin-top:.2rem}
+  .item .what h4{
+    font-family:'Figtree',sans-serif;font-weight:700;font-size:1.02rem;color:var(--forest);margin-bottom:.35rem;
+  }
+  .item .what p{font-size:.93rem;color:var(--forest-soft);margin-bottom:.55rem;max-width:62ch}
+  .item .what p:last-child{margin-bottom:0}
+  .cue{font-size:.88rem;color:var(--forest-soft);display:flex;gap:.5rem;margin-top:.4rem}
+  .cue .tag{
+    flex:none;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+    padding:.18rem .5rem;border-radius:6px;height:fit-content;margin-top:.1rem;
+  }
+  .cue.say .tag{background:rgba(82,101,71,.16);color:var(--sage-deep)}
+  .cue.listen .tag{background:rgba(138,82,56,.14);color:var(--cta)}
+  .cue b{color:var(--forest);font-weight:600}
+
+  /* sub-walk list inside the big walkthrough item */
+  .walk{list-style:none;margin:.5rem 0 .2rem;border-left:2px solid var(--line);padding-left:1rem}
+  .walk li{margin-bottom:.7rem;font-size:.91rem;color:var(--forest-soft)}
+  .walk li:last-child{margin-bottom:0}
+  .walk .sec{font-weight:700;color:var(--forest);font-family:'Figtree',sans-serif}
+  .walk .lst{color:var(--cta);font-weight:600}
+
+  .divider{display:flex;align-items:center;gap:1rem;margin:2.6rem 0}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--ochre) 30%,var(--ochre) 70%,transparent)}
+  .divider span{width:7px;height:7px;background:var(--sage);transform:rotate(45deg);flex:none}
+
+  /* care + decisions */
+  .care{
+    background:var(--forest);color:rgba(242,232,214,.9);border-radius:16px;
+    padding:1.5rem 1.6rem;margin-bottom:2.4rem;
+  }
+  .care h3{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:1.3rem;color:var(--on-dark);margin-bottom:1rem}
+  .care ul{list-style:none}
+  .care li{position:relative;padding-left:1.4rem;margin-bottom:.7rem;font-size:.94rem;max-width:70ch}
+  .care li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;background:var(--ochre);transform:rotate(45deg)}
+  .care li b{color:var(--ochre);font-weight:600}
+
+  /* intended-outcome arc */
+  .outcome{margin-bottom:2.6rem}
+  .outcome p.intro{font-size:1rem;color:var(--forest-soft);max-width:72ch;margin-bottom:1.3rem}
+  .arc{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+  @media (max-width:640px){.arc{grid-template-columns:1fr}}
+  .step{background:var(--cream-card);border:1px solid var(--line);border-radius:14px;padding:1.05rem 1.25rem}
+  .step.done{opacity:.72}
+  .step.now{border-top:3px solid var(--cta);box-shadow:0 14px 32px rgba(28,47,34,.12)}
+  .step .s-lbl{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--sage-deep);margin-bottom:.45rem;display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+  .step.done .s-lbl{color:var(--forest-soft)}
+  .step .here{font-size:.6rem;letter-spacing:.06em;background:var(--cta);color:var(--on-dark);padding:.14rem .5rem;border-radius:6px}
+  .step p{font-size:.9rem;color:var(--forest-soft);margin:0;max-width:none}
+  .step p b{color:var(--forest);font-weight:600}
+
+  /* questions that feed the next design */
+  .qset .intro{font-size:.98rem;color:var(--forest-soft);max-width:74ch;margin-bottom:1.3rem}
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+  @media(max-width:720px){.qgrid{grid-template-columns:1fr}}
+  .qcard{background:var(--cream-card);border:1px solid var(--line);border-radius:14px;border-top:3px solid var(--sage);padding:1.1rem 1.3rem}
+  .qcard h3{font-family:'Figtree',sans-serif;font-weight:700;font-size:1rem;color:var(--forest);margin-bottom:.65rem}
+  .qcard p{font-size:.9rem;margin-bottom:.55rem;color:var(--forest-soft);max-width:none}
+  .qcard p:last-child{margin-bottom:0}
+  .qcard p b.k{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;display:inline-block;margin-right:.45rem}
+  .qcard p.ask b.k{color:var(--sage-deep)}
+  .qcard p.hear b.k{color:var(--cta)}
+  .qcard p b{color:var(--forest);font-weight:600}
+  .routes{background:var(--cream-card);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.4rem}
+  .routes h3{font-family:'Figtree',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:.85rem}
+  .routes table{width:100%;border-collapse:collapse;font-size:.92rem}
+  .routes td{padding:.55rem .3rem;border-bottom:1px solid var(--line);vertical-align:top}
+  .routes tr:last-child td{border-bottom:none}
+  .routes td.aud{font-weight:600;color:var(--forest);width:46%;padding-right:1rem}
+  .routes td.arrow{color:var(--ochre);width:1.4rem;text-align:center}
+  .routes td.step{color:var(--cta);font-weight:600}
+
+  .decisions{background:var(--cream-card);border:1px solid var(--line);border-left:3px solid var(--cta);border-radius:0 14px 14px 0;padding:1.3rem 1.5rem}
+  .decisions h3{font-family:'Figtree',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cta);margin-bottom:.8rem}
+  .decisions ol{list-style:none;counter-reset:d}
+  .decisions li{position:relative;padding-left:2rem;margin-bottom:.6rem;font-size:.95rem;color:var(--forest-soft)}
+  .decisions li::before{counter-increment:d;content:counter(d);position:absolute;left:0;top:0;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--sage);color:var(--on-dark);font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Figtree',sans-serif}
+  .decisions li b{color:var(--forest);font-weight:600}
+
+  footer.doc-foot{background:var(--forest);color:rgba(242,232,214,.78);padding:2rem 0;font-size:.82rem;margin-top:1rem}
+  footer.doc-foot .logo{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--on-dark)}
+  footer.doc-foot .logo em{font-style:italic;color:var(--ochre)}
+  footer.doc-foot p{margin-top:.45rem;max-width:64ch;font-size:.8rem}
+
+  @media print{
+    body{background:#fff;font-size:10.5pt}
+    .masthead{background:var(--sage-deep)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .panel,.item,.care,.decisions,footer.doc-foot,.internal-flag{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .item,.block,.care,.decisions{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="sheet">
+    <div class="internal-flag">Internal facilitation guide · not for the client</div>
+    <h1>Homepage walkthrough — <em>run of show</em></h1>
+    <p class="standfirst">Our script for presenting Marina's homepage concept live and pulling the right feedback. This is Roadmap call #2 — the one we promised in discovery, where she clicks through an interactive version and we go a level deeper.</p>
+    <div class="meta">
+      <span><b>Call</b>Roadmap #2 · Homepage walkthrough</span>
+      <span><b>With</b>Dr. Marina Capella</span>
+      <span><b>Us</b>Strategy lead (Sable) + web (Nicki)</span>
+      <span><b>Slot</b>90 min on Zoom · screen-share</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="sheet">
+
+    <div class="outcome">
+      <h2>Intended outcome</h2>
+      <p class="intro">Session 1 gave us a shared strategic foundation for the homepage — so <b>this session</b> can focus on reviewing the website concept and making sure it aligns with the goals and strategy we set in Session 1. Session 3 is the final concept review and a discussion of next steps to implement.</p>
+      <div class="arc">
+        <div class="step done">
+          <div class="s-lbl">Session 1 · Done</div>
+          <p>Deep discovery — voice, audiences, the three avenues, and the strategic foundation for the homepage.</p>
+        </div>
+        <div class="step now">
+          <div class="s-lbl">Session 2 <span class="here">We are here</span></div>
+          <p><b>Review the website concept</b> and confirm it aligns with the goals and strategy from Session 1.</p>
+        </div>
+        <div class="step">
+          <div class="s-lbl">Session 3 · Next</div>
+          <p>Final concept review and a discussion of next steps to implement.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div class="panel expect">
+        <h3>What Marina is expecting</h3>
+        <ul>
+          <li>A <b>live, clickable homepage</b> — not WordPress yet, an interactive concept she can scroll and click.</li>
+          <li>To go a <b>level deeper into granularity</b> than the discovery call.</li>
+          <li>That she <b>doesn't have to give all her feedback at once</b> — we told her she can sit with it after.</li>
+          <li>A <b>calm, soul-forward presence</b> that feels like her — she's wary after being burned by a past agency.</li>
+          <li>To leave <b>inspired and empowered</b> — the feeling she said she wants visitors to have.</li>
+        </ul>
+      </div>
+      <div class="panel prep">
+        <h3>Before we dial in</h3>
+        <ul>
+          <li>Staging loaded &amp; warm: <b>mc.peacefuldesign.com</b> — and the share screen ready on the hero.</li>
+          <li>Have the <b>client Design Notes</b> open in case she wants the "why" behind a choice.</li>
+          <li>Know the <b>asset status</b> cold: photos in, video interim, testimonials partial, book cover a concept.</li>
+          <li>Keep <b>her own words</b> handy ("avenues", "healing the healer", "more soul") — mirror her language.</li>
+          <li>Confirm we won't run WordPress/CRM through her VA — <b>her team keeps that</b>; we handle this umbrella site's list.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="run-head">
+        <h2>Run of show</h2>
+        <span class="tot">~75 min of 90 · leave air to breathe</span>
+      </div>
+
+      <div class="run">
+
+        <div class="item">
+          <div class="when">0:00<span class="dur">5 min</span></div>
+          <div class="what">
+            <h4>Reconnect, warmly</h4>
+            <p>She's coming meeting-to-meeting on a non-clinical day. Keep it human for a beat before screens go up — this is a relationship, not a demo.</p>
+            <div class="cue say"><span class="tag">Say</span><span><b>"Before we dive in — we built this entirely from what you told us. You'll recognize a lot of your own words."</b> Sets the frame: she was heard.</span></div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">0:05<span class="dur">5 min</span></div>
+          <div class="what">
+            <h4>Frame what she's looking at</h4>
+            <p>Set expectations so feedback lands in the right place: this is an interactive concept, not the final hosted site; some assets are placeholders; this is iterative — another pass comes after.</p>
+            <div class="cue say"><span class="tag">Say</span><span>"React to the <b>feeling and the structure</b> first. Don't worry about a typo or a stand-in photo — note it and move on."</span></div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">0:10<span class="dur">35 min</span></div>
+          <div class="what">
+            <h4>Walk the page, top to bottom</h4>
+            <p>Scroll slowly. For each section, point out what it's doing and <em>why</em> (tie back to her words), then pause and listen. Don't rush to the next one.</p>
+            <ul class="walk">
+              <li><span class="sec">Hero — "Healing the healer."</span> Her tagline, her real brand photo, scrim for legibility. <span class="lst">Listen:</span> does the line still land? Does she feel "her" in the photo?</li>
+              <li><span class="sec">Avenues.</span> Three paths sorting visitors — her word. <span class="lst">Listen:</span> are the labels and order right? Physicians first?</li>
+              <li><span class="sec">My story.</span> Soul-forward, first-person, credentials humanized. <span class="lst">Listen:</span> soul ↔ mastery balance — too much, too little?</li>
+              <li><span class="sec">Video.</span> Calm sage band + the lighter <em>Defying Gravity</em> clip. <span class="lst">Listen:</span> reaction to the parody; appetite for the brand film.</li>
+              <li><span class="sec">For physicians / coaching.</span> Her priority audience. <span class="lst">Listen:</span> does it speak to a burned-out doctor?</li>
+              <li><span class="sec">Speaking.</span> Routed centrally, as she asked. <span class="lst">Listen:</span> topics accurate? anything to add?</li>
+              <li><span class="sec">The book + mailing list.</span> Her #2 priority. <span class="lst">Listen:</span> confirm title &amp; subtitle; signup copy feel right?</li>
+              <li><span class="sec">Testimonials.</span> Real patient quotes. <span class="lst">Listen:</span> which physician/mentee quotes can she get us?</li>
+              <li><span class="sec">Contact gatekeeper.</span> One question, self-routing. <span class="lst">Listen:</span> are the intent options complete?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">0:45<span class="dur">10 min</span></div>
+          <div class="what">
+            <h4>"Does it feel like you?"</h4>
+            <p>Step back from the pixels. This is the question that matters most for her — and the one her last agency missed.</p>
+            <div class="cue listen"><span class="tag">Listen</span><span>Does she feel <b>inspired / empowered</b>? Does the green read as "her color"? Where does she light up — and where does she go quiet?</span></div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">0:55<span class="dur">10 min</span></div>
+          <div class="what">
+            <h4>Open feedback</h4>
+            <p>Hand her the floor. Capture verbatim language — her phrasing is gold for the copy. Remind her she can keep sitting with it and send more later.</p>
+            <div class="cue say"><span class="tag">Say</span><span>"What's <b>missing</b>, what's <b>too much</b>, and what made you feel something?"</span></div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">1:05<span class="dur">10 min</span></div>
+          <div class="what">
+            <h4>Interim assets &amp; the roadmap</h4>
+            <p>Walk the placeholder list so she reviews with the right lens, and tee up next steps: the brand film with our video team, physician testimonials to gather, final book cover.</p>
+            <div class="cue listen"><span class="tag">Listen</span><span>Her timeline pressure — she wants the book written by fall and is keen to share the link soon.</span></div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">1:15<span class="dur">close</span></div>
+          <div class="what">
+            <h4>Confirm &amp; schedule iteration 2</h4>
+            <p>Recap what we heard, name the decisions landed (below), and book the next pass — same cadence as before.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"><span></span></div>
+
+    <div class="block qset">
+      <h2>Questions that feed the <em>Session&nbsp;3 redesign</em></h2>
+      <p class="intro">Adapted from our ICI strategy framework, but reframed for a concept review: we're not discovering from scratch, we're confirming and refining what's on the page. Each theme has something to <b>ask</b> and something to <b>listen for</b> — her answers here become next week's design brief.</p>
+      <div class="qgrid">
+        <div class="qcard">
+          <h3>1 · Homepage jobs</h3>
+          <p class="ask"><b class="k">Ask</b>Of the four jobs — present you holistically, grow the book list, gatekeep contact, field speaking — which must the homepage do <b>best</b> this season?</p>
+          <p class="hear"><b class="k">Listen</b>Which job she keeps circling back to; anything she expected to see and didn't.</p>
+        </div>
+        <div class="qcard">
+          <h3>2 · Audience pathways</h3>
+          <p class="ask"><b class="k">Ask</b>For each avenue, is the next step obvious and correct? Should physicians-seeking-coaching sit even more front-and-center?</p>
+          <p class="hear"><b class="k">Listen</b>Hesitation on any routing; whether the families-vs-physicians priority still holds; the book / non-physician visitor.</p>
+        </div>
+        <div class="qcard">
+          <h3>3 · Core message &amp; how direct</h3>
+          <p class="ask"><b class="k">Ask</b>How directly should we name burnout, trauma in training, "the system breaks its healers"? Any of her personal story (immigrant roots, her own depression) to surface — or keep private?</p>
+          <p class="hear"><b class="k">Listen</b>Words to embrace or avoid; where to set the soul ↔ credentials dial.</p>
+        </div>
+        <div class="qcard">
+          <h3>4 · Ecosystem visibility</h3>
+          <p class="ask"><b class="k">Ask</b>What gets foregrounded vs. sits deeper — the DPC podcast (200+ eps), the three brands, the book, speaking?</p>
+          <p class="hear"><b class="k">Listen</b>Anything too prominent or buried. (She's already said the FMD podcast isn't homepage-worthy — confirm that still holds.)</p>
+        </div>
+        <div class="qcard">
+          <h3>5 · Trust &amp; credibility</h3>
+          <p class="ask"><b class="k">Ask</b>Which proof points feel accurate and aligned — credentials, affiliations, testimonials, episode count, faculty roles? Quantitative or qualitative?</p>
+          <p class="hear"><b class="k">Listen</b>Her discomfort with "bragging" against her own point that, as a woman of color, she needs the credibility to be taken seriously.</p>
+        </div>
+        <div class="qcard">
+          <h3>6 · Collect from her</h3>
+          <p class="ask"><b class="k">Get</b>Physician / mentee testimonials · final book subtitle · brand-video story angle · any added credibility logos or affiliations.</p>
+          <p class="hear"><b class="k">Confirm</b>Sign-off on the brand-shoot photos and the "Latino Physicians of Utah" wording.</p>
+        </div>
+      </div>
+      <div class="routes">
+        <h3>Pressure-test each avenue — audience → intended next step</h3>
+        <table>
+          <tbody>
+            <tr><td class="aud">Physician seeking coaching / mentorship <em>(priority)</em></td><td class="arrow">→</td><td class="step">Get in touch (coaching) + DPC podcast &amp; resources</td></tr>
+            <tr><td class="aud">Future doctor / pre-med</td><td class="arrow">→</td><td class="step">Future Minority Doctor</td></tr>
+            <tr><td class="aud">Family / prospective patient</td><td class="arrow">→</td><td class="step">Healing Arts Pediatrics</td></tr>
+            <tr><td class="aud">Event organizer</td><td class="arrow">→</td><td class="step">Speaking inquiry (central form)</td></tr>
+            <tr><td class="aud">Book / newsletter visitor</td><td class="arrow">→</td><td class="step">Join the mailing list</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="divider"><span></span></div>
+
+    <div class="care">
+      <h3>Handle with care</h3>
+      <ul>
+        <li><b>The past burn.</b> She lost $15k to an agency that didn't capture her vision. Our throughline all call: <em>we listened, and here's the proof.</em> Lead with her own words.</li>
+        <li><b>Cost-conscious.</b> She spends hard-earned money carefully. Frame extras as options, never assumed scope — don't over-promise.</li>
+        <li><b>Soul ↔ credentials.</b> The trickiest balance she named. If she wants a nudge either way, we can tune it — but the page already leads with soul and keeps the pedigree.</li>
+        <li><b>Her voice is the copy.</b> Invite refinements, not a blank-slate rewrite. The two-part "soul turn" headlines are the device — protect them.</li>
+        <li><b>Small correction to verify:</b> the affiliations strip now reads <b>"Latino Physicians of Utah"</b> — confirm that's the name she wants.</li>
+        <li><b>Keep it unhurried.</b> She's a slow, intuitive processor and so is their strategist — silence is fine; let her sit with things.</li>
+      </ul>
+    </div>
+
+    <div class="decisions">
+      <h3>Decisions to land by end of call</h3>
+      <ol>
+        <li><b>Tagline</b> — confirm "Healing the healer. Reimagining medicine." stays the hero line.</li>
+        <li><b>Book</b> — confirm title <em>Awakening the Healer's Soul</em> and lock a subtitle.</li>
+        <li><b>Mailing list</b> — direction on platform (we run it for this umbrella site, not her VA).</li>
+        <li><b>Video</b> — green-light the brand film with our video team; confirm story angle.</li>
+        <li><b>Photography</b> — sign-off on the brand-shoot images; does she like the photos we chose, and is each one placed right (hero, story, speaking)?</li>
+        <li><b>Color palette</b> — confirm the warm-and-earthy five (forest, sage, ochre, cream, terracotta) feels like "her color."</li>
+        <li><b>Copy density</b> — too much copy anywhere? Not enough? Which sections to trim or expand.</li>
+        <li><b>Her voice</b> — the big one: did we land it? Does the page sound like her, soul-forward with the mastery intact?</li>
+        <li><b>Speaking</b> — confirm the central-form approach and topic list.</li>
+      </ol>
+    </div>
+
+  </div>
+</main>
+
+<footer class="doc-foot">
+  <div class="sheet">
+    <div class="logo">Dr. Marina <em>Capella</em></div>
+    <p>Internal walkthrough agenda · Peaceful Media. For the strategist &amp; web lead only — not to be shared with the client. Pairs with the client-facing Design Notes.</p>
+  </div>
+</footer>
+
+</body>
+</html>

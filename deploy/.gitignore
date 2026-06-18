@@ -1,0 +1,10 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# Vercel
+.vercel
+
+# Node (not used, but ignore if added later)
+node_modules/

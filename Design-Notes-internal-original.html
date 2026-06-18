@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Marina Capella — Homepage Design Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1C2F22;
+    --forest-soft:rgba(28,47,34,.74);
+    --sage:#667B57;
+    --sage-deep:#526547;
+    --ochre:#C2A385;
+    --cream:#EADCC9;
+    --cream-card:#F2E8D6;
+    --on-dark:#F2E8D6;
+    --cta:#8A5238;
+    --line:rgba(194,163,133,.55);
+    --paper:#F6EFE2;
+    --max:880px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Figtree',system-ui,sans-serif;
+    color:var(--forest);
+    background:var(--paper);
+    line-height:1.68;
+    font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{max-width:var(--max);margin:0 auto;padding:0 clamp(22px,5vw,40px)}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    background:var(--forest);color:var(--on-dark);
+    padding:clamp(3rem,7vw,5rem) 0 clamp(2.6rem,6vw,4rem);
+  }
+  .masthead .kicker{
+    font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+    font-weight:600;color:var(--ochre);margin-bottom:1.5rem;
+  }
+  .masthead h1{
+    font-family:'Fraunces',serif;font-weight:380;line-height:1.08;
+    font-size:clamp(2.2rem,5vw,3.4rem);color:var(--on-dark);letter-spacing:-0.01em;
+    margin-bottom:1.3rem;text-wrap:balance;
+  }
+  .masthead h1 em{font-style:italic;color:var(--ochre)}
+  .masthead .standfirst{
+    font-size:1.08rem;color:rgba(242,232,214,.86);max-width:60ch;
+  }
+  .masthead .meta{
+    margin-top:2.2rem;padding-top:1.6rem;
+    border-top:1px solid rgba(242,232,214,.2);
+    display:flex;flex-wrap:wrap;gap:.4rem 2.4rem;font-size:.86rem;
+    color:rgba(242,232,214,.78);
+  }
+  .masthead .meta b{color:var(--on-dark);font-weight:600}
+  .masthead .meta a{color:var(--ochre);text-decoration:none;border-bottom:1px solid rgba(194,163,133,.4)}
+
+  /* ---------- body ---------- */
+  main{padding:clamp(2.6rem,6vw,4.2rem) 0 4rem}
+  .lead-note{
+    font-size:1.12rem;color:var(--forest-soft);max-width:62ch;
+    margin-bottom:3rem;
+  }
+  section{margin-bottom:3.2rem;scroll-margin-top:1rem}
+  .sec-num{
+    font-family:'Fraunces',serif;font-style:italic;font-size:.95rem;
+    color:var(--sage-deep);font-weight:500;
+  }
+  h2{
+    font-family:'Fraunces',serif;font-weight:440;line-height:1.16;
+    font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-0.01em;
+    margin:.35rem 0 1.1rem;text-wrap:balance;
+  }
+  h2 em{font-style:italic;color:var(--sage)}
+  h3{
+    font-family:'Figtree',sans-serif;font-weight:700;font-size:1rem;
+    letter-spacing:.01em;margin:1.7rem 0 .5rem;color:var(--forest);
+  }
+  p{margin-bottom:1rem;max-width:64ch}
+  p strong{font-weight:600}
+  .divider{
+    display:flex;align-items:center;gap:1rem;margin:2.6rem 0;
+  }
+  .divider::before,.divider::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(90deg,transparent,var(--ochre) 30%,var(--ochre) 70%,transparent);
+  }
+  .divider span{width:7px;height:7px;background:var(--sage);transform:rotate(45deg);flex:none}
+
+  ul.notes{list-style:none;margin:.4rem 0 1rem}
+  ul.notes li{
+    position:relative;padding-left:1.4rem;margin-bottom:.6rem;max-width:64ch;
+  }
+  ul.notes li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:6px;height:6px;background:var(--sage);transform:rotate(45deg);
+  }
+  ul.notes li b{font-weight:600}
+
+  .callout{
+    background:var(--cream-card);border:1px solid var(--line);
+    border-left:3px solid var(--ochre);border-radius:0 12px 12px 0;
+    padding:1.2rem 1.4rem;margin:1.4rem 0;font-size:.97rem;
+    color:var(--forest-soft);max-width:64ch;
+  }
+  .callout b{color:var(--forest)}
+
+  /* swatches */
+  .swatches{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:.9rem;margin:1.4rem 0 .6rem;
+  }
+  .sw{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--cream-card)}
+  .sw .chip{height:62px}
+  .sw .info{padding:.6rem .8rem .75rem}
+  .sw .name{font-weight:600;font-size:.9rem}
+  .sw .hex{font-size:.78rem;color:var(--forest-soft);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .sw .role{font-size:.78rem;color:var(--forest-soft);margin-top:.25rem;line-height:1.4}
+
+  /* type specimen */
+  .type-row{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:baseline;margin:.6rem 0 1.2rem}
+  .specimen{flex:1;min-width:240px;background:var(--cream-card);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.4rem}
+  .specimen .fam{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-deep);font-weight:600;margin-bottom:.5rem}
+  .specimen .big-serif{font-family:'Fraunces',serif;font-size:2rem;font-weight:400;line-height:1.1}
+  .specimen .big-serif em{font-style:italic;color:var(--ochre)}
+  .specimen .big-sans{font-family:'Figtree',sans-serif;font-size:1.05rem;line-height:1.55;color:var(--forest-soft)}
+  .specimen .scale{font-size:.82rem;color:var(--forest-soft);margin-top:.7rem;line-height:1.5}
+
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+  .pair .cell{background:var(--cream-card);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem}
+  .pair .cell h4{font-family:'Figtree';font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:.5rem;font-weight:600}
+  .pair .cell p{font-size:.92rem;margin:0;color:var(--forest-soft)}
+  @media (max-width:640px){.pair{grid-template-columns:1fr}}
+
+  footer.doc-foot{
+    background:var(--forest);color:rgba(242,232,214,.8);
+    padding:2.4rem 0;font-size:.85rem;margin-top:2rem;
+  }
+  footer.doc-foot .logo{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--on-dark)}
+  footer.doc-foot .logo em{font-style:italic;color:var(--ochre)}
+  footer.doc-foot p{margin-top:.5rem;max-width:60ch;font-size:.82rem}
+
+  a.inline{color:var(--cta);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(138,82,56,.35)}
+
+  @media print{
+    body{background:#fff;font-size:11pt}
+    .masthead{background:var(--forest)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .sw .chip,.callout,.specimen,.pair .cell,footer.doc-foot{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    section{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="sheet">
+    <div class="kicker">Peaceful Media · Brand-to-Web · Design Rationale</div>
+    <h1>Dr. Marina Capella<br>Homepage — <em>the thinking behind it</em></h1>
+    <p class="standfirst">A walk through the strategy, craft, and accessibility decisions behind the homepage concept — so the team can review the staging site knowing what each choice is trying to do, and why.</p>
+    <div class="meta">
+      <span><b>Staging:</b> <a href="https://mc.peacefuldesign.com/">mc.peacefuldesign.com</a></span>
+      <span><b>Concept:</b> Homepage 1 · v4.3</span>
+      <span><b>Status:</b> Review — interim photography</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="sheet">
+
+    <p class="lead-note">Marina isn't one business — she's a physician, a mentor, a nonprofit founder, an author, and a clinic owner. The hardest design problem here wasn't making it pretty; it was making one page hold all of that without feeling scattered. Everything below serves a single organizing idea: <strong>“healing the healer”</strong> — a calm, human, unmistakably-not-corporate presence that gives every kind of visitor a clear path in.</p>
+
+    <!-- 1 -->
+    <section>
+      <div class="sec-num">01</div>
+      <h2>Strategy first — <em>one purpose, many avenues</em></h2>
+      <p>Marina serves four distinct audiences who'd normally need four different sites: physicians facing burnout, future doctors from underrepresented backgrounds, families seeking whole-person care, and event organizers. Rather than flatten those into a generic “services” list, the page leads with her story and then fans out into clearly-labeled avenues.</p>
+      <ul class="notes">
+        <li><b>The hero makes a promise, not a pitch.</b> “Healing the healer. Reimagining medicine.” states the worldview before any ask — it earns trust before it earns a click.</li>
+        <li><b>The “avenues” section sorts visitors by who they are</b> — <em>For physicians / For future doctors / For families</em> — so each person self-selects in seconds and routes out to the right property (DPC Pediatrician, Future Minority Doctor, Healing Arts Pediatrics).</li>
+        <li><b>Conversion is sequenced, not stacked.</b> Soft entry (book mailing list) up top, deeper commitments (coaching, speaking, becoming a patient) further down, once she's earned the scroll.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 2 -->
+    <section>
+      <div class="sec-num">02</div>
+      <h2>The palette — <em>warmth with a clinical backbone</em></h2>
+      <p>A disciplined five-color system, built from the client-approved swatch. The governing rule: <strong>cream everywhere, never stark white</strong> — so the page feels like paper and skin rather than a clinic waiting room. Deep forest grounds it; terracotta is reserved exclusively for things you can click.</p>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#1C2F22"></div><div class="info"><div class="name">Deep Forest</div><div class="hex">#1C2F22</div><div class="role">Headings, body text, the hero & footer anchors</div></div></div>
+        <div class="sw"><div class="chip" style="background:#526547"></div><div class="info"><div class="name">Sage (deep)</div><div class="hex">#526547</div><div class="role">Contrast panels that break up the scroll</div></div></div>
+        <div class="sw"><div class="chip" style="background:#C2A385"></div><div class="info"><div class="name">Warm Ochre</div><div class="hex">#C2A385</div><div class="role">Lines, borders, small accent marks</div></div></div>
+        <div class="sw"><div class="chip" style="background:#EADCC9"></div><div class="info"><div class="name">Soft Cream</div><div class="hex">#EADCC9</div><div class="role">The global background — paper, not white</div></div></div>
+        <div class="sw"><div class="chip" style="background:#8A5238"></div><div class="info"><div class="name">Terracotta (CTA)</div><div class="hex">#8A5238</div><div class="role">Buttons & links only — “this is clickable”</div></div></div>
+      </div>
+      <div class="callout"><b>Why two steps of some colors?</b> The approved sage and terracotta are gorgeous at display size but too light for small text on cream. So each has a deepened step used only where real text sits on it — same hue, accessible contrast. Nothing was invented; the brand palette was tuned, not replaced.</div>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 3 -->
+    <section>
+      <div class="sec-num">03</div>
+      <h2>Typography — <em>the science and the soul</em></h2>
+      <p>Two families, a deliberate duet. <strong>Fraunces</strong> — a warm, literary serif with true italics — carries every headline and pull-quote; it does the emotional, human work. <strong>Figtree</strong> — a clean, friendly grotesque — handles body copy and UI; it does the clear, trustworthy work. That pairing <em>is</em> Marina's thesis (integrate left brain and right) expressed in type.</p>
+      <div class="type-row">
+        <div class="specimen">
+          <div class="fam">Fraunces · Display</div>
+          <div class="big-serif">Healing the healer.<br><em>Reimagining medicine.</em></div>
+          <div class="scale">Italics signal the soul — used for the emotional half of every headline.</div>
+        </div>
+        <div class="specimen">
+          <div class="fam">Figtree · Text</div>
+          <div class="big-sans">Clear, calm body copy that never competes with the headline — generous 1.65 line-height, comfortable measure capped near 62 characters.</div>
+          <div class="scale">Fluid type scale (CSS clamp) so it reads well from phone to wide desktop.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 4 -->
+    <section>
+      <div class="sec-num">04</div>
+      <h2>Layout &amp; rhythm — <em>room to breathe</em></h2>
+      <p>The page alternates between airy cream sections and three deep-sage panels (video, speaking, contact). That cadence does two jobs: it paces a long scroll so it never feels like a wall of text, and it gives the most emotional moments — her voice, her stage, the invitation to connect — a darker, quieter room to land in.</p>
+      <ul class="notes">
+        <li><b>A soft top-light wash</b> warms the top of each cream section and settles back to base — a subtle breath of light that only ever goes <em>lighter</em>, so it never harms legibility.</li>
+        <li><b>The full-bleed hero</b> places Marina to the right, facing into the headline. The photo is intentionally mirrored and a precision-tuned scrim keeps the text column dark enough to read over any part of the image — desktop and mobile use different scrim geometry so contrast holds at every width.</li>
+        <li><b>Consistent ornament:</b> a small ochre diamond divider and 7px sage marks recur throughout, stitching the sections into one identity.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 5 -->
+    <section>
+      <div class="sec-num">05</div>
+      <h2>Motion — <em>calm by default</em></h2>
+      <p>The interaction layer is deliberately restrained — this is a healer's site, not a startup landing page. Movement is gentle, purposeful, and always optional. Every effect is gated behind <em>both</em> the OS “reduce motion” setting and an internal calm-mode switch.</p>
+      <div class="pair">
+        <div class="cell"><h4>Staggered reveals</h4><p>Content fades up gently as it enters view, with cards cascading a beat apart — guiding the eye down the page.</p></div>
+        <div class="cell"><h4>Hero parallax</h4><p>The hero image and text drift at slightly different speeds on scroll — depth without distraction.</p></div>
+        <div class="cell"><h4>Count-up stats &amp; magnetic buttons</h4><p>Numbers tick up when seen; primary CTAs lean subtly toward the cursor — small moments of life.</p></div>
+        <div class="cell"><h4>Card tilt &amp; divider draw-in</h4><p>Avenue cards respond to the pointer with a soft 3-D tilt; dividers draw themselves in.</p></div>
+      </div>
+      <div class="callout"><b>Accessibility is built into the motion, not bolted on.</b> Touch devices skip the pointer effects entirely, and anyone with “reduce motion” enabled gets a calm, static page with full content — never a blank screen waiting on an animation.</div>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 6 -->
+    <section>
+      <div class="sec-num">06</div>
+      <h2>Conversion craft — <em>the contact gatekeeper</em></h2>
+      <p>Because Marina wears so many hats, an open “contact us” box would be chaos. Instead the form opens with one question — <em>“I'm reaching out about…”</em> — and adapts. Choose “becoming a patient” or “DPC consulting” and a gentle note points you straight to the right property before you even send a message. Her team gets pre-sorted inquiries; visitors get an instant answer.</p>
+      <ul class="notes">
+        <li><b>Self-routing intent</b> deflects the inquiries that have a better home elsewhere, and cleanly tags the ones that should reach her team.</li>
+        <li><b>The “Inquire about speaking” button pre-fills that intent</b> — the page remembers context as you move through it.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 7 -->
+    <section>
+      <div class="sec-num">07</div>
+      <h2>Accessibility — <em>a non-negotiable, audited</em></h2>
+      <p>For a physician's brand, accessibility isn't a checkbox — it's a values statement. The whole palette was tuned to <strong>WCAG 2.1 AA</strong>, with every text-on-color pairing measured rather than eyeballed.</p>
+      <ul class="notes">
+        <li><b>Measured contrast everywhere</b> — the deepened color steps exist specifically so small text always clears AA, even over the hero photo's brightest regions.</li>
+        <li><b>Full keyboard support</b> — a skip link, visible focus rings tuned per background (dark rings on cream, light rings on the sage/forest panels), and proper labels on every field.</li>
+        <li><b>Semantic, screen-reader-friendly HTML</b> — real landmarks, descriptive alt text, and live-region hints on the contact form's routing notes.</li>
+        <li><b>Respects the user's system</b> — reduced-motion users get a complete, calm experience with zero functionality lost.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 8 -->
+    <section>
+      <div class="sec-num">08</div>
+      <h2>Build &amp; performance — <em>fast, simple, durable</em></h2>
+      <p>The site is plain HTML, CSS, and a little vanilla JavaScript — no framework, no build step, nothing to break in two years. It deploys as static files (currently on Vercel) and is cheap to host and trivial to hand off.</p>
+      <ul class="notes">
+        <li><b>Click-to-play video facade</b> — the page shows a lightweight thumbnail and only loads the YouTube player on click, so nothing heavy loads up front (and it uses the privacy-friendly no-cookie embed).</li>
+        <li><b>Images are modern WebP and lazy-loaded</b> below the fold; the hero has a forest-colored fallback so there's never a flash of empty space.</li>
+        <li><b>Progressive enhancement</b> — the content and links all work even if JavaScript never runs.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 9 -->
+    <section>
+      <div class="sec-num">09</div>
+      <h2>What's interim — <em>and what's next</em></h2>
+      <p>So the team reviews with the right lens, here's what is deliberately placeholder on the staging site:</p>
+      <ul class="notes">
+        <li><b>Photography</b> — the hero, headshot, and portrait are interim images sourced from existing sites. They're standing in for the final brand shoot, and are marked as such on the page.</li>
+        <li><b>The video</b> — currently an existing “Burnout to Breakthrough” interview; to be replaced by the Peaceful Media video team's brand piece.</li>
+        <li><b>Testimonials</b> — patient quotes are real (from Healing Arts Pediatrics); physician-coaching and mentee testimonials still to be gathered.</li>
+        <li><b>The book cover</b> — a typographic concept, not final cover art.</li>
+      </ul>
+      <div class="callout">Everything structural — layout, palette, type, interaction, accessibility — is review-ready. The open items are content (photos, video, quotes) that drop into finished slots. <b>Review the system; the assets will follow.</b></div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="doc-foot">
+  <div class="sheet">
+    <div class="logo">Dr. Marina <em>Capella</em></div>
+    <p>Homepage design rationale · Peaceful Media. Prepared for internal review alongside the staging site at mc.peacefuldesign.com. Concept 1 · v4.3.</p>
+  </div>
+</footer>
+
+</body>
+</html>

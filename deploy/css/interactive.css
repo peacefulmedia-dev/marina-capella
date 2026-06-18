@@ -1,0 +1,476 @@
+/* ============================================================
+   Dr. Marina Capella — Interactive layer
+   Sits on top of styles.css (the canonical token source).
+   Adds richer, on-brand motion + the "step back / see the
+   forest" centerpiece. Calm by default; everything respects
+   prefers-reduced-motion and the .calm-motion escape hatch.
+   ============================================================ */
+
+/* ---------- typography: editorial serif (a touch less scripty) + warm humanist sans ----------
+   Defaults below render immediately; the Tweaks panel can swap families.
+   Spectral gives a more sophisticated, graceful italic than the rigid one before. */
+:root{
+  --font-display:'Spectral', 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body:'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+body{ font-family:var(--font-body); }
+h1,h2,h3,.logo,.pull,.book-cover .bk-title,.quote blockquote,.topic-list li::before,.stat strong{
+  font-family:var(--font-display);
+}
+
+/* ---------- scroll progress hairline ---------- */
+.scroll-progress{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:60;
+  background:transparent;pointer-events:none;
+}
+.scroll-progress span{
+  display:block;height:100%;width:0;
+  background:linear-gradient(90deg,var(--sage),var(--ochre));
+  box-shadow:0 0 0 0 rgba(28,47,34,.0);
+  transition:width .12s linear;
+}
+
+/* ---------- staggered reveals ---------- */
+.reveal{transition-delay:var(--d,0s)}
+
+/* ---------- hero: gentle parallax + slow settle ---------- */
+.hero::before{
+  transform:scaleX(-1) translate3d(0, var(--hero-py,0px), 0) scale(1.06);
+  will-change:transform;
+}
+.hero-inner{ will-change:transform }
+.hero .identity .dot{ transition:transform .4s ease }
+
+/* ---------- magnetic / lift-ready CTAs ---------- */
+.btn{ will-change:transform; white-space:nowrap }
+
+/* ---------- avenue cards: subtle pointer tilt ---------- */
+.avenue{
+  transform-style:preserve-3d;
+  transition:transform .5s cubic-bezier(.4,0,.2,1), box-shadow .4s ease, border-color .4s ease;
+}
+.avenue .for,.avenue h3,.avenue p,.avenue .link{ transform:translateZ(0.01px) }
+.avenue:hover{ border-top-color:var(--sage-deep) }
+.avenue .link{ transition:color .25s ease }
+
+/* ---------- proof stats: count-up sit ---------- */
+.stat strong{ font-variant-numeric:tabular-nums }
+
+/* ---------- divider: draw-in ---------- */
+.divider::before,.divider::after{
+  transform:scaleX(0);transition:transform 1s cubic-bezier(.4,0,.2,1);
+}
+.divider::before{ transform-origin:right center }
+.divider::after{ transform-origin:left center }
+.divider span{
+  transform:rotate(45deg) scale(0);opacity:0;
+  transition:transform .6s cubic-bezier(.4,0,.2,1) .25s, opacity .6s ease .25s;
+}
+.divider.drawn::before,.divider.drawn::after{ transform:scaleX(1) }
+.divider.drawn span{ transform:rotate(45deg) scale(1);opacity:1 }
+
+/* ---------- letter-spacing: give the type room to breathe ---------- */
+body{ letter-spacing:.006em }
+nav a{ letter-spacing:.03em }
+.logo{ letter-spacing:.012em }
+.btn{ letter-spacing:.015em }
+
+/* ---------- section flow + warm cards ----------
+   Two light, warm cream bands ALTERNATE down the page so no two adjacent
+   sections share a tone — everything reads lighter & less taupe than before.
+   Cards/fields are a warm ivory (never stark white) that always sits a step
+   lighter than its band, so it reads as a raised surface.
+   Final order: proof · avenues · story · [video] · physicians · [speaking] ·
+   book · testimonials · [contact]  ([..] = deep-sage panels). */
+:root{
+  --cream-card:#F8F1E2;     /* warm ivory — fields, podcast, quotes, speaking frame */
+  --band-light:#F7EFE2;     /* airy warm cream */
+  --band-warm:#EDE3D1;      /* a gentle step deeper, still light */
+}
+.proof{ background:var(--band-light); }
+#avenues{ background:var(--band-warm); }
+#story{ background:var(--band-light); }
+.healers{ background:var(--band-warm); }   /* physicians */
+.book{ background:var(--band-light); }
+.quotes{ background:var(--band-warm); }     /* testimonials */
+/* avenue cards: warm, a touch lighter than the band, with a soft resting
+   lift so they read as raised tiles, not flush panels. */
+.avenue{
+  background:#FCF6EA;
+  box-shadow:0 8px 24px rgba(28,47,34,.07);
+}
+.avenue:hover{ box-shadow:0 18px 40px rgba(28,47,34,.16) }
+
+/* ---------- story: photo + copy share one row; certifications full-width below ----------
+   The portrait now fills the row height (cropping) so it matches the copy
+   column instead of towering over it; the credential strip spans the full
+   width beneath both, in one clean row. */
+.about-grid{ align-items:stretch; }
+/* Photo column carries no intrinsic height (its image is absolutely placed),
+   so the grid row sizes to the TEXT; the photo then fills that height and
+   crops from the top — matching the copy instead of driving the row taller. */
+.about-photo{ position:relative; min-height:440px; }
+.about-photo .frame{ position:absolute; inset:0; aspect-ratio:auto; height:auto; min-height:0; }
+.about-photo .frame .story-portrait{ position:absolute; inset:0; width:100%; height:100%; }
+.cred-strip{ grid-template-columns:repeat(4,1fr); gap:1.4rem 2.5rem; margin-top:3.4rem; }
+@media (max-width:1000px){
+  .about-photo{ position:static; min-height:0; }
+  .about-photo .frame{ position:relative; inset:auto; aspect-ratio:3/4; }
+  .cred-strip{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:600px){
+  .cred-strip{ grid-template-columns:1fr; }
+}
+
+/* ---------- physicians: keep the intro to two lines on desktop ---------- */
+.healers .head .lede{ max-width:none; }
+@media (max-width:760px){
+  .healers .head .lede{ max-width:60ch; }
+}
+
+/* ---------- darker gold icons (less green) ----------
+   A deeper, warmer gold for the small decorative icons — the credential
+   diamonds and the podcast mic circle — so they read as their own accent
+   rather than yet more sage. */
+:root{ --gold-deep:#A97E2B; }
+.cred .mark{ background:var(--ochre); border-radius:50%; transform:none; }
+.podcast-callout .mic{ background:var(--gold-deep); }
+
+/* ---------- slate-blue: a cool, earthy complement drawn from the brand photo
+   (the dusty chair + desk blues). Cuts the all-green feel and adds depth. ---------- */
+:root{
+  --slate:#436A7A;       /* dusty slate-blue accent */
+  --slate-deep:#2C454F;  /* deep panel bg — cream text AA-safe (~8:1) */
+}
+/* Two of the three dark contrast panels move from sage to slate, so green no
+   longer owns every band; speaking stays sage for brand warmth. */
+.video{ background:var(--slate-deep); }
+/* Contact + footer read as one closing block: a single slate gradient that
+   darkens toward the bottom of the page (contact starts at slate, the footer
+   continues it to a near-black slate). */
+.contact{ background:linear-gradient(180deg, var(--slate-deep) 0%, #223740 100%); padding-bottom:4rem; }
+/* Book cover — "Dawn": a real cover (rising sun on cream, terracotta & gold). */
+.book-cover{
+  background:radial-gradient(140% 80% at 50% 30%, #FBF5E9 0%, #F1E6CF 55%, #E7D8BB 100%) !important;
+  color:var(--forest) !important;
+  justify-content:flex-start; align-items:center;
+  padding:2.4rem 1.9rem 2rem; border-radius:3px 9px 9px 3px; overflow:hidden;
+}
+.bk-frame{ position:absolute; inset:13px; border:1px solid rgba(138,82,56,.30); border-radius:2px; z-index:2; pointer-events:none; }
+.bk-kicker{ font-size:.58rem; letter-spacing:.32em; text-transform:uppercase; font-weight:700; color:var(--cta); position:relative; z-index:3; }
+.bk-sun{ position:relative; z-index:1; width:122px; height:122px; margin:.7rem 0 .1rem; }
+.bk-sun .bk-rays{ position:absolute; inset:0; border-radius:50%;
+  background:repeating-conic-gradient(from 0deg, rgba(168,105,63,0) 0deg 8deg, rgba(168,105,63,.32) 8deg 9deg);
+  -webkit-mask:radial-gradient(circle, transparent 38px, #000 40px, #000 57px, transparent 59px);
+          mask:radial-gradient(circle, transparent 38px, #000 40px, #000 57px, transparent 59px); }
+.bk-sun .bk-disc{ position:absolute; top:50%; left:50%; width:66px; height:66px; transform:translate(-50%,-50%); border-radius:50%;
+  background:radial-gradient(circle at 50% 42%, #F0C98A 0%, #E0A75F 46%, #C2773F 100%); box-shadow:0 0 26px rgba(216,162,78,.42); }
+.book-cover .bk-title{ font-family:var(--font-display); font-weight:400; font-size:1.4rem; line-height:1.08; color:var(--forest); font-style:normal; text-align:center; position:relative; z-index:3; margin-top:.5rem; }
+.book-cover .bk-title em{ font-style:italic; color:var(--cta); }
+.book-cover .bk-sub{ font-size:.62rem; letter-spacing:.03em; line-height:1.5; color:var(--forest-soft); text-align:center; max-width:23ch; margin-top:1rem; position:relative; z-index:3; }
+.bk-grow{ flex:1; min-height:.6rem; }
+.book-cover .bk-rule{ width:28px; height:1px; background:var(--cta); margin:0 auto .65rem; position:relative; z-index:3; }
+.book-cover .bk-author{ font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; font-weight:600; color:var(--cta); text-align:center; position:relative; z-index:3; }
+/* Avenue cards: three earthy edge colors (slate · gold · sage) rather than a
+   uniform green stripe — echoing the photo's mix. Terracotta stays reserved
+   for clickable things, so it is never used as a decorative line. */
+.avenue:nth-child(1){ border-top-color:var(--slate); }
+.avenue:nth-child(2){ border-top-color:var(--gold-deep); }
+.avenue:nth-child(3){ border-top-color:var(--slate); }
+
+/* ---------- For physicians: mirror the avenue edge colors on the 3 columns ---------- */
+.healer-card:nth-child(1){ border-top-color:var(--slate); }
+.healer-card:nth-child(2){ border-top-color:var(--gold-deep); }
+.healer-card:nth-child(3){ border-top-color:var(--slate); }
+
+/* ---------- footer: continues the contact gradient down to a deep slate,
+   so "Get in touch" and the footer merge into one darkening block ---------- */
+footer{ background:linear-gradient(180deg, #223740 0%, #15252B 100%); padding-top:3rem; }
+
+/* ---------- announcement bar (slate-blue, dismissible) ---------- */
+.announce{ background:var(--slate-deep); color:var(--on-dark); font-size:.9rem; position:relative; z-index:40; }
+.announce-inner{ display:flex; align-items:center; justify-content:center; gap:.7rem; min-height:46px; padding-top:.5rem; padding-bottom:.5rem; text-align:center; }
+.announce p{ margin:0; letter-spacing:.01em; }
+.announce .announce-mark{ width:7px; height:7px; background:var(--ochre); border-radius:50%; flex:none; }
+.announce a{ color:var(--cream); font-weight:600; white-space:nowrap; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; text-decoration-color:rgba(242,232,214,.5); transition:color .2s ease, text-decoration-color .2s ease; }
+.announce a:hover{ color:#E9C77E; text-decoration-color:#E9C77E; }
+.announce a:focus-visible,.announce-close:focus-visible{ outline:3px solid var(--on-dark); outline-offset:3px; }
+.announce-close{ position:absolute; right:clamp(24px,3.5vw,56px); top:50%; transform:translateY(-50%); background:none; border:0; color:var(--on-dark-soft); font-size:1.4rem; line-height:1; cursor:pointer; padding:.1rem .4rem; border-radius:6px; transition:color .2s ease, background .2s ease; }
+.announce-close:hover{ color:var(--on-dark); background:rgba(242,232,214,.12); }
+.announce.hide{ display:none; }
+@media (max-width:620px){ .announce{ font-size:.8rem; } .announce-inner{ padding-right:2.4rem; } }
+
+/* ---------- footer social icons (placeholder links) ---------- */
+.socials{ display:flex; gap:.8rem; margin-top:1.5rem; }
+.socials a{ width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--on-dark-soft); border:1px solid rgba(242,232,214,.22); transition:color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease; }
+.socials a:hover{ color:var(--forest); background:var(--gold-deep); border-color:var(--gold-deep); transform:translateY(-2px); }
+.socials a:focus-visible{ outline:3px solid var(--on-dark); outline-offset:3px; }
+.socials svg{ width:19px; height:19px; display:block; }
+
+/* ---------- footer: site links + social icons together on the right ---------- */
+.foot-right{ display:flex; flex-direction:column; gap:1.5rem; align-items:flex-start; align-self:flex-end; }
+.foot-right .socials{ margin-top:0; }
+
+/* ---------- footer bottom line: copyright left, social icons right-aligned ---------- */
+.foot-fine{ display:flex; align-items:center; justify-content:space-between; gap:1rem 1.5rem; flex-wrap:wrap; }
+.foot-fine .socials{ margin-top:0; }
+.foot-fine a{ color:var(--on-dark-soft); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px; text-decoration-color:rgba(242,232,214,.35); transition:color .2s ease, text-decoration-color .2s ease; }
+.foot-fine a:hover{ color:var(--on-dark); text-decoration-color:var(--on-dark); }
+
+/* ---------- form fields: one thin focus border (was a thick double outline) ---------- */
+.contact form.gatekeeper input:focus, .contact form.gatekeeper input:focus-visible,
+.contact form.gatekeeper select:focus, .contact form.gatekeeper select:focus-visible,
+.contact form.gatekeeper textarea:focus, .contact form.gatekeeper textarea:focus-visible,
+.signup input:focus, .signup input:focus-visible{
+  outline:none;
+  border-color:var(--cta);
+  box-shadow:0 0 0 1px var(--cta);
+}
+
+/* ---------- Speaking: face-in photo, ochre border, refined topic list ---------- */
+.speaking .frame{ border:1px solid var(--ochre); }
+.speaking-portrait{ transform:scaleX(-1); }      /* flip so she faces inward toward the copy */
+.topic-list{ margin-top:1.9rem; }
+.topic-list li{ border:0; padding:.95rem 0; align-items:center; gap:1.15rem; position:relative; }
+.topic-list li:first-child{ border-top:0; }
+.topic-list li::before{
+  content:""; counter-increment:none;
+  min-width:12px; width:12px; height:12px; border-radius:50%;
+  background:var(--ochre); flex:none; font-size:0;
+  box-shadow:0 0 0 4px rgba(194,163,133,.16);
+}
+.topic-list li + li::after{
+  content:""; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, rgba(242,232,214,0), rgba(242,232,214,.22) 22%, rgba(242,232,214,.22) 78%, rgba(242,232,214,0));
+}
+
+/* ---------- affiliations strip (replaces the stats bar under the hero) ---------- */
+.affil{ background:var(--band-light); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.affil-inner{ display:flex; align-items:center; justify-content:center; gap:.85rem 2.2rem; flex-wrap:wrap; padding-top:1.7rem; padding-bottom:1.7rem; text-align:center; }
+.affil-label{ font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; font-weight:700; color:var(--sage-deep); flex:none; }
+.affil-list{ display:flex; align-items:center; justify-content:center; gap:1rem 1.6rem; flex-wrap:wrap; list-style:none; }
+.affil-list li{ display:flex; align-items:center; gap:1rem 1.6rem; }
+.affil-list li + li::before{ content:""; width:6px; height:6px; background:var(--ochre); border-radius:50%; flex:none; }
+.affil-name{ font-family:var(--font-display); font-size:1.08rem; color:var(--forest); text-decoration:none; font-weight:500; }
+a.affil-name{ transition:color .2s ease; }
+a.affil-name:hover{ color:var(--cta); }
+@media (max-width:620px){
+  .affil-list{ flex-direction:column; gap:.55rem; }
+  .affil-list li + li::before{ display:none; }
+}
+
+/* ---------- real portrait crops ---------- */
+.story-portrait{ object-position:50% 34% !important }   /* brown headshot — keep her face centered */
+@media (max-width:1000px){ .story-portrait{ object-position:50% 28% !important } }
+.speaking-portrait{ object-position:50% 18% !important }   /* stethoscope portrait — keep her face high in frame */
+.speaking .frame{ aspect-ratio:4/5; max-width:430px; margin:0 auto; background:var(--cream-card) }
+
+/* ---------- video: branded click-to-play poster (background-image so it
+   stays painted through scroll — an absolutely-positioned <img> under the
+   blurred sticky header could drop out during compositing). ---------- */
+.video-frame{ position:relative; }
+.video-play{
+  position:absolute;inset:0;width:100%;height:100%;
+  border:0;padding:0;margin:0;cursor:pointer;
+  display:block;overflow:hidden;border-radius:inherit;
+  background-color:var(--forest);
+  background-size:cover;
+  background-position:center 26%;
+  background-repeat:no-repeat;
+}
+.video-play::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg, rgba(20,33,24,.42), rgba(20,33,24,.04) 55%, rgba(20,33,24,.18));
+  transition:opacity .4s ease;
+}
+.video-play:hover::after{ opacity:.78 }
+.video-play-btn{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:84px;height:84px;border-radius:50%;z-index:2;
+  background:var(--cta);color:var(--on-dark);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 36px rgba(20,33,24,.4);
+  transition:transform .3s cubic-bezier(.4,0,.2,1), background .3s ease, box-shadow .3s ease;
+}
+.video-play-btn svg{ margin-left:5px }
+.video-play:hover .video-play-btn{
+  transform:translate(-50%,-50%) scale(1.08);
+  background:var(--cta-hover);box-shadow:0 18px 44px rgba(138,82,56,.5);
+}
+.video-play:focus-visible{ outline:3px solid var(--on-dark);outline-offset:4px }
+@media (prefers-reduced-motion: reduce){
+  .video-play-btn{ transition:none }
+}
+
+/* ============================================================
+   CENTERPIECE — "Step back and see the forest"
+   A scrubber that zooms the brand photo out from a tight
+   clinical detail (the microscope) to the whole human scene
+   (the forest). Cool + reticled tightens; warm + open widens.
+   ============================================================ */
+.lens{
+  margin:3.2rem 0 0;
+}
+.lens-stage{
+  position:relative;
+  aspect-ratio:3/2;
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--forest);
+  border:1px solid var(--line);
+  box-shadow:0 26px 56px rgba(28,47,34,.26);
+  cursor:ew-resize;
+  isolation:isolate;
+}
+.lens-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+  transform-origin:62% 46%;
+  transform:scale(2.5);
+  filter:saturate(.5) contrast(1.14) brightness(.9);
+  transition:transform .12s linear, filter .12s linear;
+  will-change:transform,filter;
+}
+/* cool clinical cast — fades to nothing as you step back */
+.lens-tint{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:
+    linear-gradient(140deg, rgba(36,54,72,.55), rgba(28,40,54,.30) 60%, rgba(20,33,24,.10));
+  opacity:.85;
+  mix-blend-mode:multiply;
+  transition:opacity .12s linear;
+}
+/* warm halo that blooms in as the forest opens */
+.lens-warm{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%, rgba(234,220,201,.22), transparent 64%);
+  opacity:0;
+  transition:opacity .12s linear;
+}
+.lens-vignette{
+  position:absolute;inset:0;z-index:4;pointer-events:none;
+  box-shadow:inset 0 0 120px rgba(20,33,24,.55);
+  opacity:1;
+  transition:opacity .12s linear;
+}
+
+/* microscope reticle — concentric ring + crosshair, fades as you widen */
+.lens-reticle{
+  position:absolute;z-index:5;pointer-events:none;
+  left:62%;top:46%;width:min(46%,360px);aspect-ratio:1;
+  transform:translate(-50%,-50%) scale(1);
+  opacity:1;
+  transition:opacity .12s linear, transform .12s linear;
+}
+.lens-reticle::before,.lens-reticle::after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(242,232,214,.55);
+}
+.lens-reticle::after{ inset:18%;border-color:rgba(194,163,133,.65) }
+.lens-reticle i{
+  position:absolute;background:rgba(242,232,214,.5);
+}
+.lens-reticle i.h{ left:50%;top:8%;bottom:8%;width:1px;transform:translateX(-.5px) }
+.lens-reticle i.v{ top:50%;left:8%;right:8%;height:1px;transform:translateY(-.5px) }
+.lens-reticle b{
+  position:absolute;left:50%;top:50%;width:7px;height:7px;border-radius:50%;
+  transform:translate(-50%,-50%);background:var(--cta);
+  box-shadow:0 0 0 4px rgba(138,82,56,.25);
+}
+
+/* floating soul-words that appear as the whole scene opens */
+.lens-word{
+  position:absolute;z-index:6;pointer-events:none;
+  left:calc(var(--wx)*1%);top:calc(var(--wy)*1%);
+  transform:translate(-50%,-50%) translateY(8px);
+  font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+  font-size:clamp(.92rem,1.5vw,1.18rem);
+  color:var(--cream);
+  text-shadow:0 2px 14px rgba(20,33,24,.6);
+  padding:.2rem .7rem;border-radius:999px;
+  background:rgba(28,47,34,.30);backdrop-filter:blur(2px);
+  border:1px solid rgba(242,232,214,.20);
+  opacity:0;transition:opacity .2s ease, transform .2s ease;
+}
+.lens-word.show{ opacity:1;transform:translate(-50%,-50%) translateY(0) }
+
+/* state caption inside the frame */
+.lens-caption{
+  position:absolute;left:0;right:0;bottom:0;z-index:7;
+  padding:1.5rem clamp(1.1rem,3vw,2rem) 1.2rem;
+  background:linear-gradient(0deg, rgba(20,33,24,.78), rgba(20,33,24,0));
+  pointer-events:none;
+}
+.lens-caption .cap{
+  display:block;max-width:46ch;
+  font-family:'Fraunces',serif;font-style:italic;font-weight:340;
+  font-size:clamp(1.02rem,1.9vw,1.4rem);line-height:1.35;
+  color:var(--on-dark);
+  position:absolute;left:clamp(1.1rem,3vw,2rem);right:clamp(1.1rem,3vw,2rem);bottom:1.2rem;
+  transition:opacity .45s ease, transform .45s ease;
+}
+.lens-caption .cap-micro{ opacity:1 }
+.lens-caption .cap-forest{ opacity:0 }
+.lens-caption .cap-forest em{ color:var(--ochre);font-style:italic }
+
+/* control track */
+.lens-control{
+  display:flex;align-items:center;gap:1rem;margin-top:1.4rem;
+}
+.lens-end{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  color:var(--forest-soft);white-space:nowrap;
+  transition:color .3s ease;
+}
+.lens-end-l{ color:var(--forest) }
+.lens-range{
+  -webkit-appearance:none;appearance:none;flex:1;height:3px;border-radius:999px;
+  background:linear-gradient(90deg, var(--cta) 0%, var(--cta) calc(var(--p,8)*1%), var(--ochre-soft) calc(var(--p,8)*1%), var(--ochre-soft) 100%);
+  cursor:pointer;
+}
+.lens-range::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:28px;height:28px;border-radius:50%;
+  background:var(--cream-card);border:2px solid var(--cta);
+  box-shadow:0 4px 14px rgba(28,47,34,.28);
+  cursor:grab;transition:transform .15s ease, box-shadow .2s ease;
+}
+.lens-range::-webkit-slider-thumb:active{ cursor:grabbing;transform:scale(1.08);box-shadow:0 6px 20px rgba(138,82,56,.4) }
+.lens-range::-moz-range-thumb{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--cream-card);border:2px solid var(--cta);
+  box-shadow:0 4px 14px rgba(28,47,34,.28);cursor:grab;
+}
+.lens-range:focus-visible{ outline:3px solid var(--forest);outline-offset:6px }
+
+.lens-hint{
+  margin-top:.9rem;font-size:.84rem;color:var(--forest-soft);font-style:italic;
+  display:flex;align-items:center;gap:.5rem;
+  transition:opacity .4s ease;
+}
+.lens-hint .arrow{ display:inline-block;animation:lensNudge 1.8s ease-in-out infinite }
+.lens-hint.dismiss{ opacity:0 }
+@keyframes lensNudge{ 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
+
+/* on the deep-sage band the hint/labels need cream */
+.lens-meta-dark .lens-end{ color:var(--on-dark-soft) }
+.lens-meta-dark .lens-end-l{ color:var(--cream) }
+.lens-meta-dark .lens-hint{ color:var(--on-dark-soft) }
+
+@media (max-width:1000px){
+  .lens-stage{ aspect-ratio:3/2 }
+  .lens-reticle{ width:min(58%,300px) }
+}
+
+/* ---------- motion guards ---------- */
+.calm-motion .hero::before{ transform:scaleX(-1) scale(1.06) !important }
+.calm-motion .avenue{ transition:box-shadow .3s ease, border-color .3s ease }
+.calm-motion .lens-hint .arrow{ animation:none }
+
+@media (prefers-reduced-motion: reduce){
+  .hero::before{ transform:scaleX(-1) scale(1.06) !important }
+  .scroll-progress span{ transition:none }
+  .lens-hint .arrow{ animation:none }
+  .divider::before,.divider::after{ transform:scaleX(1) }
+  .divider span{ transform:rotate(45deg) scale(1);opacity:1 }
+}

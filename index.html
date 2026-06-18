@@ -11,6 +11,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&family=Mulish:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/interactive.css">
+<style>
+  /* v2 — secondary "lighter note" video within the sage video band */
+  .video-aside{
+    max-width:920px;margin:3.4rem auto 0;padding-top:3rem;
+    border-top:1px solid rgba(242,232,214,.2);
+    display:grid;grid-template-columns:1.05fr 1fr;gap:2.6rem;align-items:center;text-align:left;
+  }
+  .video-aside-copy .eyebrow{color:var(--on-dark)}
+  .video-aside-copy h3{
+    font-family:'Fraunces',serif;font-weight:380;font-size:1.55rem;line-height:1.2;
+    color:var(--on-dark);margin:.45rem 0 .85rem;
+  }
+  .video-aside-copy p{font-size:.97rem;line-height:1.6;color:rgba(242,232,214,.84);max-width:46ch;margin:0}
+  .video-aside-frame{
+    position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+    background:var(--forest);box-shadow:0 18px 40px rgba(28,47,34,.28);
+  }
+  .video-aside-frame iframe{width:100%;height:100%;border:0;display:block}
+  @media (max-width:1000px){
+    .video-aside{grid-template-columns:1fr;gap:1.6rem;text-align:center}
+    .video-aside-copy p{margin:0 auto}
+  }
+  /* v2 — more subtle play buttons (smaller, semi-transparent) so they don't cover her face */
+  .video-play-btn{ width:56px;height:56px;background:rgba(138,82,56,.72);box-shadow:0 6px 18px rgba(20,33,24,.28); }
+  .video-play-btn svg{ width:20px;height:20px;margin-left:3px }
+  .video-play:hover .video-play-btn{ background:rgba(116,69,47,.92);box-shadow:0 10px 26px rgba(138,82,56,.45) }
+
+  /* v2 — real brand photography (final shoot). Scoped here so the original index.html keeps its interim photos. */
+  .hero{ --hero-focus-x:50%; }
+  .hero::before{
+    background-image:url('assets/img/marina-hero.webp');
+    background-position:var(--hero-focus-x,50%) 30%;
+  }
+</style>
 </head>
 <body>
 
@@ -79,7 +113,6 @@
       </div>
     </div>
   </div>
-  <div class="photo-note">Interim photo via healingartspediatrics.com — final brand shoot TBD</div>
 </section>
 
 <!-- ============ SOCIAL PROOF STRIP ============ -->
@@ -88,7 +121,7 @@
   <div class="wrap affil-inner reveal">
     <span class="affil-label">As seen in</span>
     <ul class="affil-list">
-      <li><span class="affil-name">Latina Physicians of Utah</span></li>
+      <li><span class="affil-name">Latino Physicians of Utah</span></li>
       <li><a class="affil-name" href="https://bpou.org/mentorship/a/" target="_blank" rel="noopener">Black Physicians of Utah</a></li>
       <li><a class="affil-name" href="https://health.usnews.com/doctors/marina-capella-834182" target="_blank" rel="noopener">U.S. News &amp; World Report</a></li>
     </ul>
@@ -131,22 +164,23 @@
     <div class="about-grid">
       <div class="about-photo reveal">
         <div class="frame">
-          <img class="story-portrait" src="assets/img/marina-headshot.webp" alt="Dr. Marina Capella, integrative physician" loading="lazy">
+          <img class="story-portrait" src="assets/img/marina-headshot.webp" alt="Dr. Marina Capella" loading="lazy">
         </div>
       </div>
       <div class="about reveal">
         <div class="eyebrow">My story</div>
         <h2>I went into medicine to heal. <em class="soul">First, I had to heal myself.</em></h2>
-        <p style="margin-top:1.4rem">I'm the daughter of Mexican immigrants, born in East LA, and the first in my family to navigate the long road to medicine. I earned my way to Stanford, then medical school, then residency — and along the way I learned something no one teaches you: our system trains its healers by traumatizing them.</p>
-        <p>After years in insurance-based medicine, burned out and wondering if I'd wasted a decade of my life, I made a different choice. I built a practice on presence, intuition, and time — and rediscovered the healer I'd always been. Today I practice integrative medicine that treats people as whole beings: body, mind, and spirit.</p>
+        <p style="margin-top:1.4rem">I come from humble roots — the daughter of immigrants, one of five kids, in a family that prayed we'd stay healthy because we couldn't afford for us not to be. I still remember watching my mother add up groceries in her head so she'd never come up short at the register. That's why I became a doctor: to help equalize the healthcare landscape for families like mine.</p>
+        <p>And for years, that's exactly what I did — free clinics, a safety-net hospital, a community health center serving mostly uninsured and Spanish-speaking families. But somewhere along the way, I began to feel broken. I'd fallen for the arrival fallacy of medicine — the belief that fulfillment was waiting at the end of training — and instead found myself anxious, burned out, and pouring everything I had into a system that had nothing left to give back. I was healing everyone but myself.</p>
+        <p>So in late 2021, I made a different choice. Instead of fitting a job description, I wrote my own — a direct-care practice built on presence, intuition, and time. I trained in clinical hypnosis, myofascial release, and herbalism so I could treat the whole person, not just the chart. Today I care for a beautifully diverse community of families, and I feel whole again.</p>
         <div class="pull">"True healing begins when we integrate everything we are — the science and the soul, the left brain and the right."</div>
       </div>
     </div>
     <div class="cred-strip reveal">
       <div class="cred"><span class="mark"></span><span><strong>Double board-certified</strong>General Pediatrics &amp; Integrative Medicine</span></div>
-      <div class="cred"><span class="mark"></span><span><strong>MD, MEd, MBA, FAAP, FABOIM</strong>Stanford · UC San Diego · Harvard · Harbor-UCLA</span></div>
+      <div class="cred"><span class="mark"></span><span><strong>MD, MEd, MBA, FAAP, FABOIM</strong>Stanford · UC San Diego · Harvard · Harbor-UCLA · Utah</span></div>
       <div class="cred"><span class="mark"></span><span><strong>Founder &amp; entrepreneur</strong>Built the first pediatric DPC in greater Salt Lake</span></div>
-      <div class="cred"><span class="mark"></span><span><strong>Educator &amp; mentor</strong>Adjunct faculty, University of Utah School of Medicine</span></div>
+      <div class="cred"><span class="mark"></span><span><strong>Educator &amp; mentor</strong>Adjunct faculty at the University of Utah &amp; Noorda College of Osteopathic Medicine</span></div>
     </div>
   </div>
 </section>
@@ -157,11 +191,24 @@
     <div class="eyebrow reveal">In her own words</div>
     <h2 class="reveal">Some things can't be read. <em>They have to be felt.</em></h2>
     <div class="video-frame reveal">
-      <button class="video-play" type="button" data-yt="dLif1pKPZVw" style="background-image:url('assets/img/mc-video-thumbnail.webp')" aria-label="Play video: From Burnout to Breakthrough">
+      <button class="video-play" type="button" data-yt="dLif1pKPZVw" style="background-image:url('assets/img/mc-video-thumbnail.webp')" aria-label="Play video: Marina on opening her practice and founding DPC Pediatrician">
         <span class="video-play-btn" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
       </button>
     </div>
-    <p class="video-note reveal">Interim video: "From Burnout to Breakthrough" interview · final brand video via Peaceful Media video team</p>
+    <p class="video-note reveal">Video placeholder — interim clip, final brand video to come.</p>
+
+    <div class="video-aside reveal">
+      <div class="video-aside-copy">
+        <div class="eyebrow">A lighter note</div>
+        <h3>Reimagining medicine can start <em>with a little joy.</em></h3>
+        <p>When I launched my DPC consulting company, I didn't write a brochure — I rewrote "Defying Gravity." A reminder that healing the healer still leaves room for play.</p>
+      </div>
+      <div class="video-aside-frame">
+        <button class="video-play video-play-aside" type="button" data-yt="C8lz1lPbK8E" data-title="Defying Gravity — a DPC parody by Dr. Marina Capella" style="background-image:url('https://img.youtube.com/vi/C8lz1lPbK8E/hqdefault.jpg')" aria-label="Play video: Defying Gravity, a DPC parody">
+          <span class="video-play-btn" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -213,7 +260,7 @@
     </div>
     <div class="reveal">
       <div class="frame">
-        <img class="speaking-portrait" src="assets/img/marina-stethoscope.webp" alt="Dr. Marina Capella, integrative physician" loading="lazy">
+        <img class="speaking-portrait" src="assets/img/marina-speaking.webp" alt="Dr. Marina Capella" loading="lazy">
       </div>
     </div>
   </div>
@@ -278,7 +325,7 @@
     <div class="reveal">
       <div class="eyebrow">Get in touch</div>
       <h2>Let's find <em>the right avenue.</em></h2>
-      <p>Tell us a little about what you're looking for, and Dr. Capella's team will point you in the right direction. Messages go to her support team, who make sure every inquiry lands where it belongs.</p>
+      <p>Tell me a little about what you're looking for, and I'll help you find the right path. Every message comes straight to me — I read each one personally, and I'll write back myself.</p>
     </div>
     <form class="gatekeeper reveal" id="contact-form">
       <div>
@@ -345,5 +392,31 @@
 
 <script src="js/main.js"></script>
 <script src="js/interactive.js"></script>
+<script>
+  /* v2 — wire the secondary "lighter note" video (shared interactive.js only binds the first .video-play) */
+  (function () {
+    var aside = document.querySelector('.video-play-aside');
+    if (!aside) return;
+    aside.addEventListener('click', function () {
+      var id = aside.getAttribute('data-yt');
+      var frame = aside.parentElement;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      iframe.title = aside.getAttribute('data-title') || 'Video';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.style.cssText = 'width:100%;height:100%;border:0;display:block';
+      frame.replaceChild(iframe, aside);
+    });
+  })();
+</script>
+
+<!-- Tweaks panel (isolated React root; only appears in Tweaks mode) -->
+<div id="mc-tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="js/tweaks-app.jsx"></script>
 </body>
 </html>

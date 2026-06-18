@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Marina Capella — Your Homepage, and the Thinking Behind It</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1C2F22;
+    --forest-soft:rgba(28,47,34,.74);
+    --sage:#667B57;
+    --sage-deep:#526547;
+    --ochre:#C2A385;
+    --cream:#EADCC9;
+    --cream-card:#F2E8D6;
+    --on-dark:#F2E8D6;
+    --cta:#8A5238;
+    --line:rgba(194,163,133,.55);
+    --paper:#F6EFE2;
+    --max:880px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Figtree',system-ui,sans-serif;
+    color:var(--forest);
+    background:var(--paper);
+    line-height:1.68;
+    font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{max-width:var(--max);margin:0 auto;padding:0 clamp(22px,5vw,40px)}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    background:var(--forest);color:var(--on-dark);
+    padding:clamp(3rem,7vw,5rem) 0 clamp(2.6rem,6vw,4rem);
+  }
+  .masthead .kicker{
+    font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+    font-weight:600;color:var(--ochre);margin-bottom:1.5rem;
+  }
+  .masthead h1{
+    font-family:'Fraunces',serif;font-weight:380;line-height:1.08;
+    font-size:clamp(2.2rem,5vw,3.4rem);color:var(--on-dark);letter-spacing:-0.01em;
+    margin-bottom:1.3rem;text-wrap:balance;
+  }
+  .masthead h1 em{font-style:italic;color:var(--ochre)}
+  .masthead .standfirst{
+    font-size:1.08rem;color:rgba(242,232,214,.86);max-width:60ch;
+  }
+  .masthead .meta{
+    margin-top:2.2rem;padding-top:1.6rem;
+    border-top:1px solid rgba(242,232,214,.2);
+    display:flex;flex-wrap:wrap;gap:.4rem 2.4rem;font-size:.86rem;
+    color:rgba(242,232,214,.78);
+  }
+  .masthead .meta b{color:var(--on-dark);font-weight:600}
+  .masthead .meta a{color:var(--ochre);text-decoration:none;border-bottom:1px solid rgba(194,163,133,.4)}
+
+  /* ---------- body ---------- */
+  main{padding:clamp(2.6rem,6vw,4.2rem) 0 4rem}
+
+  /* opening letter */
+  .letter{
+    max-width:64ch;margin-bottom:3rem;
+  }
+  .letter .salute{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+    font-size:1.5rem;color:var(--sage-deep);margin-bottom:1rem;
+  }
+  .letter p{font-size:1.08rem;color:var(--forest-soft);margin-bottom:1rem}
+  .letter p strong{font-weight:600;color:var(--forest)}
+  .letter .sign{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1rem;
+    color:var(--forest);margin-top:1.4rem;
+  }
+
+  section{margin-bottom:3.2rem;scroll-margin-top:1rem}
+  .sec-num{
+    font-family:'Fraunces',serif;font-style:italic;font-size:.95rem;
+    color:var(--sage-deep);font-weight:500;
+  }
+  h2{
+    font-family:'Fraunces',serif;font-weight:440;line-height:1.16;
+    font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-0.01em;
+    margin:.35rem 0 1.1rem;text-wrap:balance;
+  }
+  h2 em{font-style:italic;color:var(--sage)}
+  h3{
+    font-family:'Figtree',sans-serif;font-weight:700;font-size:1rem;
+    letter-spacing:.01em;margin:1.7rem 0 .5rem;color:var(--forest);
+  }
+  p{margin-bottom:1rem;max-width:64ch}
+  p strong{font-weight:600}
+  .divider{
+    display:flex;align-items:center;gap:1rem;margin:2.6rem 0;
+  }
+  .divider::before,.divider::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(90deg,transparent,var(--ochre) 30%,var(--ochre) 70%,transparent);
+  }
+  .divider span{width:7px;height:7px;background:var(--sage);transform:rotate(45deg);flex:none}
+
+  ul.notes{list-style:none;margin:.4rem 0 1rem}
+  ul.notes li{
+    position:relative;padding-left:1.4rem;margin-bottom:.6rem;max-width:64ch;
+  }
+  ul.notes li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:6px;height:6px;background:var(--sage);transform:rotate(45deg);
+  }
+  ul.notes li b{font-weight:600}
+
+  .callout{
+    background:var(--cream-card);border:1px solid var(--line);
+    border-left:3px solid var(--ochre);border-radius:0 12px 12px 0;
+    padding:1.2rem 1.4rem;margin:1.4rem 0;font-size:.97rem;
+    color:var(--forest-soft);max-width:64ch;
+  }
+  .callout b{color:var(--forest)}
+
+  /* "you told us" echo — her own words, answered */
+  .echo{
+    background:var(--cream-card);border:1px solid var(--line);
+    border-radius:14px;border-top:3px solid var(--sage);
+    padding:1.15rem 1.4rem 1.25rem;margin:1.5rem 0;max-width:64ch;
+  }
+  .echo .lbl{
+    font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:600;color:var(--sage-deep);margin-bottom:.5rem;
+    display:flex;align-items:center;gap:.55rem;
+  }
+  .echo .lbl::before{content:"";width:6px;height:6px;background:var(--sage);transform:rotate(45deg);flex:none}
+  .echo .said{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+    font-size:1.18rem;line-height:1.38;color:var(--forest);
+  }
+
+  /* swatches */
+  .swatches{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:.9rem;margin:1.4rem 0 .6rem;
+  }
+  .sw{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--cream-card)}
+  .sw .chip{height:62px}
+  .sw .info{padding:.6rem .8rem .75rem}
+  .sw .name{font-weight:600;font-size:.9rem}
+  .sw .hex{font-size:.78rem;color:var(--forest-soft);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .sw .role{font-size:.78rem;color:var(--forest-soft);margin-top:.25rem;line-height:1.4}
+
+  /* type specimen */
+  .type-row{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:baseline;margin:.6rem 0 1.2rem}
+  .specimen{flex:1;min-width:240px;background:var(--cream-card);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.4rem}
+  .specimen .fam{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-deep);font-weight:600;margin-bottom:.5rem}
+  .specimen .big-serif{font-family:'Fraunces',serif;font-size:2rem;font-weight:400;line-height:1.1}
+  .specimen .big-serif em{font-style:italic;color:var(--ochre)}
+  .specimen .big-sans{font-family:'Figtree',sans-serif;font-size:1.05rem;line-height:1.55;color:var(--forest-soft)}
+  .specimen .scale{font-size:.82rem;color:var(--forest-soft);margin-top:.7rem;line-height:1.5}
+
+  footer.doc-foot{
+    background:var(--forest);color:rgba(242,232,214,.8);
+    padding:2.4rem 0;font-size:.85rem;margin-top:2rem;
+  }
+  footer.doc-foot .logo{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--on-dark)}
+  footer.doc-foot .logo em{font-style:italic;color:var(--ochre)}
+  footer.doc-foot p{margin-top:.5rem;max-width:60ch;font-size:.82rem}
+
+  a.inline{color:var(--cta);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(138,82,56,.35)}
+
+  @media print{
+    body{background:#fff;font-size:11pt}
+    .masthead{background:var(--forest)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .sw .chip,.callout,.echo,.specimen,footer.doc-foot{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    section{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="sheet">
+    <div class="kicker">Peaceful Media · Prepared for Dr. Marina Capella</div>
+    <h1>Your homepage.<br><em>The thinking behind it.</em></h1>
+    <p class="standfirst">A walk through how we translated everything you shared with us into a page that feels like you — so that when you sit with it, you'll know not just what we built, but why each choice is here.</p>
+    <div class="meta">
+      <span><b>See it live:</b> <a href="https://mc.peacefuldesign.com/">mc.peacefuldesign.com</a></span>
+      <span><b>This is:</b> Your homepage, first concept</span>
+      <span><b>Where we are:</b> Roadmap call #2</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="sheet">
+
+    <div class="letter">
+      <p class="salute">Marina —</p>
+      <p>When we first sat down, you told us the hardest thing wasn't making a website look nice. It was holding all of you on one page — the <strong>integrative physician</strong>, the <strong>mentor</strong>, the <strong>community builder</strong> — three identities you were clear are <em>integrated, not separate</em>. You'd also been burned once before, by a team that never quite captured your vision.</p>
+      <p>So before we talk about color or type, we want one thing to be true: <strong>this should feel like you saw your own words reflected back.</strong> Almost every decision below traces directly to something you said in our calls — and we've put your own lines beside them so you can see the thread.</p>
+      <p class="sign">— Nicki &amp; Sable</p>
+    </div>
+
+    <!-- 1 -->
+    <section>
+      <div class="sec-num">01</div>
+      <h2>One you — <em>many avenues</em></h2>
+      <p>You don't fit in one box, and we didn't try to squeeze you into one. The page opens with <strong>who you are</strong>, then fans out into clearly-labeled paths — so each visitor sorts themselves in seconds and heads to the right place.</p>
+      <div class="echo">
+        <div class="lbl">In discovery, you said</div>
+        <div class="said">"Depending on what people are wanting, these are the avenues."</div>
+      </div>
+      <ul class="notes">
+        <li><b>Three avenues.</b> <em>For physicians</em> routes to DPC Pediatrician, <em>for future doctors</em> to Future Minority Doctor, <em>for families</em> to Healing Arts Pediatrics — each its own front door, all under one roof.</li>
+        <li><b>Physicians seeking coaching are the priority guest.</b> You named them as audience number one, so the page is weighted toward them — but you're introduced as a whole person first, never "coach here, sign up."</li>
+        <li><b>The ask deepens as you earn the scroll.</b> A soft invitation (the book list) sits up top; bigger commitments — coaching, speaking, becoming a patient — come further down, once trust is built.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 2 -->
+    <section>
+      <div class="sec-num">02</div>
+      <h2>Healing the healer — <em>soul, with the mastery intact</em></h2>
+      <p>The line you loved leads the whole page: <strong>"Healing the healer. Reimagining medicine."</strong> You asked for more soul than clinical — personal and story-first — but you were just as clear that your mastery has to land. As a woman of color in medicine, you've earned every letter after your name, and you shouldn't be shy about them.</p>
+      <div class="echo">
+        <div class="lbl">In discovery, you said</div>
+        <div class="said">"It's not just my credentials… I want the soul injected into that too."</div>
+      </div>
+      <ul class="notes">
+        <li><b>Two-part headlines.</b> A grounded statement, then an italic "soul" turn — <em>"A book for every healer who forgot they were one."</em> It's the signature device that carries your voice across the page.</li>
+        <li><b>Credentials stated plainly, then humanized.</b> The facts are right there — double board-certified; MD, MEd, MBA, FAAP, FABOIM; Stanford and Harvard — but the story does the emotional work.</li>
+        <li><b>Integration is the through-line.</b> The recurring idea is the one you named as your superpower: uniting the left and right brain — the microscope <em>and</em> the forest, science <em>and</em> soul.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 3 -->
+    <section>
+      <div class="sec-num">03</div>
+      <h2>Warm &amp; earthy — <em>sophisticated, never sterile</em></h2>
+      <p>You described your tones without hesitation, and pointed at the greens you were wearing. So the palette is a disciplined, grounded five — built from your approved swatch. The governing rule: <strong>cream used as the primary base, never stark white,</strong> so the page reads like paper and skin, not a clinic waiting room.</p>
+      <div class="echo">
+        <div class="lbl">In discovery, you said</div>
+        <div class="said">"Warm and earthy feels right for me… I feel a really strong connection to nature."</div>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#1C2F22"></div><div class="info"><div class="name">Deep Forest</div><div class="hex">#1C2F22</div><div class="role">Headings, body text, the hero &amp; footer anchors</div></div></div>
+        <div class="sw"><div class="chip" style="background:#526547"></div><div class="info"><div class="name">Sage (deep)</div><div class="hex">#526547</div><div class="role">The quiet panels that punctuate the scroll</div></div></div>
+        <div class="sw"><div class="chip" style="background:#C2A385"></div><div class="info"><div class="name">Warm Ochre</div><div class="hex">#C2A385</div><div class="role">Lines, borders, small accent marks</div></div></div>
+        <div class="sw"><div class="chip" style="background:#EADCC9"></div><div class="info"><div class="name">Soft Cream</div><div class="hex">#EADCC9</div><div class="role">The global background — paper, not white</div></div></div>
+        <div class="sw"><div class="chip" style="background:#8A5238"></div><div class="info"><div class="name">Terracotta</div><div class="hex">#8A5238</div><div class="role">Buttons &amp; links only — "this is clickable"</div></div></div>
+      </div>
+      <div class="callout">A small discipline worth knowing: terracotta means <b>clickable</b>, and warm ochre is only ever a <b>line</b>. That single rule keeps the page calm and obvious — your eye always knows what to do. It's sophisticated and grounded, with a deliberate blend of feminine and masculine.</div>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 4 -->
+    <section>
+      <div class="sec-num">04</div>
+      <h2>The science and the soul — <em>in the type itself</em></h2>
+      <p>You told us you loved the blend of a literary serif with a clean, easy-to-read sans — letters with a little intuition in them, paired with letters that simply get out of the way. That duet became your thesis expressed in type.</p>
+      <div class="type-row">
+        <div class="specimen">
+          <div class="fam">Fraunces · the soul</div>
+          <div class="big-serif">Healing the healer.<br><em>Reimagining medicine.</em></div>
+          <div class="scale">A warm serif with true italics — it carries every headline and pull-quote, and the italic always signals the emotional turn.</div>
+        </div>
+        <div class="specimen">
+          <div class="fam">Figtree · the clarity</div>
+          <div class="big-sans">Calm, friendly body copy that never competes with the headline — generous spacing, a comfortable line length, easy on every screen.</div>
+          <div class="scale">Clear and trustworthy — it does the plain-spoken work so the serif can do the feeling.</div>
+        </div>
+      </div>
+      <p>One family for feeling, one for clarity. That's the left brain and the right, sitting on the page together — exactly the integration you keep coming back to.</p>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 5 -->
+    <section>
+      <div class="sec-num">05</div>
+      <h2>Room to breathe — <em>clean, never busy</em></h2>
+      <p>You were specific: to the point, not too much visual distraction, balanced white space. So the page paces itself — airy cream sections alternate with a few deep-sage panels that give your most emotional moments a quieter, darker room to land in.</p>
+      <div class="echo">
+        <div class="lbl">In discovery, you said</div>
+        <div class="said">"I like it more to the point, clear. Not too much visual distraction."</div>
+      </div>
+      <ul class="notes">
+        <li><b>A full-bleed hero photograph.</b> Your real brand portrait fills the top of the page, with you facing into the headline; a precision-tuned scrim keeps the words perfectly readable over the image at any screen size.</li>
+        <li><b>A soft top-light wash</b> warms the top of each cream section and settles back down — a subtle breath of light that only ever goes lighter, so it never makes text harder to read.</li>
+        <li><b>One quiet thread of ornament.</b> A small ochre diamond and hairline rule recur down the page, stitching every section into a single identity rather than a stack of unrelated blocks.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 6 -->
+    <section>
+      <div class="sec-num">06</div>
+      <h2>In your own words — <em>video at the center</em></h2>
+      <p>You said something that shaped this whole section: that video carries a frequency a still photo can't. And you're comfortable on camera — 200-plus podcast episodes is no small thing. So we built a calm, deliberate home for film right in the middle of the page.</p>
+      <div class="echo">
+        <div class="lbl">In discovery, you said</div>
+        <div class="said">"Video transmits that frequency in a way that just static images don't."</div>
+      </div>
+      <ul class="notes">
+        <li><b>A grounding sage band with a single click-to-play frame</b> — quiet, unhurried, so your voice is the thing that fills the room.</li>
+        <li><b>A lighter second clip.</b> Your <em>Defying Gravity</em> DPC parody sits just below as "a lighter note" — because reimagining medicine can start with a little joy, and it shows a side of you people fall for.</li>
+        <li><b>The play buttons were softened</b> on purpose — smaller and semi-transparent, so they invite a click without ever covering your face.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 7 -->
+    <section>
+      <div class="sec-num">07</div>
+      <h2>Your gatekeeper — <em>contact, on your terms</em></h2>
+      <p>You were honest that you're already drowning in email and wanted something that sorts inquiries <em>before</em> they reach you. So the contact form opens with one question — <em>"I'm reaching out about…"</em> — and adapts to the answer.</p>
+      <div class="echo">
+        <div class="lbl">In discovery, you said</div>
+        <div class="said">"I want some support email that can be my gatekeeper. I'm already overwhelmed with email as it is."</div>
+      </div>
+      <ul class="notes">
+        <li><b>It routes people for you.</b> Choose "becoming a patient" or "DPC consulting" and a gentle note points them straight to the right property — often answering them before they ever hit send.</li>
+        <li><b>Speaking inquiries come here too.</b> Just as you wanted: one central place to field speaking requests, so you never have to bolt a speaking page onto every other site.</li>
+        <li><b>Your team gets pre-sorted notes;</b> visitors get an instant sense of direction. Less noise for you, a clearer path for them.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 8 -->
+    <section>
+      <div class="sec-num">08</div>
+      <h2>The book, and the list — <em>start building now</em></h2>
+      <p>Your second priority was clear: start growing the mailing list ahead of the book, so there's an audience waiting when it arrives. So a calm signup anchors the lower page, paired with a typographic cover concept for <em>Awakening the Healer's Soul</em>.</p>
+      <ul class="notes">
+        <li><b>A soft, low-pressure invitation</b> — "join the list to follow the journey" — with microcopy that promises no noise, just meaningful updates. It matches your voice, not a hard sell.</li>
+        <li><b>The cover is a concept, not final art</b> — a placeholder that holds the shape and feeling until the real cover exists, so you can share the link with family, friends, and colleagues today.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 9 -->
+    <section>
+      <div class="sec-num">09</div>
+      <h2>Quietly excellent — <em>accessible, and built to last</em></h2>
+      <p>Two things you'll never see directly, but will feel. First, the page is genuinely accessible — for a healer's brand, that's a values statement, not a checkbox. Second, it's built simply and durably, so you're never locked into anyone.</p>
+      <ul class="notes">
+        <li><b>Readable for everyone.</b> Every text-and-color pairing was measured against the WCAG AA standard rather than eyeballed — so the page treats every reader with the same care you give a patient.</li>
+        <li><b>Calm by default.</b> Gentle motion guides the eye as you scroll, and anyone who prefers less movement gets a complete, still page — never a blank screen waiting on an animation.</li>
+        <li><b>Plain, portable, yours.</b> It's built as straightforward web files — fast to load, cheap to host, and easy to hand to your team. Given your last experience, that independence matters: nothing here traps you.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 10 -->
+    <section>
+      <div class="sec-num">10</div>
+      <h2>What's here now — <em>and what's still to come</em></h2>
+      <p>So you review with the right lens, here's exactly what's finished and what's still a placeholder dropping into a ready-made slot:</p>
+      <ul class="notes">
+        <li><b>Photography — your brand shoot is in.</b> The hero, your story portrait, and the speaking portrait are your real images, placed and color-tuned to the palette.</li>
+        <li><b>Video — still interim.</b> The current clip is a stand-in; your final brand film, produced with a video team, drops into the same frame when it's ready.</li>
+        <li><b>Testimonials — real, and growing.</b> The patient quotes are genuine. Physician-coaching and mentee testimonials are still to be gathered.</li>
+        <li><b>Book cover — a concept.</b> A typographic stand-in, not the final cover art.</li>
+      </ul>
+      <div class="callout">Everything that makes this page <b>yours</b> — the structure, the voice, the palette, the feeling — is ready for your eyes. <b>Review the feeling; the final assets settle into finished slots.</b></div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="doc-foot">
+  <div class="sheet">
+    <div class="logo">Dr. Marina <em>Capella</em></div>
+    <p>The thinking behind your homepage · Prepared for you by Peaceful Media, to read alongside the live concept at mc.peacefuldesign.com.</p>
+  </div>
+</footer>
+
+</body>
+</html>
