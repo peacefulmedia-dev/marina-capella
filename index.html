@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxQzJGMjIiLz48dGV4dCB4PSIzMiIgeT0iNDUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCdUaW1lcyBOZXcgUm9tYW4nLHNlcmlmIiBmb250LXNpemU9IjM1IiBmb250LXN0eWxlPSJpdGFsaWMiIGZpbGw9IiNFQURDQzkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSItMSI+TUM8L3RleHQ+PC9zdmc+">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dr. Marina Capella - Integrative Physician · Mentor · Community Builder</title>
 <meta name="description" content="Dr. Marina Capella helps physicians heal, families find whole-person care, and the next generation of doctors see themselves in medicine.">
@@ -41,27 +42,14 @@
   /* v2 - real brand photography (final shoot). Scoped here so the original index.html keeps its interim photos. */
   .hero{ --hero-focus-x:50%; }
   .hero::before{
-    background-image:url('assets/img/marina-hero.webp');
-    /* Zoom out: size by height so more of Marina + the baby show (less top/bottom crop).
-       Anchor the photo to the subject side; the small uncovered strip falls on the dark left under the scrim. */
+    /* Feathered file: its visual-left edge (the file's right, due to the scaleX(-1) mirror)
+       fades to transparent, so it ALWAYS dissolves into the forest fill behind it — no hard
+       line at any screen size. The base .hero::after forest gradient overlays for text contrast. */
+    background-image:url('assets/img/marina-hero-feathered.webp');
+    /* Zoom out: size by height so more of Marina + the baby show (less top/bottom crop). */
     background-size:auto 122%;
     background-repeat:no-repeat;
     background-position:0% 36%;
-    /* Fade the photo's left edge into the forest fill so the seam isn't a hard line.
-       The layer is mirrored (scaleX(-1)), so a fade on the element's right becomes the visual left. */
-    -webkit-mask-image:linear-gradient(to right,#000 58%,transparent 100%);
-    mask-image:linear-gradient(to right,#000 58%,transparent 100%);
-  }
-  /* Darken the left scrim to solid forest over the seam zone so the photo's
-     faded edge is fully hidden, then fall away to clear over Marina on the right. */
-  .hero::after{
-    background:linear-gradient(97deg,
-      rgba(28,47,34,1) 0%,
-      rgba(28,47,34,1) max(32%,400px),
-      rgba(20,33,24,.72) max(56%,780px),
-      rgba(28,47,34,.40) max(68%,900px),
-      rgba(28,47,34,.08) max(84%,1000px),
-      rgba(28,47,34,0) 100%);
   }
 </style>
 </head>
