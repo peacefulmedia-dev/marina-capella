@@ -3,6 +3,7 @@
 // activates Tweaks mode. Effects are applied as classes on <html>, which
 // the vanilla interactive.js reads at runtime.
 const MC_TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "hero": "New model of medicine",
   "headlineFont": "Spectral",
   "bodyFont": "Hanken Grotesk",
   "motion": "balanced",
@@ -10,6 +11,12 @@ const MC_TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "tilt": true,
   "autoDemo": true
 }/*EDITMODE-END*/;
+
+const MC_HERO = {
+  'New model of medicine': 'newmodel',
+  'Reimagining medicine': 'reimagining',
+  'Healing the healer (round 1)': 'healer'
+};
 
 const MC_DISPLAY_STACKS = {
   'Spectral': "'Spectral', Georgia, 'Times New Roman', serif",
@@ -27,6 +34,11 @@ function MCTweaks() {
   const [t, setTweak] = useTweaks(MC_TWEAK_DEFAULTS);
 
   React.useEffect(function () {
+    const hero = document.querySelector('.hero');
+    if (hero && MC_HERO[t.hero]) hero.setAttribute('data-hero', MC_HERO[t.hero]);
+  }, [t.hero]);
+
+  React.useEffect(function () {
     const s = document.documentElement.style;
     if (MC_DISPLAY_STACKS[t.headlineFont]) s.setProperty('--font-display', MC_DISPLAY_STACKS[t.headlineFont]);
     if (MC_BODY_STACKS[t.bodyFont]) s.setProperty('--font-body', MC_BODY_STACKS[t.bodyFont]);
@@ -42,6 +54,13 @@ function MCTweaks() {
 
   return (
     <TweaksPanel title="Tweaks">
+      <TweakSection label="Hero headline" />
+      <TweakSelect
+        label="Headline"
+        value={t.hero}
+        options={['New model of medicine', 'Reimagining medicine', 'Healing the healer (round 1)']}
+        onChange={function (v) { setTweak('hero', v); }}
+      />
       <TweakSection label="Typography" />
       <TweakSelect
         label="Headline font"

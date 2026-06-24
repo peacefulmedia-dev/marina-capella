@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxQzJGMjIiLz48dGV4dCB4PSIzMiIgeT0iNDUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCdUaW1lcyBOZXcgUm9tYW4nLHNlcmlmIiBmb250LXNpemU9IjM1IiBmb250LXN0eWxlPSJpdGFsaWMiIGZpbGw9IiNFQURDQzkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSItMSI+TUM8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Marina Capella - Integrative Physician · Mentor · Community Builder</title>
+<meta name="description" content="Dr. Marina Capella helps physicians heal, families find whole-person care, and the next generation of doctors see themselves in medicine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&family=Mulish:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/interactive.css">
+<style>
+  /* v2 - secondary "lighter note" video within the sage video band */
+  .video-aside{
+    max-width:920px;margin:3.4rem auto 0;padding-top:3rem;
+    border-top:1px solid rgba(242,232,214,.2);
+    display:grid;grid-template-columns:1.05fr 1fr;gap:2.6rem;align-items:center;text-align:left;
+  }
+  .video-aside-copy .eyebrow{color:var(--on-dark)}
+  .video-aside-copy h3{
+    font-family:'Fraunces',serif;font-weight:380;font-size:1.55rem;line-height:1.2;
+    color:var(--on-dark);margin:.45rem 0 .85rem;
+  }
+  .video-aside-copy p{font-size:.97rem;line-height:1.6;color:rgba(242,232,214,.84);max-width:46ch;margin:0}
+  .video-aside-frame{
+    position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+    background:var(--forest);box-shadow:0 18px 40px rgba(28,47,34,.28);
+  }
+  .video-aside-frame iframe{width:100%;height:100%;border:0;display:block}
+  @media (max-width:1000px){
+    .video-aside{grid-template-columns:1fr;gap:1.6rem;text-align:center}
+    .video-aside-copy p{margin:0 auto}
+  }
+  /* v2 - more subtle play buttons (smaller, semi-transparent) so they don't cover her face */
+  .video-play-btn{ width:56px;height:56px;background:rgba(138,82,56,.72);box-shadow:0 6px 18px rgba(20,33,24,.28); }
+  .video-play-btn svg{ width:20px;height:20px;margin-left:3px }
+  .video-play:hover .video-play-btn{ background:rgba(116,69,47,.92);box-shadow:0 10px 26px rgba(138,82,56,.45) }
+
+  /* v2 - real brand photography (final shoot). Scoped here so the original index.html keeps its interim photos. */
+  .hero{ --hero-focus-x:50%; }
+  .hero::before{
+    /* Feathered file: its visual-left edge (the file's right, due to the scaleX(-1) mirror)
+       fades to transparent, so it ALWAYS dissolves into the forest fill behind it — no hard
+       line at any screen size. The base .hero::after forest gradient overlays for text contrast. */
+    background-image:url('assets/img/marina-hero-feathered.webp');
+    /* Zoom out: size by height so more of Marina + the baby show (less top/bottom crop). */
+    background-size:auto 122%;
+    background-repeat:no-repeat;
+    background-position:0% 36%;
+  }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#1C2F22">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1C2F22"/>
+    <g fill="none" stroke="#C2A385" stroke-width="10" stroke-linecap="round">
+      <circle cx="600" cy="330" r="78"/>
+      <line x1="600" y1="200" x2="600" y2="172"/>
+      <line x1="600" y1="488" x2="600" y2="460"/>
+      <line x1="470" y1="330" x2="442" y2="330"/>
+      <line x1="758" y1="330" x2="730" y2="330"/>
+      <line x1="508" y1="238" x2="488" y2="218"/>
+      <line x1="692" y1="238" x2="712" y2="218"/>
+      <line x1="508" y1="422" x2="488" y2="442"/>
+      <line x1="692" y1="422" x2="712" y2="442"/>
+    </g>
+    <text x="600" y="600" font-family="Georgia, 'Times New Roman', serif" font-size="120" font-style="italic" fill="#EADCC9" text-anchor="middle">MC</text>
+    <text x="600" y="680" font-family="Georgia, serif" font-size="34" letter-spacing="8" fill="#C2A385" text-anchor="middle">MARINA CAPELLA</text>
+  </svg>
+</template>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+<div class="announce" id="announce">
+  <div class="wrap announce-inner">
+    <p>Dr. Capella's first book is on its way - <a href="#book">join the mailing list →</a></p>
+    <button class="announce-close" type="button" aria-label="Dismiss announcement">&times;</button>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">Dr. Marina <em>Capella</em></a>
+    <nav>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button>
+      <ul id="menu">
+        <li><a href="#avenues">How I serve</a></li>
+        <li><a href="#story">My story</a></li>
+        <li><a href="#physicians">For physicians</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#book">The book</a></li>
+        <li><a class="btn btn-primary" href="#contact">Get in touch</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO - full-bleed background image ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner reveal">
+      <div class="identity">
+        <span>Integrative Physician</span><span class="dot"></span>
+        <span>Mentor &amp; Teacher</span><span class="dot"></span>
+        <span>Community Builder</span>
+      </div>
+      <h1>Healing the healer.<br><span class="ital">Reimagining medicine.</span></h1>
+      <p class="lede">I'm Dr. Marina Capella - a physician who learned, the hard way, that medicine can't heal anyone until it stops breaking its healers. I help physicians reclaim their power, families experience whole-person care, and the next generation of doctors see themselves in medicine.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#book">Join the mailing list</a>
+        <a class="btn btn-light-ghost" href="#avenues">Explore my work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOCIAL PROOF STRIP ============ -->
+<!-- ============ AFFILIATIONS STRIP ============ -->
+<div class="affil">
+  <div class="wrap affil-inner reveal">
+    <span class="affil-label">As seen in</span>
+    <ul class="affil-list">
+      <li><span class="affil-name">Latino Physicians of Utah</span></li>
+      <li><a class="affil-name" href="https://bpou.org/mentorship/a/" target="_blank" rel="noopener">Black Physicians of Utah</a></li>
+      <li><a class="affil-name" href="https://health.usnews.com/doctors/marina-capella-834182" target="_blank" rel="noopener">U.S. News &amp; World Report</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ AVENUES ============ -->
+<section id="avenues">
+  <div class="wrap">
+    <div class="avenues-head reveal">
+      <div class="eyebrow">Multiple avenues, one purpose</div>
+      <h2>Whatever brought you here, <em class="soul">there's a path for you.</em></h2>
+    </div>
+    <div class="avenue-grid">
+      <article class="avenue reveal">
+        <div class="for">For physicians</div>
+        <h3>DPC Pediatrician</h3>
+        <p>Consulting, courses, and a podcast for physicians ready to leave burnout behind and build a direct care practice that's aligned with their values - and their souls.</p>
+        <a class="link" href="https://dpcpediatrician.com" target="_blank" rel="noopener">Explore consulting &amp; resources</a>
+      </article>
+      <article class="avenue reveal">
+        <div class="for">For future doctors</div>
+        <h3>Future Minority Doctor</h3>
+        <p>My nonprofit, born from my own journey - empowering underrepresented students to become physicians, because patients deserve doctors who share their stories.</p>
+        <a class="link" href="https://www.futureminoritydoctor.com" target="_blank" rel="noopener">Meet the nonprofit</a>
+      </article>
+      <article class="avenue reveal">
+        <div class="for">For families</div>
+        <h3>Healing Arts Pediatrics</h3>
+        <p>My integrative medical practice in Salt Lake City - blending the best of modern medicine with healing modalities like clinical hypnosis, myofascial release, and herbalism. Now welcoming adults seeking deeper healing, too.</p>
+        <a class="link" href="https://www.healingartspediatrics.com" target="_blank" rel="noopener">Visit the clinic</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section id="story">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <div class="frame">
+          <img class="story-portrait" src="assets/img/marina-headshot.webp" alt="Dr. Marina Capella" loading="lazy">
+        </div>
+      </div>
+      <div class="about reveal">
+        <div class="eyebrow">My story</div>
+        <h2>I went into medicine to heal. <em class="soul">First, I had to heal myself.</em></h2>
+        <p style="margin-top:1.4rem">I come from humble roots - the daughter of immigrants, one of five kids, in a family that prayed we'd stay healthy because we couldn't afford for us not to be. I still remember watching my mother add up groceries in her head so she'd never come up short at the register. That's why I became a doctor: to help equalize the healthcare landscape for families like mine.</p>
+        <p>And for years, that's exactly what I did - free clinics, a safety-net hospital, a community health center serving mostly uninsured and Spanish-speaking families. But somewhere along the way, I began to feel broken. I'd fallen for the arrival fallacy of medicine - the belief that fulfillment was waiting at the end of training - and instead found myself anxious, burned out, and pouring everything I had into a system that had nothing left to give back. I was healing everyone but myself.</p>
+        <p>So in late 2021, I made a different choice. Instead of fitting a job description, I wrote my own - a direct-care practice built on presence, intuition, and time. I trained in clinical hypnosis, myofascial release, and herbalism so I could treat the whole person, not just the chart. Today I care for a beautifully diverse community of families, and I feel whole again.</p>
+        <div class="pull">"True healing begins when we integrate everything we are - the science and the soul, the left brain and the right."</div>
+      </div>
+    </div>
+    <div class="cred-strip reveal">
+      <div class="cred"><span class="mark"></span><span><strong>Double board-certified</strong>General Pediatrics &amp; Integrative Medicine</span></div>
+      <div class="cred"><span class="mark"></span><span><strong>MD, MEd, MBA, FAAP, FABOIM</strong>Stanford · UC San Diego · Harvard · Harbor-UCLA · Utah</span></div>
+      <div class="cred"><span class="mark"></span><span><strong>Founder &amp; entrepreneur</strong>Built the first pediatric DPC in greater Salt Lake</span></div>
+      <div class="cred"><span class="mark"></span><span><strong>Educator &amp; mentor</strong>Adjunct faculty at the University of Utah &amp; Noorda College of Osteopathic Medicine</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO - brown grounding band ============ -->
+<section class="video">
+  <div class="wrap">
+    <div class="eyebrow reveal">In her own words</div>
+    <h2 class="reveal">Some things can't be read. <em>They have to be felt.</em></h2>
+    <div class="video-frame reveal">
+      <button class="video-play" type="button" data-yt="dLif1pKPZVw" style="background-image:url('assets/img/mc-video-thumbnail.webp')" aria-label="Play video: Marina on opening her practice and founding DPC Pediatrician">
+        <span class="video-play-btn" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
+      </button>
+    </div>
+    <p class="video-note reveal">Video placeholder - interim clip, final brand video to come.</p>
+
+    <div class="video-aside reveal">
+      <div class="video-aside-copy">
+        <div class="eyebrow">A lighter note</div>
+        <h3>Reimagining medicine can start <em>with a little joy.</em></h3>
+        <p>When I launched my DPC consulting company, I didn't write a brochure - I rewrote "Defying Gravity." A reminder that healing the healer still leaves room for play.</p>
+      </div>
+      <div class="video-aside-frame">
+        <button class="video-play video-play-aside" type="button" data-yt="C8lz1lPbK8E" data-title="Defying Gravity - a DPC parody by Dr. Marina Capella" style="background-image:url('https://img.youtube.com/vi/C8lz1lPbK8E/hqdefault.jpg')" aria-label="Play video: Defying Gravity, a DPC parody">
+          <span class="video-play-btn" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOR PHYSICIANS ============ -->
+<section class="healers" id="physicians">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">For physicians</div>
+      <h2>You learned to use the microscope. <em class="soul">Let's relearn how to step back and see the forest.</em></h2>
+      <p class="lede" style="margin-top:1.4rem">Coaching and mentorship for physicians who are ready to heal from a system that taught them to override their intuition - and to build careers that feed their souls instead of consuming them.</p>
+    </div>
+
+    <div class="healer-grid">
+      <div class="healer-card reveal">
+        <h3>Reclaim your power</h3>
+        <p>Recognize the trauma woven through medical training, name your burnout honestly, and begin the work of healing - so you can keep being a healer without losing yourself.</p>
+      </div>
+      <div class="healer-card reveal">
+        <h3>Integrate left &amp; right brain</h3>
+        <p>You've mastered the science. I'll help you trust your intuition again - the part of you that knows what your patients, and your life, actually need.</p>
+      </div>
+      <div class="healer-card reveal">
+        <h3>Build a practice that fits</h3>
+        <p>Practical, been-there guidance on direct care entrepreneurship - from someone who grew a startup clinic into a thriving practice without sacrificing her values.</p>
+      </div>
+    </div>
+    <div class="podcast-callout reveal">
+      <div class="mic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FAF7F1" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+      <p><strong>200+ episodes of free guidance.</strong> On the DPC Pediatrician podcast, I share everything I've learned about building a direct care practice - the strategy, the mindset, and the soul work.</p>
+      <a class="btn btn-ghost" href="https://dpcpediatrician.com/podcast/" target="_blank" rel="noopener">Listen to the podcast</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPEAKING ============ -->
+<section class="speaking" id="speaking">
+  <div class="wrap speaking-grid">
+    <div class="reveal">
+      <div class="eyebrow">Speaking</div>
+      <h2>Invite Dr. Capella to <em class="soul">your stage.</em></h2>
+      <p class="lede" style="margin-top:1.4rem">Marina speaks with warmth, honesty, and hard-won wisdom - turning her own path from burnout back to wholeness into talks that leave a room feeling seen, and ready to practice medicine differently. A few of the topics she's invited to explore:</p>
+      <ul class="topic-list">
+        <li>Healing the healer: physician burnout, trauma &amp; recovery</li>
+        <li>Integrative medicine: blending science and intuition</li>
+        <li>Direct primary care &amp; physician entrepreneurship</li>
+        <li>Diversity in medicine &amp; mentoring future doctors</li>
+      </ul>
+      <a class="btn btn-primary" style="margin-top:2rem" href="#contact" data-intent="speaking">Inquire about speaking</a>
+    </div>
+    <div class="reveal">
+      <div class="frame">
+        <img class="speaking-portrait" src="assets/img/marina-speaking.webp" alt="Dr. Marina Capella" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK ============ -->
+<section class="book" id="book">
+  <div class="wrap book-grid">
+    <div class="reveal">
+      <div class="book-cover" aria-label="Book cover concept">
+        <div class="bk-frame"></div>
+        <div class="bk-kicker">A memoir</div>
+        <div class="bk-sun"><span class="bk-rays"></span><span class="bk-disc"></span></div>
+        <div class="bk-title">Awakening<br>the Healer's <em>Soul</em></div>
+        <div class="bk-sub">A physician's journey from burnout back to wholeness</div>
+        <div class="bk-grow"></div>
+        <div class="bk-rule"></div>
+        <div class="bk-author">Marina Capella, MD</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Coming soon</div>
+      <h2>A book for every healer who forgot <em class="soul">they were one.</em></h2>
+      <p class="lede" style="margin-top:1.4rem">My first book tells the truth about how medicine breaks its healers - and how we take our power back. Part memoir, part guide, it's the story of my own burnout, healing, and return to medicine on my own terms. Join the list to follow the journey and be the first to know when it arrives.</p>
+      <form class="signup" id="signup-form">
+        <input type="email" required placeholder="Your email address" aria-label="Email address">
+        <button class="btn btn-primary" type="submit">Keep me posted</button>
+      </form>
+      <p class="fine">No noise - just meaningful updates on the book, events, and new resources.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="quotes">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">What people say</div>
+      <h2>A calming presence. <em class="soul">A caring touch.</em></h2>
+    </div>
+    <div class="quote-grid">
+      <div class="quote reveal">
+        <blockquote>"What I am most impressed with is how much time she takes with each of my children, never sitting behind a computer. She has a whole-body approach and is really interested in supporting my children's overall wellness, not just treating a symptom."</blockquote>
+        <cite>- Leigh, Healing Arts Pediatrics family</cite>
+      </div>
+      <div class="quote reveal">
+        <blockquote>"We left a big chain pediatric office for the more personalized, authentic and caring approach provided by Dr. Capella. This is how medical care should be! You are not just a number."</blockquote>
+        <cite>- Janell, Healing Arts Pediatrics family</cite>
+      </div>
+      <div class="quote reveal">
+        <blockquote>"Dr. Capella is out of this world good. She is quick to respond when we reach out with questions and really knows her stuff. We are members with her and couldn't be happier."</blockquote>
+        <cite>- Alicia, Healing Arts Pediatrics family</cite>
+      </div>
+    </div>
+    <p class="fine reveal">Patient quotes published at healingartspediatrics.com - physician coaching &amp; mentee testimonials to be added.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Let's find <em>the right avenue.</em></h2>
+      <p>Tell me a little about what you're looking for, and I'll help you find the right path. Every message comes straight to me - I read each one personally, and I'll write back myself.</p>
+    </div>
+    <form class="gatekeeper reveal" id="contact-form">
+      <div>
+        <label for="intent">I'm reaching out about…</label>
+        <select id="intent" required>
+          <option value="" selected disabled>Choose one</option>
+          <option value="coaching">Physician coaching or mentorship</option>
+          <option value="speaking">Inviting Dr. Capella to speak</option>
+          <option value="book">The book / media inquiries</option>
+          <option value="clinic">Becoming a patient (Healing Arts)</option>
+          <option value="consulting">DPC consulting &amp; courses</option>
+          <option value="nonprofit">Future Minority Doctor</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+      <div class="route-note" id="route-clinic" aria-live="polite">Looking to join the practice? You'll find everything at <a href="https://www.healingartspediatrics.com" target="_blank" rel="noopener">healingartspediatrics.com</a> - or send your note below and we'll connect you.</div>
+      <div class="route-note" id="route-consulting" aria-live="polite">Ready to dive in? Explore consulting, courses, and the podcast at <a href="https://dpcpediatrician.com" target="_blank" rel="noopener">dpcpediatrician.com</a> - or send your note below.</div>
+      <div class="route-note" id="route-nonprofit" aria-live="polite">Learn more and get involved at <a href="https://www.futureminoritydoctor.com" target="_blank" rel="noopener">futureminoritydoctor.com</a> - or send your note below.</div>
+      <div class="form-row">
+        <div>
+          <label for="name">Your name</label>
+          <input id="name" type="text" required placeholder="Full name">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" required placeholder="you@example.com">
+        </div>
+      </div>
+      <div>
+        <label for="msg">Your message</label>
+        <textarea id="msg" placeholder="Share a bit about what you're hoping for…"></textarea>
+      </div>
+      <div><button class="btn btn-primary" type="submit">Send message</button></div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <a class="logo" href="#top">Dr. Marina <em>Capella</em></a>
+      <p style="max-width:49ch;margin-top:.8rem;font-size:.85rem">Integrative physician, mentor, and community builder. Healing the healer - and reimagining what medicine can be.</p>
+    </div>
+    <div class="foot-right">
+      <ul>
+        <li><a href="https://www.healingartspediatrics.com" target="_blank" rel="noopener">Healing Arts Pediatrics</a></li>
+        <li><a href="https://dpcpediatrician.com" target="_blank" rel="noopener">DPC Pediatrician</a></li>
+        <li><a href="https://www.futureminoritydoctor.com" target="_blank" rel="noopener">Future Minority Doctor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-fine">
+    <span>© 2026 Marina Capella, LLC · <a href="#">Terms</a> · <a href="#">Privacy</a> - Homepage concept 1</span>
+    <div class="socials" aria-label="Dr. Capella on social media">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"></path><path d="m10 15 5-3-5-3z"></path></svg></a>
+        <a href="#" aria-label="Podcast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></a>
+      </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/interactive.js"></script>
+<script>
+  /* v2 - wire the secondary "lighter note" video (shared interactive.js only binds the first .video-play) */
+  (function () {
+    var aside = document.querySelector('.video-play-aside');
+    if (!aside) return;
+    aside.addEventListener('click', function () {
+      var id = aside.getAttribute('data-yt');
+      var frame = aside.parentElement;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      iframe.title = aside.getAttribute('data-title') || 'Video';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.style.cssText = 'width:100%;height:100%;border:0;display:block';
+      frame.replaceChild(iframe, aside);
+    });
+  })();
+</script>
+
+<!-- Tweaks panel (isolated React root; only appears in Tweaks mode) -->
+<div id="mc-tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="js/tweaks-app.jsx"></script>
+</body>
+</html>

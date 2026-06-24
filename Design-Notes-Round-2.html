@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxQzJGMjIiLz48dGV4dCB4PSIzMiIgeT0iNDUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCdUaW1lcyBOZXcgUm9tYW4nLHNlcmlmIiBmb250LXNpemU9IjM1IiBmb250LXN0eWxlPSJpdGFsaWMiIGZpbGw9IiNFQURDQzkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSItMSI+TUM8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Marina Capella — Your Homepage, Round 2: The New Model of Medicine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1C2F22;
+    --forest-soft:rgba(28,47,34,.74);
+    --sage:#667B57;
+    --sage-deep:#526547;
+    --ochre:#C2A385;
+    --cream:#EADCC9;
+    --cream-card:#F2E8D6;
+    --on-dark:#F2E8D6;
+    --cta:#8A5238;
+    --slate:#436A7A;
+    --slate-deep:#2C454F;
+    --line:rgba(194,163,133,.55);
+    --paper:#F6EFE2;
+    --max:880px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Figtree',system-ui,sans-serif;
+    color:var(--forest);
+    background:var(--paper);
+    line-height:1.68;
+    font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{max-width:var(--max);margin:0 auto;padding:0 clamp(22px,5vw,40px)}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    background:var(--forest);color:var(--on-dark);
+    padding:clamp(3rem,7vw,5rem) 0 clamp(2.6rem,6vw,4rem);
+  }
+  .masthead .kicker{
+    font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+    font-weight:600;color:var(--ochre);margin-bottom:1.5rem;
+  }
+  .masthead h1{
+    font-family:'Fraunces',serif;font-weight:380;line-height:1.08;
+    font-size:clamp(2.2rem,5vw,3.4rem);color:var(--on-dark);letter-spacing:-0.01em;
+    margin-bottom:1.3rem;text-wrap:balance;
+  }
+  .masthead h1 em{font-style:italic;color:var(--ochre)}
+  .masthead .standfirst{
+    font-size:1.08rem;color:rgba(242,232,214,.86);max-width:60ch;
+  }
+  .masthead .meta{
+    margin-top:2.2rem;padding-top:1.6rem;
+    border-top:1px solid rgba(242,232,214,.2);
+    display:flex;flex-wrap:wrap;gap:.4rem 2.4rem;font-size:.86rem;
+    color:rgba(242,232,214,.78);
+  }
+  .masthead .meta b{color:var(--on-dark);font-weight:600}
+  .masthead .meta a{color:var(--ochre);text-decoration:none;border-bottom:1px solid rgba(194,163,133,.4)}
+
+  /* ---------- body ---------- */
+  main{padding:clamp(2.6rem,6vw,4.2rem) 0 4rem}
+
+  /* opening letter */
+  .letter{
+    max-width:64ch;margin-bottom:3rem;
+  }
+  .letter .salute{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+    font-size:1.5rem;color:var(--sage-deep);margin-bottom:1rem;
+  }
+  .letter p{font-size:1.08rem;color:var(--forest-soft);margin-bottom:1rem}
+  .letter p strong{font-weight:600;color:var(--forest)}
+  .letter .sign{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1rem;
+    color:var(--forest);margin-top:1.4rem;
+  }
+
+  section{margin-bottom:3.2rem;scroll-margin-top:1rem}
+  .sec-num{
+    font-family:'Fraunces',serif;font-style:italic;font-size:.95rem;
+    color:var(--sage-deep);font-weight:500;
+  }
+  h2{
+    font-family:'Fraunces',serif;font-weight:440;line-height:1.16;
+    font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-0.01em;
+    margin:.35rem 0 1.1rem;text-wrap:balance;
+  }
+  h2 em{font-style:italic;color:var(--sage)}
+  h3{
+    font-family:'Figtree',sans-serif;font-weight:700;font-size:1rem;
+    letter-spacing:.01em;margin:1.7rem 0 .5rem;color:var(--forest);
+  }
+  p{margin-bottom:1rem;max-width:64ch}
+  p strong{font-weight:600}
+
+  /* divider — soft circle (diamonds retired this round) */
+  .divider{
+    display:flex;align-items:center;gap:1rem;margin:2.6rem 0;
+  }
+  .divider::before,.divider::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(90deg,transparent,var(--ochre) 30%,var(--ochre) 70%,transparent);
+  }
+  .divider span{width:7px;height:7px;background:var(--sage);border-radius:50%;flex:none}
+
+  ul.notes{list-style:none;margin:.4rem 0 1rem}
+  ul.notes li{
+    position:relative;padding-left:1.4rem;margin-bottom:.6rem;max-width:64ch;
+  }
+  ul.notes li::before{
+    content:"";position:absolute;left:0;top:.6em;
+    width:6px;height:6px;border-radius:50%;background:var(--sage);
+  }
+  ul.notes li b{font-weight:600}
+
+  .callout{
+    background:var(--cream-card);border:1px solid var(--line);
+    border-left:3px solid var(--ochre);border-radius:0 12px 12px 0;
+    padding:1.2rem 1.4rem;margin:1.4rem 0;font-size:.97rem;
+    color:var(--forest-soft);max-width:64ch;
+  }
+  .callout b{color:var(--forest)}
+
+  /* "you told us" echo — her own words, answered */
+  .echo{
+    background:var(--cream-card);border:1px solid var(--line);
+    border-radius:14px;border-top:3px solid var(--sage);
+    padding:1.15rem 1.4rem 1.25rem;margin:1.5rem 0;max-width:64ch;
+  }
+  .echo .lbl{
+    font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:600;color:var(--sage-deep);margin-bottom:.5rem;
+    display:flex;align-items:center;gap:.55rem;
+  }
+  .echo .lbl::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sage);flex:none}
+  .echo .said{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+    font-size:1.18rem;line-height:1.38;color:var(--forest);
+  }
+
+  /* before / after change rows */
+  .change{
+    display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0;max-width:64ch;
+  }
+  .change .col{
+    border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;background:var(--cream-card);
+  }
+  .change .col .tag{
+    font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem;
+  }
+  .change .col.was{opacity:.86}
+  .change .col.was .tag{color:var(--forest-soft)}
+  .change .col.now{border-top:3px solid var(--cta)}
+  .change .col.now .tag{color:var(--cta)}
+  .change .col p{font-size:.92rem;margin:0;color:var(--forest-soft)}
+  .change .col p strong{color:var(--forest)}
+  @media (max-width:620px){.change{grid-template-columns:1fr}}
+
+  /* the woven term — touchpoints list */
+  .weave{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:.8rem;margin:1.3rem 0 .4rem;max-width:64ch;
+  }
+  .weave .pt{
+    border:1px solid var(--line);border-radius:12px;background:var(--cream-card);
+    padding:.85rem 1rem;
+  }
+  .weave .pt .where{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--sage-deep);margin-bottom:.35rem}
+  .weave .pt .what{font-family:'Fraunces',serif;font-style:italic;font-size:1.02rem;line-height:1.3;color:var(--forest)}
+
+  /* section-flow legend */
+  .flow{display:flex;flex-direction:column;gap:.4rem;margin:1.3rem 0 .4rem;max-width:64ch}
+  .flow .band{
+    display:flex;align-items:center;gap:.8rem;border-radius:9px;padding:.6rem .9rem;
+    font-size:.86rem;border:1px solid var(--line);
+  }
+  .flow .band .nm{font-weight:600}
+  .flow .band .tone{font-size:.74rem;letter-spacing:.04em;color:var(--forest-soft);margin-left:auto}
+  .flow .band.cream{background:#F7EFE2;color:var(--forest)}
+  .flow .band.creamW{background:#EDE3D1;color:var(--forest)}
+  .flow .band.sage{background:var(--sage-deep);color:var(--on-dark);border-color:transparent}
+  .flow .band.sage .tone{color:rgba(242,232,214,.72)}
+  .flow .band.slate{background:var(--slate-deep);color:var(--on-dark);border-color:transparent}
+  .flow .band.slate .tone{color:rgba(242,232,214,.72)}
+
+  footer.doc-foot{
+    background:var(--forest);color:rgba(242,232,214,.8);
+    padding:2.4rem 0;font-size:.85rem;margin-top:2rem;
+  }
+  footer.doc-foot .logo{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--on-dark)}
+  footer.doc-foot .logo em{font-style:italic;color:var(--ochre)}
+  footer.doc-foot p{margin-top:.5rem;max-width:60ch;font-size:.82rem}
+
+  a.inline{color:var(--cta);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(138,82,56,.35)}
+
+  @media print{
+    body{background:#fff;font-size:11pt}
+    .masthead{background:var(--forest)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .callout,.echo,.change .col,.weave .pt,.flow .band,footer.doc-foot{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    section{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="sheet">
+    <div class="kicker">Peaceful Media · Round two · Prepared for Dr. Marina Capella</div>
+    <h1>The new model of medicine.<br><em>Round two of your homepage.</em></h1>
+    <p class="standfirst">After our last call — and the conversation with Sonia that gave you permission to think bigger — you asked us to be bolder. This round threads one idea through the whole page: that you aren't only healing physicians, you're building a new model of medicine. Here's what changed, and why.</p>
+    <div class="meta">
+      <span><b>See it live:</b> <a href="https://mc.peacefuldesign.com/">mc.peacefuldesign.com</a></span>
+      <span><b>This is:</b> Your homepage, second concept (Round 2)</span>
+      <span><b>Builds on:</b> Roadmap call #2 + your messaging note</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="sheet">
+
+    <div class="letter">
+      <p class="salute">Marina —</p>
+      <p>Last time, you told us something had shifted. "Healing the healer" still resonated, but you'd realized it pointed at only one part of the work — your work <em>with physicians</em>. What you're actually reaching for is larger: <strong>to reinvent medicine itself.</strong> A model that brings the soul back to the science, for healers and the people they care for alike.</p>
+      <p>So this round isn't a redesign — it's a <strong>refocus</strong>. The voice, palette, and type you loved are all intact. What's new is a clear north star, named plainly, and woven through every section so the page finally says the bold thing out loud. Below, each change sits beside the words of yours that prompted it.</p>
+      <p class="sign">— Nicki &amp; Sable</p>
+    </div>
+
+    <!-- 1 -->
+    <section>
+      <div class="sec-num">01</div>
+      <h2>A bolder north star — <em>the new model of medicine</em></h2>
+      <p>The lead message changed. "Healing the healer" now lives further down as a thread, not the banner — because, as you put it, it spoke only to physicians. The page now opens on the bigger vision, the one that includes everyone you want to reach.</p>
+      <div class="echo">
+        <div class="lbl">On our last call, you said</div>
+        <div class="said">"The problem with that is it focuses only on my work with physicians — whereas what I'm really trying to do is reinvent medicine. Create a new model for everyone."</div>
+      </div>
+      <div class="change">
+        <div class="col was">
+          <div class="tag">Round 1 hero</div>
+          <p><strong>Healing the healer.</strong> Reimagining medicine.</p>
+        </div>
+        <div class="col now">
+          <div class="tag">Round 2 hero</div>
+          <p><strong>Welcome to the new model of medicine.</strong> With a primary button that says <em>Explore the new model.</em></p>
+        </div>
+      </div>
+      <ul class="notes">
+        <li><b>The opening paragraph now speaks to physicians first</b> — coaching and mentorship to heal from burnout and relearn the intuitive, soul-centered side of medicine training left out — then widens to the whole vision.</li>
+        <li><b>Three headline options are built into the page</b> so you can feel which level of boldness fits before we lock it: <em>"Welcome to the new model of medicine," "Reimagining medicine, starting with the healer,"</em> and <em>"Integrative Medicine 2.0."</em></li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 2 -->
+    <section>
+      <div class="sec-num">02</div>
+      <h2>A new section at the heart — <em>where the idea lives</em></h2>
+      <p>The page now has a section that does nothing but name the thing you're building. It's a quiet, deep-sage band — your most important idea given its own room — headed <strong>"You mastered the science. Now reclaim the soul of medicine."</strong></p>
+      <div class="echo">
+        <div class="lbl">On our last call, you said</div>
+        <div class="said">"This is the new model of medicine. This is medicine 2.0 — reimagining medicine."</div>
+      </div>
+      <ul class="notes">
+        <li><b>It names the gap you keep returning to:</b> training taught you the science and told you to silence your intuition. This is the half of a physician's education nobody gave them — and the page says so directly.</li>
+        <li><b>Three pillars</b> carry the promise: <em>Relearn your intuition · Science and soul, integrated · Heal the healer first</em> — styled to match the "For physicians" columns, so the page feels like one system.</li>
+        <li><b>It coins the term.</b> The section closes on <em>"Call it Integrative Medicine 2.0,"</em> set in your signature italic so the phrase lands as a banner you can own.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 3 -->
+    <section>
+      <div class="sec-num">03</div>
+      <h2>Saying it out loud — <em>you're leading this</em></h2>
+      <p>You said the bold framing still feels uncomfortable — and also that you don't see anyone else doing what you're envisioning. That space is yours to claim. The copy steps into it plainly, without slipping into hype.</p>
+      <div class="echo">
+        <div class="lbl">On our last call, you said</div>
+        <div class="said">"I don't really see anyone out there doing what I am envisioning. So there is space to be filled — to own that space."</div>
+      </div>
+      <ul class="notes">
+        <li><b>The page positions you as the one building the model</b> — "I'm building a new model of medicine that gives physicians back the other half of their education" — first person, grounded, never a sales pitch.</li>
+        <li><b>It stays true to your voice.</b> Bold in claim, calm in tone. We lead with the vision, not with "leader of" language you're not ready to wear yet — the boldness is in <em>what</em> you're doing, stated simply.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 4 -->
+    <section>
+      <div class="sec-num">04</div>
+      <h2>Keeping people home — <em>the avenues now point inward</em></h2>
+      <p>In Round 1, the three avenue cards sent visitors straight back out to your other sites. You wanted the opposite: a hub that holds people here. So the cards now lead <em>down the page</em> — to the vision, to coaching, to the book — your three most important topics.</p>
+      <div class="echo">
+        <div class="lbl">On our last call, you said</div>
+        <div class="said">"If our intent is to keep people on the site… instead of leading externally, we could lead down to the section on the page."</div>
+      </div>
+      <div class="change">
+        <div class="col was">
+          <div class="tag">Round 1 avenues</div>
+          <p>DPC Pediatrician · Future Minority Doctor · Healing Arts — three <strong>exits</strong> to the other businesses.</p>
+        </div>
+        <div class="col now">
+          <div class="tag">Round 2 avenues</div>
+          <p>A new model of medicine · Coaching &amp; mentorship · The book — three <strong>on-ramps</strong> deeper into your story.</p>
+        </div>
+      </div>
+      <ul class="notes">
+        <li><b>You also noticed</b> the old three-bucket framing read more like an "about me" than the purpose of the site. Reframed as on-ramps, they now introduce the page rather than end it.</li>
+        <li><b>The other businesses are still reachable</b> — through the contact gatekeeper and the footer — but the umbrella site is now the destination, not a waystation.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 5 -->
+    <section>
+      <div class="sec-num">05</div>
+      <h2>The book, brought forward — <em>the bridge to the message</em></h2>
+      <p>You were clear that the book is what carries this whole idea to the world. So it's been given a real moment of its own, lower on the page where it bridges your story to the bigger vision.</p>
+      <div class="echo">
+        <div class="lbl">On our last call, you said</div>
+        <div class="said">"The book is really going to be the bridge to that message… maybe making the book more prominent."</div>
+      </div>
+      <ul class="notes">
+        <li><b>A standing book cover — the "Dawn" concept</b> — a rising sun on warm cream, in terracotta and gold. It reads as hopeful and literary, an uplifting memoir, not a textbook.</li>
+        <li><b>It sits on a quieter, deeper-cream band</b> so it stands apart from your story above it and feels like its own held moment.</li>
+        <li><b>The mailing-list signup lives right here</b> — your stated second priority, building the audience now so there's a room full of people waiting when the book lands. The microcopy keeps your promise: no noise, just meaningful updates.</li>
+        <li><b>The cover is a concept, not final art</b> — a placeholder holding the shape and feeling until the real cover exists.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 6 -->
+    <section>
+      <div class="sec-num">06</div>
+      <h2>One idea, many touchpoints — <em>how we wove it through</em></h2>
+      <p>A north star only works if it shows up everywhere, quietly, without shouting. "The new model of medicine" — and its sharper name, <em>Integrative Medicine 2.0</em> — now recurs across the page so the idea compounds as people scroll.</p>
+      <div class="weave">
+        <div class="pt"><div class="where">The hero</div><div class="what">"Welcome to the new model of medicine."</div></div>
+        <div class="pt"><div class="where">First avenue card</div><div class="what">"A new model of medicine" — the vision, up front.</div></div>
+        <div class="pt"><div class="where">The thesis section</div><div class="what">"Now reclaim the soul of medicine. Call it Integrative Medicine 2.0."</div></div>
+        <div class="pt"><div class="where">For physicians</div><div class="what">Coaching to relearn the soul-centered side of healing.</div></div>
+        <div class="pt"><div class="where">The book</div><div class="what">The story of the new model — and the bridge to it.</div></div>
+        <div class="pt"><div class="where">Footer &amp; page summary</div><div class="what">"Building a new model of medicine — one that treats the whole of who you are."</div></div>
+      </div>
+      <div class="callout">The phrasing stays consistent on purpose. A first-time visitor and a returning one both meet the same idea, worded the same way — which is exactly how a message becomes <b>a position you own.</b></div>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 7 -->
+    <section>
+      <div class="sec-num">07</div>
+      <h2>The flow, retuned — <em>and that pop of blue</em></h2>
+      <p>With a new section added and the order resequenced, we retuned the rhythm of the page so it breathes and never reads heavy. You told us the blue-and-brown felt earthy and calming — so the slate-blue earns a deliberate place mid-page, breaking up the greens.</p>
+      <div class="echo">
+        <div class="lbl">On our last call, you said</div>
+        <div class="said">"I love that combination of the blue and the brown — honestly, it feels very earthy and calming."</div>
+      </div>
+      <div class="flow">
+        <div class="band cream"><span class="nm">Hero · Avenues</span><span class="tone">cream</span></div>
+        <div class="band sage"><span class="nm">The new model of medicine</span><span class="tone">deep sage</span></div>
+        <div class="band cream"><span class="nm">My story</span><span class="tone">cream</span></div>
+        <div class="band slate"><span class="nm">In her own words (video)</span><span class="tone">slate-blue</span></div>
+        <div class="band creamW"><span class="nm">The book</span><span class="tone">deeper cream</span></div>
+        <div class="band cream"><span class="nm">For physicians</span><span class="tone">cream</span></div>
+        <div class="band sage"><span class="nm">Speaking</span><span class="tone">deep sage</span></div>
+        <div class="band cream"><span class="nm">Testimonials</span><span class="tone">cream</span></div>
+        <div class="band slate"><span class="nm">Get in touch · Footer</span><span class="tone">slate-blue → forest</span></div>
+      </div>
+      <ul class="notes">
+        <li><b>No two dark bands sit adjacent.</b> Sage and slate alternate as quiet punctuation between cream sections, so the eye always gets a breath.</li>
+        <li><b>The podcast callout shifted to slate-blue</b> so it stands out from the sage speaking band right beneath it, rather than blending into more green.</li>
+        <li><b>One small brand refinement:</b> the diamond marks have been retired in favor of soft circles throughout — gentler, and used sparingly. (You'll see them here, too.)</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 8 -->
+    <section>
+      <div class="sec-num">08</div>
+      <h2>What stayed — <em>exactly as you loved it</em></h2>
+      <p>None of the things you reacted to warmly were touched. The refocus rides on top of the foundation you already approved.</p>
+      <div class="echo">
+        <div class="lbl">On our last call, you said</div>
+        <div class="said">"I'm really loving the colors so far… I love the fonts. I wouldn't change it."</div>
+      </div>
+      <ul class="notes">
+        <li><b>The palette and type are unchanged</b> — the earthy five on cream, Fraunces and Figtree, the italic "soul" turns, the terracotta-means-clickable discipline.</li>
+        <li><b>Your real brand photography stays in place</b> — the hero, your story portrait, the speaking portrait.</li>
+        <li><b>The gatekeeper contact form, the video section, and the credential strip</b> all carry over from Round 1 intact.</li>
+      </ul>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 9 -->
+    <section>
+      <div class="sec-num">09</div>
+      <h2>"Community builder" — <em>kept, lightly</em></h2>
+      <p>You were honest that you felt mixed about this one — and then landed on keeping it, because it's true. It stays in your identity line, worded plainly, and it's a one-word change to drop if you decide otherwise.</p>
+      <div class="echo">
+        <div class="lbl">On our last call, you said</div>
+        <div class="said">"I'm a little mixed on that one… but I think it's true, because I'm involved in a lot of efforts."</div>
+      </div>
+    </section>
+
+    <div class="divider"><span></span></div>
+
+    <!-- 10 -->
+    <section>
+      <div class="sec-num">10</div>
+      <h2>What's settled — <em>and what's still to come</em></h2>
+      <p>So you review with the right lens, here's where this round stands and the few decisions left to make:</p>
+      <ul class="notes">
+        <li><b>Your headline — pick one.</b> Three options are live in the page so you can feel them in context. Once you choose, we lock it and retire the chooser.</li>
+        <li><b>Book cover — concept only.</b> "Dawn" holds the feeling; your real cover art drops straight into the slot when it's ready.</li>
+        <li><b>Physician &amp; mentee testimonials — still to gather.</b> The patient quotes are real; coaching and mentorship voices will join them.</li>
+        <li><b>Video — still interim.</b> Your final brand film replaces the stand-in in the same frame.</li>
+        <li><b>"Community builder" — your call.</b> Kept for now; easy to drop.</li>
+      </ul>
+      <div class="callout">The bones are set and the message is now unmistakably <b>the new model of medicine.</b> What's left are a handful of choices only you can make — and a few final assets settling into ready-made slots.</div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="doc-foot">
+  <div class="sheet">
+    <div class="logo">Dr. Marina <em>Capella</em></div>
+    <p>Round two — the thinking behind your homepage · Prepared for you by Peaceful Media, to read alongside the live concept at mc.peacefuldesign.com.</p>
+  </div>
+</footer>
+
+</body>
+</html>

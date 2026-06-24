@@ -90,7 +90,7 @@ nav a{ letter-spacing:.03em }
 .proof{ background:var(--band-light); }
 #avenues{ background:var(--band-warm); }
 #story{ background:var(--band-light); }
-.healers{ background:var(--band-warm); }   /* physicians */
+.healers{ background:var(--band-light); }   /* physicians */
 .book{ background:var(--band-light); }
 .quotes{ background:var(--band-warm); }     /* testimonials */
 /* avenue cards: warm, a touch lighter than the band, with a soft resting
@@ -142,8 +142,9 @@ nav a{ letter-spacing:.03em }
   --slate:#436A7A;       /* dusty slate-blue accent */
   --slate-deep:#2C454F;  /* deep panel bg — cream text AA-safe (~8:1) */
 }
-/* Two of the three dark contrast panels move from sage to slate, so green no
-   longer owns every band; speaking stays sage for brand warmth. */
+/* Video is a slate-blue contrast band — the pop of blue mid-page breaks up the
+   cream + green and balances the slate contact/footer close (client loves the
+   blue + brown combination). */
 .video{ background:var(--slate-deep); }
 /* Contact + footer read as one closing block: a single slate gradient that
    darkens toward the bottom of the page (contact starts at slate, the footer

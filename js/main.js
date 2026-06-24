@@ -51,12 +51,14 @@ intent.addEventListener('change', () => {
   if (id) document.getElementById(id).style.display = 'block';
 });
 
-// Speaking CTA pre-selects intent
-document.querySelector('[data-intent="speaking"]').addEventListener('click', () => {
-  setTimeout(() => {
-    intent.value = 'speaking';
-    intent.dispatchEvent(new Event('change'));
-  }, 400);
+// Any CTA carrying data-intent pre-selects the contact gatekeeper
+document.querySelectorAll('[data-intent]').forEach((el) => {
+  el.addEventListener('click', () => {
+    setTimeout(() => {
+      intent.value = el.getAttribute('data-intent');
+      intent.dispatchEvent(new Event('change'));
+    }, 400);
+  });
 });
 
 // Prototype-only form handlers

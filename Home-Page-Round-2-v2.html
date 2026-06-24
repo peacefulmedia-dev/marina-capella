@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/interactive.css">
 <style>
-  /* v2 - secondary "lighter note" video within the slate video band */
+  /* v2 - secondary "lighter note" video within the sage video band */
   .video-aside{
     max-width:920px;margin:3.4rem auto 0;padding-top:3rem;
     border-top:1px solid rgba(242,232,214,.2);
@@ -55,77 +55,14 @@
   /* ===== The new model of medicine — thesis band (deep-sage contrast panel) ===== */
   .newmodel{background:var(--sage-deep);color:var(--on-dark)}
   .newmodel .eyebrow{color:var(--on-dark)}
-  .nm-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,5vw,5.5rem);align-items:center}
-  .nm-head{max-width:none}
-  .newmodel h2{color:var(--on-dark);max-width:none;font-size:clamp(2.2rem,3.2vw,3.1rem);line-height:1.06}
+  .newmodel h2{color:var(--on-dark);max-width:18ch}
   .newmodel h2 em.soul{color:var(--cream);display:block;margin-top:.2rem}
-  .newmodel .lede{color:var(--on-dark);max-width:52ch;margin-top:1.6rem;font-size:1.1rem;line-height:1.68}
-  .newmodel .lede .im2{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:#EFE0C2}
-  /* ===== Triangle figure: three principles held in one practice ===== */
-  .nm-figure{position:relative;width:100%;max-width:520px;margin:0 auto;aspect-ratio:740/700}
-  .nm-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-  .nm-poly{fill:rgba(242,232,214,.035);stroke:var(--ochre);stroke-width:1.4;opacity:.55;
-    stroke-dasharray:2000;stroke-dashoffset:2000}
-  .nm-figure.in .nm-poly{stroke-dashoffset:0;
-    transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1)}
-  .nm-eline{fill:none;stroke:#E6CE8E;stroke-width:2.4;opacity:0;stroke-linecap:round;
-    transition:opacity .5s ease}
-  .nm-figure[data-active="a"] .nm-eA,.nm-figure[data-active="a"] .nm-eC,
-  .nm-figure[data-active="b"] .nm-eA,.nm-figure[data-active="b"] .nm-eB,
-  .nm-figure[data-active="c"] .nm-eB,.nm-figure[data-active="c"] .nm-eC{opacity:.92}
-
-  /* dots sit exactly at the polygon vertices; labels are pushed outside the corners */
-  .nm-pt{position:absolute;transform:translate(-50%,-50%);background:none;border:0;padding:0;
-    cursor:pointer;width:44px;height:44px;display:grid;place-items:center;font-family:inherit}
-  .nm-pt--a{left:50%;top:10%}
-  .nm-pt--b{left:7.6%;top:88%}
-  .nm-pt--c{left:92.4%;top:88%}
-  .nm-dot{width:17px;height:17px;border-radius:50%;border:2px solid #A97E2B;background:#A97E2B;
-    box-shadow:0 0 0 0 rgba(230,206,142,0);transition:transform .45s cubic-bezier(.4,0,.2,1),
-    background .45s ease,border-color .45s ease,box-shadow .45s ease}
-  .nm-label{position:absolute;font-family:'Fraunces',serif;font-weight:400;font-size:1.1rem;line-height:1.16;
-    color:#E6CE8E;width:max-content;max-width:13ch;letter-spacing:.005em;
-    transition:color .4s ease,transform .45s cubic-bezier(.4,0,.2,1)}
-  .nm-pt--a .nm-label{bottom:100%;margin-bottom:10px;left:50%;transform:translateX(-50%);text-align:center}
-  .nm-pt--b .nm-label{top:100%;margin-top:10px;left:2px;text-align:left}
-  .nm-pt--c .nm-label{top:100%;margin-top:10px;right:2px;text-align:right}
-  .nm-pt:hover .nm-dot,.nm-pt:focus-visible .nm-dot{transform:scale(1.6);
-    background:#E6CE8E;border-color:#E6CE8E;box-shadow:0 0 0 9px rgba(230,206,142,.16)}
-  .nm-pt:hover .nm-label,.nm-pt:focus-visible .nm-label{color:#F4E7C4}
-  .nm-pt--a:hover .nm-label,.nm-pt--a:focus-visible .nm-label{transform:translate(-50%,-5px)}
-  .nm-pt--b:hover .nm-label,.nm-pt--b:focus-visible .nm-label{transform:translateY(5px)}
-  .nm-pt--c:hover .nm-label,.nm-pt--c:focus-visible .nm-label{transform:translateY(5px)}
-  .nm-pt:focus{outline:none}
-  .nm-pt:focus-visible .nm-label{text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(230,206,142,.6)}
-
-  .nm-core{position:absolute;left:50%;top:63.5%;transform:translate(-50%,-50%);
-    width:min(44%,202px);min-height:80px;text-align:center;pointer-events:none}
-  .nm-core-panel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;gap:.55rem;opacity:0;transform:translateY(6px);
-    transition:opacity .45s ease,transform .45s ease}
-  .nm-core-panel.is-on{opacity:1;transform:none}
-  .nm-core-eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#DFC79C;font-weight:600}
-  .nm-core-title{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:1.34rem;
-    color:var(--cream);line-height:1.18}
-  .nm-core-panel p{font-size:.95rem;line-height:1.55;color:rgba(242,232,214,.88);margin:0}
-  .nm-figure:not([data-active]) .nm-poly,.nm-figure[data-active=""] .nm-poly{opacity:.55}
-
-  @media (prefers-reduced-motion: reduce){
-    .nm-poly{stroke-dashoffset:0}
-    .nm-core-panel{transition:opacity .2s ease}
-  }
-  @media (max-width:1000px){
-    .nm-split{grid-template-columns:1fr;gap:3rem}
-    .newmodel .lede{max-width:60ch}
-    .nm-figure{max-width:460px;margin-top:.5rem}
-  }
-  @media (max-width:600px){
-    .nm-figure{max-width:380px}
-    .nm-label{font-size:.98rem;max-width:11ch}
-    .nm-core{width:62%;top:62%;min-height:78px}
-    .nm-core-title{font-size:1.28rem}
-    .nm-core-panel p{font-size:.88rem}
-  }
+  .newmodel .lede{color:var(--on-dark);max-width:62ch;margin-top:1.5rem;font-size:1.15rem}
+  .nm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:3.4rem}
+  .nm-pillar{border-top:1px solid rgba(242,232,214,.28);padding-top:1.2rem}
+  .nm-pillar h3{color:var(--on-dark);font-size:1.22rem;margin-bottom:.5rem}
+  .nm-pillar p{color:rgba(242,232,214,.86);font-size:.98rem;line-height:1.6}
+  @media (max-width:1000px){.nm-grid{grid-template-columns:1fr;gap:1.3rem;margin-top:2.4rem}}
 
   /* ===== Upgraded book section + toggleable cover concepts ===== */
   /* Section background options (toggle via control box) */
@@ -143,7 +80,7 @@
   .book[data-bg="sage"] .lede{color:var(--on-dark-soft)}
   .book[data-bg="sage"] .book-pull{color:var(--cream);border-left-color:#EAD6BA}
   .book[data-bg="sage"] .fine{color:rgba(242,232,214,.78)}
-  .book[data-bg="cream"]{background:var(--band-warm)}
+  .book[data-bg="cream"]{background:linear-gradient(160deg,#F4EBDB 0%,#EAD9C0 48%,#E2D0B4 100%)}
   .book[data-bg="forest"] .signup input,.book[data-bg="sage"] .signup input{background:rgba(242,232,214,.96);border-color:rgba(242,232,214,.5);color:var(--forest)}
   .book[data-bg="forest"] .signup input::placeholder,.book[data-bg="sage"] .signup input::placeholder{color:rgba(28,47,34,.55)}
   .book-grid{align-items:center}
@@ -153,35 +90,59 @@
   /* soft pedestal shadow under the standing book */
   .bookcover-stage::after{content:"";position:absolute;left:8%;right:8%;bottom:-26px;height:30px;border-radius:50%;
     background:radial-gradient(ellipse at center,rgba(28,47,34,.28),transparent 70%);filter:blur(3px);z-index:0}
-  .bookcover{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;
-    padding:2.6rem 2rem 2rem;border-radius:3px 13px 13px 3px;overflow:hidden;isolation:isolate;
-    box-shadow:0 2px 1px rgba(0,0,0,.18),0 30px 56px -10px rgba(28,47,34,.5),inset 0 0 0 1px rgba(0,0,0,.04)}
-  /* spine shading on the left edge */
-  .bookcover::before{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
-    background:linear-gradient(90deg,rgba(0,0,0,.22) 0,rgba(0,0,0,.05) 9px,rgba(0,0,0,0) 22px,rgba(0,0,0,0) 94%,rgba(255,255,255,.05) 100%)}
-  .bk-dawn{background:radial-gradient(140% 80% at 50% 30%,#FBF5E9 0%,#F1E6CF 55%,#E7D8BB 100%);color:var(--forest)}
-  .bk-frame{position:absolute;inset:14px;border:1px solid rgba(138,82,56,.32);border-radius:2px;z-index:4;pointer-events:none}
-  .bk-kicker{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:var(--cta);position:relative;z-index:3}
-  /* rising-sun motif */
-  .bk-motif{position:absolute;top:21%;left:50%;transform:translateX(-50%);width:64%;aspect-ratio:1;z-index:1}
-  .bk-rays{position:absolute;inset:0;border-radius:50%;
-    background:repeating-conic-gradient(from 0deg,rgba(168,105,63,0) 0 8deg,rgba(168,105,63,.30) 8deg 9deg);
-    -webkit-mask:radial-gradient(circle,transparent 62%,#000 64%,#000 93%,transparent 96%);
-            mask:radial-gradient(circle,transparent 62%,#000 64%,#000 93%,transparent 96%)}
-  .bk-disc{position:absolute;top:50%;left:50%;width:52%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
-    background:radial-gradient(circle at 50% 42%,#F0C98A 0%,#E0A75F 46%,#C2773F 100%);box-shadow:0 0 30px rgba(216,162,78,.45)}
-  .bk-title{font-family:'Spectral',serif;font-weight:400;font-size:1.9rem;line-height:1.05;color:var(--forest);position:relative;z-index:3;margin-top:44%}
-  .bk-title em{font-style:italic;color:var(--cta)}
-  .bk-sub{font-size:.66rem;letter-spacing:.04em;line-height:1.5;color:var(--forest-soft);max-width:24ch;margin-top:.85rem;position:relative;z-index:3}
-  .bk-rule{width:30px;height:1px;background:var(--cta);margin-top:auto;margin-bottom:.7rem;position:relative;z-index:3}
-  .bk-author{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--cta);position:relative;z-index:3}
+  .bk2{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:2.3rem 1.8rem 1.9rem;border-radius:3px 13px 13px 3px;overflow:hidden;
+    box-shadow:0 30px 56px rgba(28,47,34,.30);opacity:0;visibility:hidden;
+    transform:translateY(10px) scale(.985);transition:opacity .5s ease,transform .5s ease}
+  .book[data-cover="sunrise"] .bk2--sunrise,
+  .book[data-cover="forest"] .bk2--forest,
+  .book[data-cover="sage"] .bk2--sage{opacity:1;visibility:visible;transform:none}
+  .bk2-spine{position:absolute;left:9px;top:0;bottom:0;width:1px;z-index:3}
+  .bk2-frame{position:absolute;inset:13px;border:1px solid;border-radius:2px;z-index:2;pointer-events:none;opacity:.55}
+  .bk2-kicker{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:var(--accent);position:relative;z-index:3}
+  .bk2-title{font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;line-height:1.1;color:var(--ink);margin-top:.25rem;position:relative;z-index:3}
+  .bk2-title em{font-style:italic;color:var(--accent)}
+  .bk2-sub{font-size:.64rem;letter-spacing:.03em;line-height:1.55;color:var(--soft);max-width:24ch;margin-top:.85rem;position:relative;z-index:3}
+  .bk2-rule{width:30px;height:1px;background:var(--accent);margin-top:auto;margin-bottom:.7rem;position:relative;z-index:3}
+  .bk2-author{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--accent);position:relative;z-index:3}
+  .bk2-emblem{position:relative;margin:.7rem 0 .2rem;z-index:1}
+  /* sun emblem */
+  .bk2-emblem--sun{width:94px;height:94px}
+  .bk2-rays{position:absolute;inset:0;border-radius:50%;
+    background:repeating-conic-gradient(from 0deg,rgba(168,105,63,0) 0 8deg,rgba(168,105,63,.36) 8deg 9deg);
+    -webkit-mask:radial-gradient(circle,transparent 29px,#000 31px,#000 44px,transparent 46px);
+            mask:radial-gradient(circle,transparent 29px,#000 31px,#000 44px,transparent 46px)}
+  .bk2-disc{position:absolute;top:50%;left:50%;width:50px;height:50px;transform:translate(-50%,-50%);border-radius:50%;
+    background:radial-gradient(circle at 50% 42%,#F0C98A,#E0A75F 46%,#C2773F);box-shadow:0 0 22px rgba(216,162,78,.45)}
+  /* ring + diamond emblem */
+  .bk2-emblem--ring{width:82px;height:82px;border-radius:50%;border:1px solid var(--accent);display:grid;place-items:center}
+  .bk2-emblem--ring::after{content:"";width:12px;height:12px;background:var(--accent);transform:rotate(45deg)}
+  /* rising-arc emblem */
+  .bk2-emblem--arc{width:96px;height:50px;border:1px solid var(--accent);border-bottom:0;border-radius:96px 96px 0 0}
+  .bk2-emblem--arc::after{content:"";display:block;width:44px;height:1px;background:var(--accent);margin:49px auto 0}
+  /* themes */
+  .bk2--sunrise{--ink:var(--forest);--accent:var(--cta);--soft:var(--forest-soft);
+    background:radial-gradient(120% 82% at 50% 16%,#FBF4E6,#EFE2CC 70%,#E6D7BC)}
+  .bk2--sunrise .bk2-spine{background:rgba(138,82,56,.28)}
+  .bk2--sunrise .bk2-frame{border-color:rgba(138,82,56,.35)}
+  .bk2--forest{--ink:var(--cream);--accent:var(--ochre);--soft:rgba(242,232,214,.78);
+    background:linear-gradient(165deg,#1C2F22,#26402F 55%,#2E4836)}
+  .bk2--forest .bk2-spine{background:rgba(194,163,133,.45)}
+  .bk2--forest .bk2-frame{border-color:rgba(194,163,133,.5)}
+  .bk2--sage{--ink:var(--cream);--accent:#EAD6BA;--soft:rgba(242,232,214,.84);
+    background:linear-gradient(165deg,#4C5E41,#5E7350)}
+  .bk2--sage .bk2-spine{background:rgba(242,232,214,.38)}
+  .bk2--sage .bk2-frame{border-color:rgba(242,232,214,.4)}
   .book-pull{font-family:'Fraunces',serif;font-style:italic;font-size:1.18rem;line-height:1.45;
     color:var(--sage-deep);border-left:3px solid var(--ochre);padding-left:1.2rem;margin:1.6rem 0 0}
   @media (max-width:1000px){.bookcover-stage{margin-bottom:1.5rem}}
 
   /* ===== Physicians: section CTA + standout podcast module ===== */
   .healers-cta{margin-top:2.8rem;text-align:center}
-  .podcast-callout{margin-top:4rem}
+  .healers .divider{margin-top:3.8rem}
+  .podcast-callout{margin-top:3.4rem;background:var(--sage-deep);border-color:transparent;color:var(--on-dark);box-shadow:0 18px 40px rgba(28,47,34,.18)}
+  .podcast-callout p{color:rgba(242,232,214,.86)}
+  .podcast-callout p strong{color:var(--cream)}
 </style>
 </head>
 <body>
@@ -222,8 +183,8 @@
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button>
       <ul id="menu">
         <li><a href="#newmodel">The new model</a></li>
-        <li><a href="#story">My story</a></li>
         <li><a href="#book">The book</a></li>
+        <li><a href="#story">My story</a></li>
         <li><a href="#physicians">For physicians</a></li>
         <li><a href="#speaking">Speaking</a></li>
         <li><a class="btn btn-primary" href="#contact">Get in touch</a></li>
@@ -281,16 +242,16 @@
         <a class="link" href="#newmodel">Explore the vision</a>
       </article>
       <article class="avenue reveal">
-        <div class="for">Coming soon</div>
-        <h3>The book</h3>
-        <p>Part memoir, part guide: the story of burnout, healing, and a new way to practice - the bridge to this whole message. Join the list to follow along.</p>
-        <a class="link" href="#book">About the book</a>
-      </article>
-      <article class="avenue reveal">
         <div class="for">For physicians</div>
         <h3>Coaching &amp; mentorship</h3>
         <p>Relearn the intuitive, soul-centered side of healing that training left out - and build a practice that feeds you instead of consuming you.</p>
         <a class="link" href="#physicians">See how I help physicians</a>
+      </article>
+      <article class="avenue reveal">
+        <div class="for">Coming soon</div>
+        <h3>The book</h3>
+        <p>Part memoir, part guide: the story of burnout, healing, and a new way to practice - the bridge to this whole message. Join the list to follow along.</p>
+        <a class="link" href="#book">About the book</a>
       </article>
     </div>
   </div>
@@ -299,75 +260,18 @@
 <!-- ============ THE NEW MODEL OF MEDICINE - the thesis ============ -->
 <section class="newmodel" id="newmodel">
   <div class="wrap">
-    <div class="nm-split">
     <div class="nm-head reveal">
       <div class="eyebrow">The new model of medicine</div>
-      <h2>Whole-person care begins <em class="soul">with a whole physician.</em></h2>
-      <p class="lede">Modern training gives physicians the science and quietly takes the soul - the intuition, the presence, the time to truly see a person. <em class="im2">Integrative Medicine 2.0</em> puts it back. I work with doctors to rebuild their practice around the whole human being - their own included - because when the healer is whole, the care becomes whole too. It's how physicians move out of burnout and back into purpose, and how patients finally meet medicine that treats people, not charts.</p>
+      <h2>You mastered the science. <em class="soul">Now reclaim the soul of medicine.</em></h2>
+      <p class="lede">Training taught you to override your intuition, to treat the chart instead of the person, and to keep going until burnout. I'm building a new model of medicine that gives physicians back the other half of their education - the intuitive, soul-centered side of healing - so you can practice with presence again, and become whole enough to truly heal others. Call it Integrative Medicine 2.0.</p>
     </div>
-    <div class="nm-figure reveal" id="nmFigure">
-      <svg class="nm-svg" viewBox="0 0 740 700" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
-        <polygon class="nm-poly" points="370,70 56,616 684,616"></polygon>
-        <line class="nm-eline nm-eA" x1="370" y1="70" x2="56" y2="616"></line>
-        <line class="nm-eline nm-eB" x1="56" y1="616" x2="684" y2="616"></line>
-        <line class="nm-eline nm-eC" x1="684" y1="616" x2="370" y2="70"></line>
-      </svg>
-
-      <div class="nm-core" aria-hidden="true">
-        <div class="nm-core-panel is-on" data-for="default">
-          <span class="nm-core-eyebrow">The shape of it</span>
-          <span class="nm-core-title">Integrative Medicine&nbsp;2.0</span>
-          <p>Three principles, held in one practice.</p>
-        </div>
-        <div class="nm-core-panel" data-for="a">
-          <span class="nm-core-title">Relearn your intuition</span>
-          <p>The instinct training taught you to silence - awake, and trusted again.</p>
-        </div>
-        <div class="nm-core-panel" data-for="b">
-          <span class="nm-core-title">Science and soul, integrated</span>
-          <p>The rigor of modern medicine, joined with presence, intuition, and time.</p>
-        </div>
-        <div class="nm-core-panel" data-for="c">
-          <span class="nm-core-title">Heal the healer first</span>
-          <p>You can't give from depletion - so the model begins with you.</p>
-        </div>
-      </div>
-
-      <button class="nm-pt nm-pt--a" type="button" data-i="a" aria-label="Relearn your intuition">
-        <span class="nm-dot"></span><span class="nm-label">Relearn your intuition</span>
-      </button>
-      <button class="nm-pt nm-pt--b" type="button" data-i="b" aria-label="Science and soul, integrated">
-        <span class="nm-dot"></span><span class="nm-label">Science &amp; soul, integrated</span>
-      </button>
-      <button class="nm-pt nm-pt--c" type="button" data-i="c" aria-label="Heal the healer first">
-        <span class="nm-dot"></span><span class="nm-label">Heal the healer first</span>
-      </button>
-    </div>
+    <div class="nm-grid">
+      <div class="nm-pillar reveal"><h3>Relearn your intuition</h3><p>The instinct medical training taught you to silence - reawakened, and trusted again.</p></div>
+      <div class="nm-pillar reveal"><h3>Science and soul, integrated</h3><p>The full rigor of modern medicine, joined with presence, intuition, and time.</p></div>
+      <div class="nm-pillar reveal"><h3>Heal the healer first</h3><p>A model that restores the physician, not just the patient - because you can't give from depletion.</p></div>
     </div>
   </div>
 </section>
-
-<script>
-(function(){
-  var fig=document.getElementById('nmFigure');
-  if(!fig)return;
-  var pts=fig.querySelectorAll('.nm-pt');
-  var panels=fig.querySelectorAll('.nm-core-panel');
-  function show(key){
-    fig.setAttribute('data-active',key||'');
-    panels.forEach(function(p){
-      p.classList.toggle('is-on',(p.getAttribute('data-for')||'default')===(key||'default'));
-    });
-  }
-  pts.forEach(function(b){
-    var k=b.getAttribute('data-i');
-    b.addEventListener('mouseenter',function(){show(k);});
-    b.addEventListener('focus',function(){show(k);});
-  });
-  fig.addEventListener('mouseleave',function(){show('');});
-  fig.addEventListener('focusout',function(e){ if(!fig.contains(e.relatedTarget)) show(''); });
-})();
-</script>
 
 <!-- ============ STORY ============ -->
 <section id="story">
@@ -397,18 +301,36 @@
 </section>
 
 <!-- ============ BOOK ============ -->
-<section class="book" id="book" data-bg="cream">
+<section class="book" id="book" data-cover="sunrise" data-bg="forest">
   <div class="wrap book-grid">
     <div class="reveal bookcover-col">
       <div class="bookcover-stage">
-        <div class="bookcover bk-dawn" aria-label="Book cover: Awakening the Healer's Soul">
-          <span class="bk-frame"></span>
-          <span class="bk-kicker">A memoir</span>
-          <span class="bk-motif"><span class="bk-rays"></span><span class="bk-disc"></span></span>
-          <span class="bk-title">Awakening<br>the Healer's <em>Soul</em></span>
-          <span class="bk-sub">A physician's journey from burnout back to wholeness</span>
-          <span class="bk-rule"></span>
-          <span class="bk-author">Marina Capella, MD</span>
+        <div class="bk2 bk2--sunrise" data-variant="sunrise" aria-label="Book cover concept: sunrise">
+          <span class="bk2-spine"></span><span class="bk2-frame"></span>
+          <span class="bk2-kicker">A memoir</span>
+          <span class="bk2-emblem bk2-emblem--sun"><span class="bk2-rays"></span><span class="bk2-disc"></span></span>
+          <span class="bk2-title">Awakening<br>the Healer's <em>Soul</em></span>
+          <span class="bk2-sub">A physician's journey from burnout back to wholeness</span>
+          <span class="bk2-rule"></span>
+          <span class="bk2-author">Marina Capella, MD</span>
+        </div>
+        <div class="bk2 bk2--forest" data-variant="forest" aria-label="Book cover concept: forest">
+          <span class="bk2-spine"></span><span class="bk2-frame"></span>
+          <span class="bk2-kicker">A memoir</span>
+          <span class="bk2-emblem bk2-emblem--ring"></span>
+          <span class="bk2-title">Awakening<br>the Healer's <em>Soul</em></span>
+          <span class="bk2-sub">A physician's journey from burnout back to wholeness</span>
+          <span class="bk2-rule"></span>
+          <span class="bk2-author">Marina Capella, MD</span>
+        </div>
+        <div class="bk2 bk2--sage" data-variant="sage" aria-label="Book cover concept: sage">
+          <span class="bk2-spine"></span><span class="bk2-frame"></span>
+          <span class="bk2-kicker">A memoir</span>
+          <span class="bk2-emblem bk2-emblem--arc"></span>
+          <span class="bk2-title">Awakening<br>the Healer's <em>Soul</em></span>
+          <span class="bk2-sub">A physician's journey from burnout back to wholeness</span>
+          <span class="bk2-rule"></span>
+          <span class="bk2-author">Marina Capella, MD</span>
         </div>
       </div>
     </div>
@@ -422,33 +344,6 @@
         <button class="btn btn-primary" type="submit">Join the list</button>
       </form>
       <p class="fine">Be the first to know when it arrives - no noise, just meaningful updates on the book, events, and new resources.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ VIDEO - brown grounding band ============ -->
-<section class="video">
-  <div class="wrap">
-    <div class="eyebrow reveal">In her own words</div>
-    <h2 class="reveal">Some things can't be read. <em>They have to be felt.</em></h2>
-    <div class="video-frame reveal">
-      <button class="video-play" type="button" data-yt="dLif1pKPZVw" style="background-image:url('assets/img/mc-video-thumbnail.webp')" aria-label="Play video: Marina on opening her practice and founding DPC Pediatrician">
-        <span class="video-play-btn" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
-      </button>
-    </div>
-    <p class="video-note reveal">Video placeholder - interim clip, final brand video to come.</p>
-
-    <div class="video-aside reveal">
-      <div class="video-aside-copy">
-        <div class="eyebrow">A lighter note</div>
-        <h3>Reimagining medicine can start <em>with a little joy.</em></h3>
-        <p>When I launched my DPC consulting company, I didn't write a brochure - I rewrote "Defying Gravity." A reminder that healing the healer still leaves room for play.</p>
-      </div>
-      <div class="video-aside-frame">
-        <button class="video-play video-play-aside" type="button" data-yt="C8lz1lPbK8E" data-title="Defying Gravity - a DPC parody by Dr. Marina Capella" style="background-image:url('https://img.youtube.com/vi/C8lz1lPbK8E/hqdefault.jpg')" aria-label="Play video: Defying Gravity, a DPC parody">
-          <span class="video-play-btn" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
-        </button>
-      </div>
     </div>
   </div>
 </section>
@@ -476,13 +371,41 @@
         <p>Practical, been-there guidance on direct care entrepreneurship - from someone who grew a startup clinic into a thriving practice without sacrificing her values.</p>
       </div>
     </div>
-    <div class="healers-cta reveal" hidden>
+    <div class="healers-cta reveal">
       <a class="btn btn-primary" href="#contact" data-intent="coaching">Reach out about coaching</a>
     </div>
+    <div class="divider" aria-hidden="true"><span></span></div>
     <div class="podcast-callout reveal">
       <div class="mic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FAF7F1" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
       <p><strong>200+ episodes of free guidance.</strong> On the DPC Pediatrician podcast, I share everything I've learned about building a direct care practice - the strategy, the mindset, and the soul work.</p>
-      <a class="btn btn-ghost" href="https://dpcpediatrician.com/podcast/" target="_blank" rel="noopener">Listen to the podcast</a>
+      <a class="btn btn-light-ghost" href="https://dpcpediatrician.com/podcast/" target="_blank" rel="noopener">Listen to the podcast</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO - brown grounding band ============ -->
+<section class="video">
+  <div class="wrap">
+    <div class="eyebrow reveal">In her own words</div>
+    <h2 class="reveal">Some things can't be read. <em>They have to be felt.</em></h2>
+    <div class="video-frame reveal">
+      <button class="video-play" type="button" data-yt="dLif1pKPZVw" style="background-image:url('assets/img/mc-video-thumbnail.webp')" aria-label="Play video: Marina on opening her practice and founding DPC Pediatrician">
+        <span class="video-play-btn" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
+      </button>
+    </div>
+    <p class="video-note reveal">Video placeholder - interim clip, final brand video to come.</p>
+
+    <div class="video-aside reveal">
+      <div class="video-aside-copy">
+        <div class="eyebrow">A lighter note</div>
+        <h3>Reimagining medicine can start <em>with a little joy.</em></h3>
+        <p>When I launched my DPC consulting company, I didn't write a brochure - I rewrote "Defying Gravity." A reminder that healing the healer still leaves room for play.</p>
+      </div>
+      <div class="video-aside-frame">
+        <button class="video-play video-play-aside" type="button" data-yt="C8lz1lPbK8E" data-title="Defying Gravity - a DPC parody by Dr. Marina Capella" style="background-image:url('https://img.youtube.com/vi/C8lz1lPbK8E/hqdefault.jpg')" aria-label="Play video: Defying Gravity, a DPC parody">
+          <span class="video-play-btn" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"></path></svg></span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -651,6 +574,24 @@
     </div>
   </div>
 
+  <div class="mc-hctl-section">
+    <span class="mc-hctl-label">Book cover</span>
+    <div class="mc-hctl-covers">
+      <button type="button" class="mc-cover" data-cover="sunrise"><span class="mc-sw mc-sw--sunrise"></span>Sunrise</button>
+      <button type="button" class="mc-cover" data-cover="forest"><span class="mc-sw mc-sw--forest"></span>Forest</button>
+      <button type="button" class="mc-cover" data-cover="sage"><span class="mc-sw mc-sw--sage"></span>Sage</button>
+    </div>
+  </div>
+
+  <div class="mc-hctl-section">
+    <span class="mc-hctl-label">Book section style</span>
+    <div class="mc-hctl-covers">
+      <button type="button" class="mc-bg" data-bg="forest"><span class="mc-sw mc-bgsw--forest"></span>Forest</button>
+      <button type="button" class="mc-bg" data-bg="sage"><span class="mc-sw mc-bgsw--sage"></span>Sage</button>
+      <button type="button" class="mc-bg" data-bg="cream"><span class="mc-sw mc-bgsw--cream"></span>Cream</button>
+    </div>
+  </div>
+
   <div class="mc-hctl-foot">
     <span class="mc-hctl-note">Same background image · internal tool</span>
     <button type="button" class="mc-hctl-reset">Reset</button>
@@ -685,7 +626,7 @@
   .mc-sw--sage{background:linear-gradient(165deg,#4C5E41,#5E7350)}
   .mc-bgsw--forest{background:radial-gradient(85% 120% at 30% 42%,#2E4937,#1A2C20)}
   .mc-bgsw--sage{background:radial-gradient(85% 120% at 30% 42%,#5E7350,#45583E)}
-  .mc-bgsw--cream{background:#EDE3D1}
+  .mc-bgsw--cream{background:linear-gradient(160deg,#F4EBDB,#E2D0B4)}
   .mc-hctl-btn{
     border-radius:999px;padding:.5rem .9rem;font-size:.82rem;font-weight:600;text-align:center;
     outline:none;cursor:text;
@@ -728,7 +669,7 @@
 </style>
 <script>
 (function(){
-  var KEY='mc-headline-options-v8';
+  var KEY='mc-headline-options-v6';
   var DEFAULTS=[
     {l1:'Welcome to the', soul:'new model of medicine.'},
     {l1:'Reimagining medicine,', soul:'starting with the healer.'},
@@ -757,6 +698,11 @@
   if(typeof state.lede!=='string') state.lede=DEFAULT_LEDE;
   if(typeof state.btn1!=='string') state.btn1=DEFAULT_BTN1;
   if(typeof state.btn2!=='string') state.btn2=DEFAULT_BTN2;
+  if(typeof state.cover!=='string') state.cover='sunrise';
+  if(typeof state.bookbg!=='string') state.bookbg='forest';
+  var coverBtns=box.querySelectorAll('.mc-cover');
+  var bgBtns=box.querySelectorAll('.mc-bg');
+  var bookSec=document.getElementById('book');
   function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
   function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 
@@ -768,6 +714,14 @@
     if(lede) lede.textContent=state.lede;
     if(btn1) btn1.textContent=state.btn1;
     if(btn2) btn2.textContent=state.btn2;
+  }
+  function applyCover(){
+    if(bookSec) bookSec.setAttribute('data-cover',state.cover);
+    [].forEach.call(coverBtns,function(b){ b.classList.toggle('is-sel',b.getAttribute('data-cover')===state.cover); });
+  }
+  function applyBookBg(){
+    if(bookSec) bookSec.setAttribute('data-bg',state.bookbg);
+    [].forEach.call(bgBtns,function(b){ b.classList.toggle('is-sel',b.getAttribute('data-bg')===state.bookbg); });
   }
 
   function render(){
@@ -826,18 +780,29 @@
   bindField(btn1Field,'btn1',applyExtras);
   bindField(btn2Field,'btn2',applyExtras);
 
+  [].forEach.call(coverBtns,function(b){
+    b.addEventListener('click',function(){ state.cover=b.getAttribute('data-cover'); save(); applyCover(); });
+  });
+  [].forEach.call(bgBtns,function(b){
+    b.addEventListener('click',function(){ state.bookbg=b.getAttribute('data-bg'); save(); applyBookBg(); });
+  });
+
   box.querySelector('.mc-hctl-min').addEventListener('click',function(){ setMin(true); });
   tab.addEventListener('click',function(){ setMin(false); });
   box.querySelector('.mc-hctl-reset').addEventListener('click',function(){
     state.opts=DEFAULTS.map(function(o){return {l1:o.l1,soul:o.soul};});
     state.sel=0; state.lede=DEFAULT_LEDE; state.btn1=DEFAULT_BTN1; state.btn2=DEFAULT_BTN2;
     ledeField.textContent=state.lede; btn1Field.textContent=state.btn1; btn2Field.textContent=state.btn2;
-    save(); render(); applyHero(); applyExtras();
+    state.cover='sunrise';
+    state.bookbg='forest';
+    save(); render(); applyHero(); applyExtras(); applyCover(); applyBookBg();
   });
 
   render();
   applyHero();
   applyExtras();
+  applyCover();
+  applyBookBg();
   setMin(!!state.min);
 })();
 </script>

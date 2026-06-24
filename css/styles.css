@@ -243,7 +243,7 @@ nav .btn{padding:.55rem 1.3rem}
   display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem 2.5rem;
 }
 .cred{display:flex;gap:.8rem;align-items:flex-start;font-size:.92rem;color:var(--forest-soft)}
-.cred .mark{flex:none;width:7px;height:7px;background:var(--sage);transform:rotate(45deg);margin-top:.5rem}
+.cred .mark{flex:none;width:7px;height:7px;border-radius:50%;background:var(--sage);margin-top:.5rem}
 .cred strong{color:var(--forest);font-weight:600;display:block}
 
 /* ---------- video (deep sage contrast panel) ---------- */
